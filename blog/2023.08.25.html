@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/js/tuicss.min.js"></script>
+		<link href="../_app/immutable/entry/start.BLr9_bnc.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/AdeW3F8v.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C5Qr1tWr.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dt-HX3Vu.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.CjXFn_g_.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/uBIymjUX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.Dko8UQj9.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DRByVC-c.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsF7k-Jl.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/UrVpzM6D.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/e3uk7f1g.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BJ6dgZOD.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BtpA1xRJ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/D7rxoVVC.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BcR_fFiR.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C_WrjxST.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CGfmOE7W.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/U4Q-MCo3.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dy-Kn_BL.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/lpi2-tgm.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/3EzQhW0a.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DMTIwejG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsIc3RVK.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/fybaL0A-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BifhSqXX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/g4Mvzxsx.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DS17s2tU.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/B-DAUW-u.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CX68_OgI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DSJ1rPnI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/tZp6t9zN.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DuWRkWPg.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.DgZdZZPn.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DeSqgjHc.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="alternate" type="application/rss+xml" title="Thomas Reidemeister" href="http://reidemeister.com/api/rss.xml"/> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EHW6Z8HZ08"></script><!----><!--s11s7s--><meta data-key="description" name="description" content="OpenOCD hacks to bring Semihosting to cheap RISCV boards."/> <meta property="og:type" content="article"/> <meta property="og:title" content="Semihosting on Cheap RISCV Boards"/> <meta name="twitter:title" content="Semihosting on Cheap RISCV Boards"/> <meta property="og:description" content="OpenOCD hacks to bring Semihosting to cheap RISCV boards."/> <meta name="twitter:description" content="OpenOCD hacks to bring Semihosting to cheap RISCV boards."/> <meta property="og:image:width" content="1024"/> <meta property="og:image:height" content="620"/><!----><title>Semihosting on Cheap RISCV Boards</title>
+		<link href="../_app/immutable/assets/0.1Ga5dCEE.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogQuote.8TWGGipd.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogTable.K5KlPf1M.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/YoutubePlayer.DRLVl_9I.css" rel="stylesheet">
+		<!-- You can add global <meta> tags here, but anything not global or dynamic should be a `<svelte:head>` tag on the proper page(s) instead. -->
+	</head>
+	<body class="tui-bg-blue-black">
+		<div id="svelte"><!--[--><!--[0--><!--[--><div class="layout"><header><nav class="tui-nav"><a href="/" class="tui-panel cyan-168 full-width black-255-text tui-no-shadow center"><b style="font-size: 2.0em;">Thomas Reidemeister</b></a> <span class="tui-datetime" data-format="d/M/1993 h:m:s a"></span> <ul><li class="tui-sidenav-button"><a href="/">Home</a></li> <!--[--><!--[0--><li class="tui-dropdown"><a href="/blog">Blog</a> <!--[-1--><!--]--></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/about"><!---->About<!----></a></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/tools"><!---->Tools<!----></a></li><!--]--><!--]--></ul><!----></nav></header><!----> <!----><main id="main" tabindex="-1"><!--[--><article class="tui-window"><div class="tui-window-titlebar"><span class="tui-window-titlebar-rule-corner"></span> <button class="tui-fieldset-button left" style="margin-top: 0px"><span class="green-255-text">■</span></button> <span class="tui-window-titlebar-rule"></span> <span class="tui-window-titlebar-text">Semihosting on Cheap RISCV Boards</span> <span class="tui-window-titlebar-rule"></span> <button class="tui-fieldset-button right" style="margin-top: 0px"><span class="green-255-text">↑</span></button> <span class="tui-window-titlebar-rule-corner"></span></div> <fieldset class="tui-fieldset" style="margin-top: 0px"><div class="white-168-text" style="overflow: auto;"><img class="cover-image tui-shadow" src="/images/ch32v003-swio.jpg" alt="" style="aspect-ratio: 1024 / 620;display: block; margin-left: auto; margin-right: auto;" width="1024" height="620"/><br/><br/> <ul><li><a href="https://github.com/treideme/ch32v003-semihosting/tree/master" rel="nofollow">GitHub sample sources for the CH32V003 firmware, here.</a></li> <li><a href="https://github.com/treideme/openocd-hacks" rel="nofollow">GitHub sources for the patched version of WCHs OpenOCD, here.</a></li></ul> <p>Continuing our exploration of embedded CI jobs, let’s delve into achieving a comprehensive test-runner for a tiny
+embedded MCU. Instrumenting a WCH MCU that costs just <a href="2023.01.21">$0.10</a>, breaking free from the confines of a 16KB flash and
+2KB RAM.</p> <p>I’ve previously discussed this remarkable chip in a prior <a href="2023.01.21">blog post</a>. It’s a highly economical 32-bit MCU with a RISC-V2A
+core and a treasure trove of handy peripherals. WCH took an inventive approach to the debug interface, eschewing the
+resource-heavy JTAG in favour of a space-efficient single-wire debug interface. A mere trio of jumper cables
+(VCC, GND, SWDIO) are all you need to run and program this chip.</p> <p>However, there are challenges. The non-standard interface needs its own set of drivers and code. While WCH has shown
+openness to open-source ideals, they’ve forked their own version of OpenOCD to cater to their interface nuances.
+You’ll find this bundled with <a href="http://www.mounriver.com/" rel="nofollow">MounRiver Studio</a> or as a standalone toolchain. A polite inquiry to their support usually
+garners the source code swiftly.</p> <p>As of my current writing, the MounRiver Studio 1.8 port regrettably lacks semihosting support. In response, I’ve
+revived it for their interface. My sources reside here: I forked <a href="https://github.com/karlp/openocd-hacks" rel="nofollow">Karl Palssons’ well-maintained WCH OpenOCD</a> sources and
+seamlessly merged in the pivotal commits from WCH’s divergence from the mainline RISCV OpenOCD. I’ve also submitted a
+patch WCHs’ way, hoping it’ll find its place in the forthcoming release. A pull request to Karls’s repo is a work in
+progress too.</p> <h1 id="what-is-semihosting"><a aria-hidden="true" tabindex="-1" href="#what-is-semihosting"><span class="icon icon-link"></span></a>What is Semihosting?</h1> <p>Semihosting, an ingenious mechanism, bridges the gap between a microcontroller or processor and its host environment
+through debug calls. These calls unlock a realm of possibilities:</p> <ul><li><strong>Debugging and Testing:</strong> Console input and status retrieval from the target.</li> <li><strong>I/O Mastery:</strong> Orchestrating file exchanges within the host system.</li> <li><strong>Code Crafting and Testing:</strong> When hardware drivers are still germinating in the early development phases, semihosting is an easy way to evaluate a target.</li> <li><strong>Logging:</strong> Robust logging and tracing capabilities.</li></ul> <p><a href="https://tomverbeure.github.io/2021/12/30/Semihosting-on-RISCV.html" rel="nofollow">Tom Verbeure</a> has a comprehensive writeup and practical examples for another RISCV core that I encourage anyone to read
+too. The genesis traces back to ARM’s pioneering steps, with a fortunate twist: RISCV embraced ARM’s interface blueprint.
+Consequently, OpenOCD developers found themselves tasked with seamlessly extending the same support to RISCV as they
+did for ARM.</p> <p>The main drawback of semihosting lies in its speed. It operates at considerably reduced speeds compared to specialized
+hardware interfaces like UART. This deceleration originates from the debugger’s polling loop. A break state is triggered
+in the RISCV to signal a host call. Typically, the debugger polls the target execution state in intervals of roughly
+100ms or less. On ARM this is even worse since some architectures need to interrupt to call the debugger. This limits
+you to around tens of host calls per second. Each host call carries an ID and buffer pointer, necessitating data
+extraction by the debugger after acknowledging the target request. Consequently, for tasks as simple as outputting a
+character, the process becomes sluggish. Optimal utilization entails conducting substantial bulk transfers with each
+call.</p> <p>Another drawback is that semihosting code should steer clear of production deployment. Depending on the core
+configuration, the code could encounter hard faults (absence of trap handler or trap support) or linger indefinitely
+due to an “ebreak” state in the absence of a debugger connection. This makes semihosting a prime choice for prototyping,
+debugging, and testing endeavors.</p> <p>If your focus narrows to just console I/O, alternative projects are emerging that employ RISCV DMI data transfer
+registers for console output, as shown by Charles Lohr’s work showcased <a href="https://github.com/cnlohr/ch32v003fun/tree/master/minichlink" rel="nofollow">here</a>. Unfortunately, the tooling seems confined
+to CH32V003 and lacks extensive testing or applicability across WCH’s broader product lines. Moreover, adopting this
+avenue sacrifices the array of automation and test capabilities intrinsic to OpenOCD. Though ongoing development holds
+the promise of resolving these challenges, this remains brimming with potential.</p> <h1 id="implementing-console-output"><a aria-hidden="true" tabindex="-1" href="#implementing-console-output"><span class="icon icon-link"></span></a>Implementing Console Output</h1> <p>The WCH’s RISC-V toolchain supports the standard C library. This implies seamless integration of familiar C functions
+akin to your desktop experience. Yet, unlocking their utility necessitates the establishment of underlying bindings,
+showcased in the source found <a href="https://github.com/treideme/ch32v003-semihosting/blob/master/User/semihosting.c" rel="nofollow">here</a>.</p> <p>Regrettably, the standard library confines printf to character-based IO. However, optimizing performance leads us to <code>printf_</code>, a variant empowering block transfers, thereby accelerating the pace, as shown in the <a href="https://github.com/treideme/ch32v003-semihosting/blob/master/User/main.c" rel="nofollow"><code>main</code></a> function.</p> <h1 id="where-to-go-from-here"><a aria-hidden="true" tabindex="-1" href="#where-to-go-from-here"><span class="icon icon-link"></span></a>Where to go from here</h1> <p>In my <a href="https://www.labforge.ca/" rel="nofollow">professional realm</a>, this technique is a staple for continuous integration testing. I employ a <a href="https://pypi.org/project/pyexpect/" rel="nofollow">pyexpect</a> script to
+monitor OpenOCD’s console output, complemented by a <a href="https://docs.python.org/3/library/telnetlib.html" rel="nofollow">loopback telnet session</a> for target management. This is particularly
+useful for automated software testing. Enter <a href="http://www.throwtheswitch.org/unity" rel="nofollow">Unity</a>, a sleek C-powered test runner tailor-made to accommodate a spectrum
+of resource-limited systems. The process of porting this to your application is simple: tweak the read and write
+functions for semihosting, and assess pass-fail criteria through scripting within OpenOCD. Moreover, you can easily
+tweak my CH32V003 sample’s versatility to file-based I/O with the host system.</p><!----> <div class="tui-divider"></div> <br/><b>Published:</b> 2023-08-25 <br/> <b>Updated  :</b> 2025-10-04 <!--[0--><aside class="post-footer"><ul class="post-footer__categories"><!--[--><li class="no-bullet"><a href="/blog/category/coding/" class="tui-button white-168">coding</a></li><li class="no-bullet"><a href="/blog/category/embedded/" class="tui-button white-168">embedded</a></li><!--]--></ul></aside><!--]--> <br/> Not a spam bot? Want to leave comments or provide editorial guidance? Please click any
+			of the social links below and make an effort to connect. I promise I read all messages and
+			will respond at my choosing. <div class="post-pagination"><!--[0--><a href="/blog/2024.04.04" class="tui-button white-168 prev-link">← The Road to Shodan</a><!--]--> <!--[0--><a href="/blog/2023.07.27" class="tui-button white-168 next-link">Embedded Continuous Integration Made Easier →</a><!--]--></div></div></fieldset></article><!--]--><!----></main><!----> <div class="tui-statusbar"><ul><li><a href="/api/rss.xml" data-sveltekit-reload="" target="_blank">RSS</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://x.com/treideme1" data-sveltekit-reload="" target="_blank">𝕏</a></li> <span class="tui-statusbar-divider"></span> <li><a href="http://github.com/treideme" data-sveltekit-reload="" target="_blank">GitHub</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.linkedin.com/in/thomasreidemeister" data-sveltekit-reload="" target="_blank">In</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.instagram.com/treideme/" data-sveltekit-reload="" target="_blank">📸</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://dblp.org/pid/93/7009.html" data-sveltekit-reload="" target="_blank">DPLB</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://patents.google.com/?inventor=Thomas+REIDEMEISTER" data-sveltekit-reload="" target="_blank"> 🔬 </a></li> <span class="tui-statusbar-divider"></span> <li style="float: right;"><a href="/terms">© 2026 Thomas Reidemeister</a></li></ul></div><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_ih7hdl = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BLr9_bnc.js"),
+						import("../_app/immutable/entry/app.CjXFn_g_.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

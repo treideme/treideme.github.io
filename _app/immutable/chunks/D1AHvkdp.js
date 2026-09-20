@@ -1,0 +1,37 @@
+import{$ as e,M as t,P as n,pt as r,tt as i}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";import{t as a}from"./DPw4rzvf.js";import"./BrJmRK04.js";import"./WppY4ym1.js";import"./BIw1C4rS.js";import{t as o}from"./DPsrAEoc.js";var s={title:`A New Pal`,date:`2022-08-01`,updated:`2025-10-04`,categories:[`covid-19`,`karate`],coverImage:`/images/01_drawing_model.jpg`,coverWidth:350,coverHeight:350,excerpt:`Building a Training Dummy.`},{title:c,date:l,updated:u,categories:d,coverImage:f,coverWidth:p,coverHeight:m,excerpt:h}=s,g=n(`<p>Since getting back into martial arts last year, I have been looking for ways to improve throws and takedowns for
+(Japanese) Jiu Jitsu. I am still on the very early path in Jiu Jitsu. In our syllabus, there seems to be more focus
+on standing techniques than ground control up to Orange Belt. With just one section of Jiu Jitsu per week, compared
+to six sections of Karate, I felt that some of the combos become quite fleeting if they are not reinforced in between
+classes. I have been trying to keep notes, for various intricate techniques I tried drawing models (below) to support
+written notes, but that can never beat execution on a more realistic subject.</p> <p>Being close to 1.9m (6’2”) it also becomes more imperative to have really good footwork and setups to be able to
+accurately execute throws. So, I decided to splurge on a standing dummy. There is a wide selection out there. I was
+initially looking very closely at the <a href="https://www.youtube.com/watch?v=CdDL9i0YGFc" rel="nofollow">Century Versys 2.0</a>. This one was
+specifically made for throws and takedowns. My
+instructor has one of these and he seems to swear by it. The issue I have is that it only seems to be made for take-down
+techniques. Once I would be past getting good throw execution (I am currently not!), I feel the Versys would be
+catching dust and be <a href="https://en.wikipedia.org/wiki/Marie_Kondo" rel="nofollow">“mariconed” by my wife</a>. In fact, there seems to be a
+graveyard of grappling dummies out there,
+with <a href="https://www.youtube.com/watch?v=djhBYz_x_SY" rel="nofollow">“[…] suspicious garbage men moving the humanoid shape that is rolled up in a carpet into the back of a garbage
+truck.”</a> Seriously, have a look at Stephan’s video and ask yourself
+if you will actually commit to training at least twice a week with the new acquisition before moving on here.</p> <p>Looking at the wider selection there are more generic options for throws that could also be used for some groundwork
+and a whole section of grappling dummies that are exclusively made for ground control. I decided to go for a hybrid,
+a standing grappling dummy. Given the insane price for shipping a filled one, I decided to build one from an empty
+bag. I saw a few videos here for grappling dummy builds that used pool noodles as skeletons and padded the rest with
+sandbags and rags. That was my first attempt.</p> <!> <p>While the <a href="https://www.canadiantire.ca/en/pdp/pool-noodle-king-jumbo-pool-noodle-assorted-0811255p.html" rel="nofollow">sand-filled pool noodles</a> give it a bonier feeling than just cloth, so you can practice arm-bars and other
+things, they are still too soft to let the dummy stand by itself. The legs would immediately cave in and I needed a <a href="https://en.wikipedia.org/wiki/Wooden_horse_(device)" rel="nofollow">“wooden horse”</a> to keep the dummy in an upright position. I
+wonder how it would take for my neighbours to suspect dead bodies in my basement when they’d see this garage setup.</p> <!> <p>So on a second try, I reinforced the inside of the leg pool noodles all the way up to, what would be, the Sacroiliac
+joint with <a href="https://www.homedepot.ca/product/sharkbite-1-inch-x-10-feet-white-pex-pipe/1001013735" rel="nofollow">one-inch PEX</a> pipes.
+I separated the other quarter of the pool noodle with cloth/paper inserts and a sand
+backfill such that the pipe won’t move. Then I filled the <a href="https://www.peaveymart.com/home-improvement/salt-sand-cement/play-sand" rel="nofollow">pipe-reinforced section with sand</a> too. Big thanks to <a href="https://www.youtube.com/watch?v=oQ_bkfg4KFI" rel="nofollow">417 BJJ</a> for the inspiration to seriously look at PEX pipes for reinforcing it.</p> <!> <p>The arms section is just a smaller diameter of pool noodles filled with sand. I initially planned to do the neck and
+backbone out of pool noodles too, but I feared that the weight of the dummy would then be too light around the torso.</p> <!> <p>After taping the skeleton tightly together, I filled in all the gaps with rags. The Fuji dummy is actually fairly slim.
+It is a workout by itself to just shove all the cloth pieces past the pool noodles to have an even in-fill. If I had to
+do it again. I might consider putting <a href="https://canada.michaels.com/product/the-original-polyfil-premium-fiber-fill-bag-20oz-10509852" rel="nofollow">Poly-fil</a> in for the hard-to-reach places.</p> <!> <p>The final result is here. I did my first workout today. Below is a selection of Ippon-Seionage (一本背負投) and various
+foot actions. Ignore the finish and the ground control. Any experienced viewer would probably agree that these throws
+and finishes need serious improvement. As the old aphorism goes: Jiu-Jitsu-kas reveal their true age before breakfast.</p> <!> <p>A few drawbacks I noticed about the dummy so far are, that the arm position is forward. This is great for throw setups
+but sucks a bit for finishes. With a real Uke (受け) the landing position would in many cases be a side-break-fall from
+which side armbar like Ude-garame (腕緘) would be easy to apply. As you see in the video the finishes suck. On the
+positive side, this arm position might prove ideal to later get into more ground control.</p> <!> <p>That’s my new pal. I’m committed to not letting it end up in a rolled-up carpet at the end of a garbage truck. The key
+here, like with other workouts is to make a plan for it on the day before and then commit to the reps and techniques
+until the list is worked off. Last year, I worked up my 5 am routine, (<a href="2012.01.09">again</a>), and I schedule some form of training every morning.
+So far this has mostly been conditioning and cardio, with the new dummy and some lessons from my last Karate grading
+those sessions will likely be more technically focused. To spice it up, put on your favorite <a href="https://open.spotify.com/playlist/2B6zEp4xVmowficmoTc7Jv" rel="nofollow">Spotify workout tune</a> (suggestion) and get to work. Hopefully, my throws and your techniques will improve over time in a real setting.</p>`,1);function _(n){var s=g(),c=i(e(s),6);a(c,{src:`/images/03_supplies.jpg`,width:`500`,alt:`Dummy Building Blocks`});var l=i(c,4);a(l,{src:`/images/04_sand.jpg`,width:`500`,alt:`Sand-filled Structure`});var u=i(l,4);a(u,{src:`/images/05_sand_backfill.jpg`,width:`500`,alt:`Sand Backfill to Avoid PEX Movement`});var d=i(u,4);a(d,{src:`/images/06_skeleton_1.0.jpg`,width:`500`,alt:`Skeleton 1.0`});var f=i(d,4);a(f,{src:`/images/07_filled_dummy.jpg`,width:`500`,alt:`Filled Dummy`});var p=i(f,4);o(p,{id:`5b3K2Xtlov8`,width:`500`});var m=i(p,4);a(m,{src:`/images/08_pal.jpg`,width:`500`,alt:`New Pals`}),r(2),t(n,s)}export{_ as default,s as metadata};

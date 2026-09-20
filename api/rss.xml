@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+<title>Thomas Reidemeister</title>
+<description>Personal blog about machine vision, retro computing, and martial arts.</description>
+<link>https://reidemeister.com</link>
+<atom:link href="https://reidemeister.com/api/rss.xml" rel="self" type="application/rss+xml"/>
+<item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2026.09.19</guid>
+<title>My Obsolescence</title>
+<link>https://reidemeister.com/blog/2026.09.19</link>
+<description>Talk to your AI and workstation via Discord.</description>
+<pubDate>Sat, 19 Sep 2026 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2026.08.12</guid>
+<title>Shito-Ryu Shodan, Kamakura, and Katas Still to Clean Up</title>
+<link>https://reidemeister.com/blog/2026.08.12</link>
+<description>A black belt, a beach party, and a knee that finally listens most of the time.</description>
+<pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2026.03.14</guid>
+<title>MCS-51 - Made in America (Thailand)</title>
+<link>https://reidemeister.com/blog/2026.03.14</link>
+<description>Trading the STC UART bootloader for a real SPI ISP header, asking avrdude to talk 8051, and finding out that the AT89S52 resets the wrong way round.</description>
+<pubDate>Sat, 14 Mar 2026 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2026.02.07</guid>
+<title>Touring NSIS</title>
+<link>https://reidemeister.com/blog/2026.02.07</link>
+<description>Installing software like it is the 1990s again.</description>
+<pubDate>Sat, 07 Feb 2026 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2026.01.10</guid>
+<title>Reviving a Parallel-Port Iomega ZIP Drive on Ubuntu 22.04</title>
+<link>https://reidemeister.com/blog/2026.01.10</link>
+<description>Getting a SCSI-over-parallel-port drive from the 90s talking to a desktop that has never had an LPT port.</description>
+<pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.11.24</guid>
+<title>MCS-51 Real-World Interfacing - Infrared Data</title>
+<link>https://reidemeister.com/blog/2025.11.24</link>
+<description>IrDA Interfacing.</description>
+<pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.11.23</guid>
+<title>MCS-51 Real-World Interfacing - Philips I2C</title>
+<link>https://reidemeister.com/blog/2025.11.23</link>
+<description>EEPROM Interfacing.</description>
+<pubDate>Sun, 23 Nov 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.11.22</guid>
+<title>MCS-51 Real-World Interfacing - Dallas 1 Wire</title>
+<link>https://reidemeister.com/blog/2025.11.22</link>
+<description>Building a digital thermometer.</description>
+<pubDate>Sat, 22 Nov 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.11.18</guid>
+<title>MCS-51 Real-World Interfacing - Dot-Matrix LCDs</title>
+<link>https://reidemeister.com/blog/2025.11.18</link>
+<description>ST7920 LCD Controller interfacing.</description>
+<pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.11.17</guid>
+<title>MCS-51 Real-World interfacing - Character LCDs</title>
+<link>https://reidemeister.com/blog/2025.11.17</link>
+<description>HD44780 LCD Controller interfacing.</description>
+<pubDate>Mon, 17 Nov 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.11.15</guid>
+<title>MCS-51 Real-World interfacing - 7 Segment Displays</title>
+<link>https://reidemeister.com/blog/2025.11.15</link>
+<description>7-segment displays.</description>
+<pubDate>Sat, 15 Nov 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.11.01</guid>
+<title>MCS-51 Real-World interfacing - Basic User Interfaces</title>
+<link>https://reidemeister.com/blog/2025.11.01</link>
+<description>Buttons and LEDs</description>
+<pubDate>Sat, 01 Nov 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.29</guid>
+<title>MCS-51 UART</title>
+<link>https://reidemeister.com/blog/2025.10.29</link>
+<description>Serial communication.</description>
+<pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.27</guid>
+<title>Timers on the MCS-51 Series Microcontrollers</title>
+<link>https://reidemeister.com/blog/2025.10.27</link>
+<description>Timer0 to Timer3</description>
+<pubDate>Mon, 27 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.26</guid>
+<title>Interrupt Processing on MCS-51 and Derivatives</title>
+<link>https://reidemeister.com/blog/2025.10.26</link>
+<description>Interrupt Processing.</description>
+<pubDate>Sun, 26 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.22</guid>
+<title>GPIOs on MCS-51 Derivatives</title>
+<link>https://reidemeister.com/blog/2025.10.22</link>
+<description>GPIO topologies.</description>
+<pubDate>Wed, 22 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.19</guid>
+<title>Find your addicts? More MCS-51</title>
+<link>https://reidemeister.com/blog/2025.10.19</link>
+<description>Blog programming.</description>
+<pubDate>Sun, 19 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.18</guid>
+<title>Jion Kata and maybe Shito-Ryu Shodan?</title>
+<link>https://reidemeister.com/blog/2025.10.18</link>
+<description>Karate musings on the recovery trail.</description>
+<pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.13</guid>
+<title>Blog Migration</title>
+<link>https://reidemeister.com/blog/2025.10.13</link>
+<description>SvelteKit for static site generation is now complete.</description>
+<pubDate>Mon, 13 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.10</guid>
+<title>Multi Media with Gemini</title>
+<link>https://reidemeister.com/blog/2025.10.10</link>
+<description>Making Gemini actually useful.</description>
+<pubDate>Fri, 10 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.10.02</guid>
+<title>Floatcard for Small Businesses</title>
+<link>https://reidemeister.com/blog/2025.10.02</link>
+<description>Upgrading your expense management to the next level.</description>
+<pubDate>Thu, 02 Oct 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.05.25</guid>
+<title>Diversification</title>
+<link>https://reidemeister.com/blog/2025.05.25</link>
+<description>Tournament judging rather than kumite!</description>
+<pubDate>Sun, 25 May 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.04.30</guid>
+<title>Proactive Recovery</title>
+<link>https://reidemeister.com/blog/2025.04.30</link>
+<description>Do not be a victim!</description>
+<pubDate>Wed, 30 Apr 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.04.26</guid>
+<title>Out of Commission</title>
+<link>https://reidemeister.com/blog/2025.04.26</link>
+<description>Coping with forced rest.</description>
+<pubDate>Sat, 26 Apr 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.04.15</guid>
+<title>Off to Surgery</title>
+<link>https://reidemeister.com/blog/2025.04.15</link>
+<description>Patellar rupture surgery scheduled.</description>
+<pubDate>Tue, 15 Apr 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.04.13</guid>
+<title>Ashi-Barai Really Works!</title>
+<link>https://reidemeister.com/blog/2025.04.13</link>
+<description>Complete right-side patellar tendon rupture.</description>
+<pubDate>Sun, 13 Apr 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2025.04.08</guid>
+<title>Web Hosting Pains</title>
+<link>https://reidemeister.com/blog/2025.04.08</link>
+<description>Planning to move from AWS/WordPress to GitHub Pages and SvelteKit</description>
+<pubDate>Tue, 08 Apr 2025 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2024.06.06</guid>
+<title>1D Measurements with Bottlenose and HALCON</title>
+<link>https://reidemeister.com/blog/2024.06.06</link>
+<description>Metric Camera Calibration.</description>
+<pubDate>Thu, 06 Jun 2024 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2024.05.23</guid>
+<title>Calibrating Bottlenose with MVTec HALCON</title>
+<link>https://reidemeister.com/blog/2024.05.23</link>
+<description>Hands-on Metric Camera Calibration.</description>
+<pubDate>Thu, 23 May 2024 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2024.05.22</guid>
+<title>Camera Calibration Theory</title>
+<link>https://reidemeister.com/blog/2024.05.22</link>
+<description>Metric Camera Calibration.</description>
+<pubDate>Wed, 22 May 2024 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2024.04.04</guid>
+<title>The Road to Shodan</title>
+<link>https://reidemeister.com/blog/2024.04.04</link>
+<description>My Goju Ryu Shodan Essay.</description>
+<pubDate>Thu, 04 Apr 2024 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2023.08.25</guid>
+<title>Semihosting on Cheap RISCV Boards</title>
+<link>https://reidemeister.com/blog/2023.08.25</link>
+<description>OpenOCD hacks to bring Semihosting to cheap RISCV boards.</description>
+<pubDate>Fri, 25 Aug 2023 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2023.07.27</guid>
+<title>Embedded Continuous Integration Made Easier</title>
+<link>https://reidemeister.com/blog/2023.07.27</link>
+<description>Running in the loop automated tests with GitHub actions</description>
+<pubDate>Thu, 27 Jul 2023 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2023.06.16</guid>
+<title>IoT Contest Conclusion</title>
+<link>https://reidemeister.com/blog/2023.06.16</link>
+<description>Next-Generation Reaction Trainer using RISCV and RT-Thead.</description>
+<pubDate>Fri, 16 Jun 2023 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2023.06.06</guid>
+<title>IoT Contest: Hardware Design</title>
+<link>https://reidemeister.com/blog/2023.06.06</link>
+<description>PCB Design Considerations.</description>
+<pubDate>Tue, 06 Jun 2023 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2023.04.30</guid>
+<title>IoT Contest and Reaction Training</title>
+<link>https://reidemeister.com/blog/2023.04.30</link>
+<description>Next-Generation Reaction Trainer using RISCV and RT-Thead.</description>
+<pubDate>Sun, 30 Apr 2023 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2023.04.29</guid>
+<title>Fixing a built-in Oven and Plyometrics</title>
+<link>https://reidemeister.com/blog/2023.04.29</link>
+<description>Making a Plyobox from an improvised repair stand.</description>
+<pubDate>Sat, 29 Apr 2023 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2023.01.21</guid>
+<title>32-bits at $0.10</title>
+<link>https://reidemeister.com/blog/2023.01.21</link>
+<description>Playing with low-cost 32-bit RISC-V MCUs.</description>
+<pubDate>Sat, 21 Jan 2023 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2023.01.14</guid>
+<title>Retooling for 2023</title>
+<link>https://reidemeister.com/blog/2023.01.14</link>
+<description>New Years resolutions made and broken.</description>
+<pubDate>Thu, 19 Jan 2023 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.11.20</guid>
+<title>A Tiny Companion</title>
+<link>https://reidemeister.com/blog/2022.11.20</link>
+<description>Ulta low power RTC design.</description>
+<pubDate>Sun, 20 Nov 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.11.12</guid>
+<title>Smart Real-Time-Clock on a $2 PCB (2/2)</title>
+<link>https://reidemeister.com/blog/2022.11.12</link>
+<description>Ulta low power RTC design.</description>
+<pubDate>Sat, 12 Nov 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.10.29</guid>
+<title>Smart Real-Time-Clock on a $2 PCB (1/2)</title>
+<link>https://reidemeister.com/blog/2022.10.29</link>
+<description>Ulta low power RTC design.</description>
+<pubDate>Sat, 29 Oct 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.09.29</guid>
+<title>EMS and 8051s, the TM-502</title>
+<link>https://reidemeister.com/blog/2022.09.29</link>
+<description>Low-end microcontrollers</description>
+<pubDate>Thu, 29 Sep 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.09.21</guid>
+<title>Label Printers and libUSB</title>
+<link>https://reidemeister.com/blog/2022.09.21</link>
+<description>A Practical Introduction to libUSB and Raster Printers.</description>
+<pubDate>Wed, 21 Sep 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.08.01</guid>
+<title>A New Pal</title>
+<link>https://reidemeister.com/blog/2022.08.01</link>
+<description>Building a Training Dummy.</description>
+<pubDate>Mon, 01 Aug 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.07.18</guid>
+<title>90s Offline Linux Possible Today ?</title>
+<link>https://reidemeister.com/blog/2022.07.18</link>
+<description>Can Linux be fully installed from optical media today?</description>
+<pubDate>Mon, 18 Jul 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.07.04</guid>
+<title>Fixing a Nice Toy Car</title>
+<link>https://reidemeister.com/blog/2022.07.04</link>
+<description>Custom Motor Controller Design with Audio Playback.</description>
+<pubDate>Mon, 04 Jul 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.07.03</guid>
+<title>MCS-51 / 8051 – STC89C52 Emulation</title>
+<link>https://reidemeister.com/blog/2022.07.03</link>
+<description>Playing with Chinese knock-offs of the original AT89C5x series.</description>
+<pubDate>Sun, 03 Jul 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.06.04</guid>
+<title>MCS-51 / 8051 – Hello STC89C52</title>
+<link>https://reidemeister.com/blog/2022.06.04</link>
+<description>Playing with Chinese knock-offs of the original AT89C5x series.</description>
+<pubDate>Sat, 04 Jun 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.05.31</guid>
+<title>MCS-51 / 8051 MCU Revived - Introduction</title>
+<link>https://reidemeister.com/blog/2022.05.31</link>
+<description>This is the first post in a series of posts to shed some light on the 8051 architecture.</description>
+<pubDate>Tue, 31 May 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.05.28</guid>
+<title>Rebooting Fitness and Martial Arts</title>
+<link>https://reidemeister.com/blog/2022.05.28</link>
+<description>Put the next dan on the radar?</description>
+<pubDate>Sat, 28 May 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2022.05.04</guid>
+<title>Radio Gaga</title>
+<link>https://reidemeister.com/blog/2022.05.04</link>
+<description>Build an AM/FM radio from scratch.</description>
+<pubDate>Tue, 24 May 2022 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2021.06.26</guid>
+<title>Getting Kids into Time Management</title>
+<link>https://reidemeister.com/blog/2021.06.26</link>
+<description>Attempts to get first graders into time management.</description>
+<pubDate>Wed, 26 May 2021 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2021.05.22</guid>
+<title>A New Beginning</title>
+<link>https://reidemeister.com/blog/2021.05.22</link>
+<description>Motivation for this blog.</description>
+<pubDate>Sat, 22 May 2021 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2015.12.13</guid>
+<title>Super Low-End Microcontrollers Part 2</title>
+<link>https://reidemeister.com/blog/2015.12.13</link>
+<description>Low-end microcontrollers</description>
+<pubDate>Sun, 13 Dec 2015 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2015.12.12</guid>
+<title>Super Low-End Microcontrollers Part 1</title>
+<link>https://reidemeister.com/blog/2015.12.12</link>
+<description>Low-end microcontroller comparison</description>
+<pubDate>Sat, 12 Dec 2015 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2014.10.19</guid>
+<title>Plex and Removable Media</title>
+<link>https://reidemeister.com/blog/2014.10.19</link>
+<description>Handling removable media with Plex Media Server</description>
+<pubDate>Sun, 19 Oct 2014 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2014.04.26</guid>
+<title>Parsing PDFs in Python</title>
+<link>https://reidemeister.com/blog/2014.04.26</link>
+<description>Simple PDF statement parser for Python</description>
+<pubDate>Sat, 26 Apr 2014 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2013.03.04</guid>
+<title>High Speed STM32F4 ADC Programming</title>
+<link>https://reidemeister.com/blog/2013.03.04</link>
+<description>Most of What You Ever Wanted to Learn about Its Analog Digital Converter (ADC)</description>
+<pubDate>Mon, 04 Mar 2013 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2013.01.27</guid>
+<title>Turning a STM32 EVM into a Programmer</title>
+<link>https://reidemeister.com/blog/2013.01.27</link>
+<description>How to save money on a ST-Link programmer.</description>
+<pubDate>Sun, 27 Jan 2013 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2013.01.22</guid>
+<title>An Exemplary RIM Play</title>
+<link>https://reidemeister.com/blog/2013.01.22</link>
+<description>Some thoughts on RIMs future.</description>
+<pubDate>Tue, 22 Jan 2013 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2012.01.09</guid>
+<title>The virtue of getting up early</title>
+<link>https://reidemeister.com/blog/2012.01.09</link>
+<description>The 5am Routine</description>
+<pubDate>Mon, 09 Jan 2012 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.10.18</guid>
+<title>Permanent Brake and Fuel Line Replacement</title>
+<link>https://reidemeister.com/blog/2011.10.18</link>
+<description>Are permanent fuel and brake lines possible?</description>
+<pubDate>Tue, 18 Oct 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.09.13</guid>
+<title>Nintendo DS Homebrew hacking</title>
+<link>https://reidemeister.com/blog/2011.09.13</link>
+<description>Writing custom code for the Nintendo DS.</description>
+<pubDate>Tue, 13 Sep 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.08.29</guid>
+<title>Orwellian Indexing of Social Media Websites</title>
+<link>https://reidemeister.com/blog/2011.08.29</link>
+<description>What privacy? Early attempts to find folks using reverse image search.</description>
+<pubDate>Mon, 29 Aug 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.08.26</guid>
+<title>Derivatives Black Magic</title>
+<link>https://reidemeister.com/blog/2011.08.26</link>
+<description>My shaky path of discovering listed stock options.</description>
+<pubDate>Fri, 26 Aug 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.08.02</guid>
+<title>Door Boards - Vinyl Repair</title>
+<link>https://reidemeister.com/blog/2011.08.02</link>
+<description>Fixing vinyl cracks in vintage cars.</description>
+<pubDate>Tue, 02 Aug 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.07.25</guid>
+<title>Home Beer Making</title>
+<link>https://reidemeister.com/blog/2011.07.25</link>
+<description>Brewing your own beer.</description>
+<pubDate>Mon, 25 Jul 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.04.27</guid>
+<title>Fun with old Siemens Cellular Phones</title>
+<link>https://reidemeister.com/blog/2011.04.27</link>
+<description>Interfacing classic GSM phones.</description>
+<pubDate>Wed, 27 Apr 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.04.08</guid>
+<title>Final Exam Survival</title>
+<link>https://reidemeister.com/blog/2011.04.08</link>
+<description>Designing, Preparing for, and Taking It.</description>
+<pubDate>Fri, 08 Apr 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.04.04</guid>
+<title>The Real Survival Series - Part 2</title>
+<link>https://reidemeister.com/blog/2011.04.04</link>
+<description>Lessons from conflict.</description>
+<pubDate>Mon, 04 Apr 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.04.02</guid>
+<title>Surviving Financial Illiteracy</title>
+<link>https://reidemeister.com/blog/2011.04.02</link>
+<description>A personal take on the financial system.</description>
+<pubDate>Sat, 02 Apr 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2011.03.14</guid>
+<title>The Real Survival Series : The Emergency Supply</title>
+<link>https://reidemeister.com/blog/2011.03.14</link>
+<description>Emergency Supply Considerations.</description>
+<pubDate>Mon, 14 Mar 2011 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.12.19</guid>
+<title>Planning for the First University-Level Teaching Position</title>
+<link>https://reidemeister.com/blog/2010.12.19</link>
+<description>Some findings about teaching for the first time.</description>
+<pubDate>Sun, 19 Dec 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.12.08</guid>
+<title>Fixing a Vintage Mercedes Rear Axle</title>
+<link>https://reidemeister.com/blog/2010.12.08</link>
+<description>Fixing a Vintage Mercedes Rear Axle and Turning Your Schedule into a Living Nightmare.</description>
+<pubDate>Wed, 08 Dec 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.10.01</guid>
+<title>Not Only New Friends</title>
+<link>https://reidemeister.com/blog/2010.10.01</link>
+<description>How Historic Events May Discourage Your Martial Arts Practice.</description>
+<pubDate>Fri, 01 Oct 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.07.13</guid>
+<title>The Secret of Steel: Arc Welding Thin (0.02") Sheet Metal</title>
+<link>https://reidemeister.com/blog/2010.07.13</link>
+<description>Electrode configurations for thin automotive steel welding.</description>
+<pubDate>Tue, 13 Jul 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.04.03</guid>
+<title>Inglorious Basterds and 27 Appelstroop for Perfection</title>
+<link>https://reidemeister.com/blog/2010.04.03</link>
+<description>How to make Applestroop.</description>
+<pubDate>Sat, 03 Apr 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.02.24</guid>
+<title>Funstuff: Fighting LCBO and Beerstore by Brewing Your Own Stuff</title>
+<link>https://reidemeister.com/blog/2010.02.24</link>
+<description>Making Ginger Beer at home.</description>
+<pubDate>Wed, 24 Feb 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.02.19</guid>
+<title>Hands-On Discrete Control with Decision Processes</title>
+<link>https://reidemeister.com/blog/2010.02.19</link>
+<description>Primer on Markov Decision Processes (MDP)</description>
+<pubDate>Fri, 19 Feb 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.02.16</guid>
+<title>Funstuff: Proving the Myth of Cuban Glass</title>
+<link>https://reidemeister.com/blog/2010.02.16</link>
+<description>Making nice cocktail glasses out of empty bottles.</description>
+<pubDate>Tue, 16 Feb 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.02.08</guid>
+<title>On Designing Boot Loaders and Grey-box-Testing Firmware (Part 2/2)</title>
+<link>https://reidemeister.com/blog/2010.02.08</link>
+<description>Bootloader for Freescale Coldfire.</description>
+<pubDate>Mon, 08 Feb 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.02.06</guid>
+<title>On Designing Bootloaders and Grey-box-Testing Firmware (Part 1/2)</title>
+<link>https://reidemeister.com/blog/2010.02.06</link>
+<description>Bootloader for Freescale Coldfire.</description>
+<pubDate>Sat, 06 Feb 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.02.04</guid>
+<title>Building the GNU Compiler Toolchain for the Coldfire Target</title>
+<link>https://reidemeister.com/blog/2010.02.04</link>
+<description>Toolchain Bootstrap for Freescale Coldfire.</description>
+<pubDate>Thu, 04 Feb 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2010.02.03</guid>
+<title>Beginning the Blog</title>
+<link>https://reidemeister.com/blog/2010.02.03</link>
+<description>Motivation for this blog.</description>
+<pubDate>Wed, 03 Feb 2010 00:00:00 GMT</pubDate>
+</item><item>
+<guid isPermaLink="true">https://reidemeister.com/blog/2007.02.16</guid>
+<title>SCUQ</title>
+<link>https://reidemeister.com/blog/2007.02.16</link>
+<description>A Class Library for the Evaluation of Scalar- and Complex-Valued Uncertain Quantities.</description>
+<pubDate>Mon, 19 Feb 2007 00:00:00 GMT</pubDate>
+</item>
+</channel>
+</rss>

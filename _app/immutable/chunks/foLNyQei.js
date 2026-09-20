@@ -1,0 +1,46 @@
+import{$ as e,M as t,P as n,pt as r,tt as i}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";import{t as a}from"./DPw4rzvf.js";import{t as o}from"./BrJmRK04.js";import"./DPsrAEoc.js";var s={title:`Funstuff: Fighting LCBO and Beerstore by Brewing Your Own Stuff`,date:`2010-02-24`,updated:`2025-10-04`,categories:[`gradschool`,`cooking`],coverImage:`/images/pilsener_urquell.jpg`,coverWidth:1094,coverHeight:846,excerpt:`Making Ginger Beer at home.`},{title:c,date:l,updated:u,categories:d,coverImage:f,coverWidth:p,coverHeight:m,excerpt:h}=s,g=n(`<i>"Wer nicht liebt Weib, Wein und Gesang,<br/> Der bleibt ein Narr sein Lebenlang."<br/> (Martin Luther, 1483 - 1546)<br/> (In English: He who loves not wine, woman, and song,<br/> Remains a fool his whole life long.)<br/></i>`),_=n(`<!> <p>Canada is a lovely country: Nice people, a beautiful landscape and a relatively well-developed education system; but a
+few things bother me since I arrived here, among them the existence of the LCBO in Ontario. Being originally from
+Germany the extremely high beer prices in Ontario are far from acceptable for me. Paying about 50 CAD for a decent
+24-pack of your favorite beer is not ok. I do not want to go into the roots of the problem with LCBO, but the money
+collected over there is far away from the actual manufacturing cost of the beer for various arguable reasons. More
+recently the option to buy “de-alcoholized beer” emerged at several grocery stores. Unfortunately the <a href="https://en.wikipedia.org/wiki/Reverse_osmosis" rel="nofollow">reverse-osmosis process</a> used to remove the alcohol, in my view, also takes away most of the beer’s flavor. Ironically, the
+de-alcoholizing step increases the cost of production significantly; however, it is sold far cheaper than the alcoholic
+equivalent in the LCBO. Out of curiosity, I paid 7 CAD for a 24 of “Compliments De-Alcoholized Beer” from <a href="https://www.sobeys.com/" rel="nofollow">Sobeys</a> only to find out later that the taste is merely mediocre.</p> <p>My current roommate, Phillip, is a visiting scholar in Chemistry from Germany, who is also very annoyed by
+“the beer situation” in Ontario. Together we decided to claim our independence from this suppressive legislation by
+brewing our own stuff. This article is a description of what we did to change the situation. Our objective was to find
+a way to brew our own stuff by just using readily available supplies from the Grocery store.</p> <h1 id="solution-approach"><a aria-hidden="true" tabindex="-1" href="#solution-approach"><span class="icon icon-link"></span></a>Solution Approach</h1> <p>Brewing beer is a skill and it takes plenty time and effort to master the process. Moreover, most of the actual
+ingredients used to produce high-quality beer are not readily available in a grocery store. As such we resent to try
+Ginger Beer an ancient drink from Greece that made it later to Britain. The main reason for this decision is the
+straightforward brewing process that only requires a few readily available ingredients. According to Wikipedia, the
+fermentation process may yield up to 11% of alcohol; but according to my roommate it will actually be much less using
+grocery-store-ingredients and a short fermentation process.</p> <p>Required utilities and ingredients for 1.5l of beer:</p> <ul><li>4-5 cm of a thumb-thick ginger root,</li> <li>1 cup of sugar (we used brown sugar but that is up to your flavor),</li> <li>2 tbsp of lemon juice,</li> <li>0.5 tsp of bakery yeast,</li> <li>1.5l of water,</li> <li>An empty 2 liter plastic bottle, a plastic funnel, a big pot, and, optional, a coffee filter (or cooked towel).</li></ul> <h1 id="procedure"><a aria-hidden="true" tabindex="-1" href="#procedure"><span class="icon icon-link"></span></a>Procedure</h1> <p>At first start by cleaning and cutting the ginger. Cut it into very tiny pieces to ensure a good flavor extraction later on.</p> <!><br/> <!> <p>Next, mix the ginger, sugar, lemon juice in the big pot and bring it to simmer. Stir it, so nothing sticks to the pot.</p> <!> <p>After simmering it for 3-5 minutes, let it cool off for some time. It needs to cool off below +35C; otherwise you would
+kill the yeast, which is added afterwards. The Canadian winter is your friend in that regard; we just put it out in the
+snow for 25 minutes and watched the Olympics.</p> <!> <p>When the mixture is cold, add the yeast and stir it.</p> <!> <p>Next put the stuff into a 2l plastic bottle and leave about ¼ of the bottle empty. This air pocket is needed to start
+the aerobic fermentation. Although most of you might expect the yeast to get busy creating alcohol but at first it
+actually converts the sugar and the oxygen into carbonic acid, which you might see as tiny bubbles (i.e., carbonic
+acid dissolves to carbon dioxide and water).</p> <!> <p>Keep the bottle in a warm spot (i.e., a furnace channel as shown in the picture) to keep the yeast busy. Periodically
+monitor the pressure in the plastic bottle. The yeast can produce a lot of carbonic acid. If you do not pay attention
+the bottle may actually explode and create a big mess. If you cannot press-in the plastic of the plastic bottle anymore
+it is time to set the yeast out of work. The yeast slows down the fermentation process if you put it in a cold spot,
+preferably a fridge.</p> <!> <p>Leave the closed bottle inside the fridge for 24 hours.</p> <p><strong>The following step is optional and a matter of taste.</strong> In order to remove the ginger pieces and any clusters of
+yeast, you may want to filter the beer after the brewing process. A coffee filter works best to remove most of the
+remaining solids.</p> <!> <p>Because of the filtering step, however, most of the carbonic acid will dissolve to carbon-dioxide and water; such that,
+the sparkling is gone. The very short fermentation process will give you mainly carbonic acid and little alcohol;
+however, I can assure you that your own brewed ginger beer will outperform any of the refined ginger ales (i.e.,
+alcohol removed) from nearby grocery stores by taste.</p> <h1 id="risks-and-potential-improvements"><a aria-hidden="true" tabindex="-1" href="#risks-and-potential-improvements"><span class="icon icon-link"></span></a>Risks and Potential Improvements</h1> <p>Since the described fermentation process actually only takes a matter of hours the procedure is relatively safe. If
+however, you want to push the alcohol concentration higher and extend the duration of the fermentation you might get
+problems. The issue with limiting yourself to grocery store ingredients is that the quality of the produced alcohol
+will be low due to the yeast used. If you perform the following process for lengthy periods to have a high alcohol
+yield you will end up with a heavy headache at best and vision problems at worst. In the anaerobic phase (i.e., all
+the oxygen is gone) of the fermentation the bakery yeast actually generates traces of complex alcohols, including
+methanol, propanol and isopropanol (a.k.a. heavy headache!). A high-quality brewer’s yeast would generate more ethanol
+in the anaerobic phase than baker’s yeast and, therefore, probably be better suitable for brewing for lengthy periods.
+In order to obtain the claimed 11% of Wikipedia, you would have to have the fermentation going for a matter of weeks.</p> <h1 id="conclusion-and-future-work"><a aria-hidden="true" tabindex="-1" href="#conclusion-and-future-work"><span class="icon icon-link"></span></a>Conclusion and Future Work</h1> <p>In my eyes the policies and concepts of the LCBO are antiquated at best and arguably at worst. Canada compared to
+Germany is the other extreme, back home one could end up with store configurations that would sell beer cheaper than
+soda water. Unfortunately, it is not in my hand to change legislation in Ontario in favor of that. In order to overcome
+the impact of that legislation, you need to take your fate into your own hands and claim your own independence. Producing
+ginger beer for personal consumption provides a relatively safe low-cost alternative to commercially sold beer in Ontario.
+If you only consider the cost of the ingredients, you even fare cheaper than refined ginger ale (i.e., alcohol removed)
+brands. And the best of it is that it is your own stuff.</p> <p>Having established the basics of alcoholic fermentation we actually might consider some advanced topics of beer brewing,
+wine-making, or even fractional distillation to create liquor (after the legal issues in Canada are reviewed) in the
+near future.</p>`,1);function v(n){var s=_(),c=e(s);o(c,{children:(e,n)=>{var r=g();t(e,r)},$$slots:{default:!0}});var l=i(c,18);a(l,{src:`/images/ginger_beer_1.jpg`,width:`500`});var u=i(l,3);a(u,{src:`/images/ginger_beer_2.jpg`,width:`500`});var d=i(u,4);a(d,{src:`/images/ginger_beer_3.jpg`,width:`500`});var f=i(d,4);a(f,{src:`/images/ginger_beer_4.jpg`,width:`500`});var p=i(f,4);a(p,{src:`/images/ginger_beer_5.jpg`,width:`500`});var m=i(p,4);a(m,{src:`/images/ginger_beer_6.jpg`,width:`500`});var h=i(m,4);a(h,{src:`/images/ginger_beer_7.jpg`,width:`500`});var v=i(h,6);a(v,{src:`/images/ginger_beer_8.jpg`,width:`500`}),r(12),t(n,s)}export{v as default,s as metadata};

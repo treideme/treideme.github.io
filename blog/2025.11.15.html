@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/js/tuicss.min.js"></script>
+		<link href="../_app/immutable/entry/start.BLr9_bnc.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/AdeW3F8v.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C5Qr1tWr.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dt-HX3Vu.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.CjXFn_g_.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/uBIymjUX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.Dko8UQj9.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DRByVC-c.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsF7k-Jl.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/UrVpzM6D.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/e3uk7f1g.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BJ6dgZOD.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BtpA1xRJ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/D7rxoVVC.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BcR_fFiR.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C_WrjxST.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CGfmOE7W.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/U4Q-MCo3.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dy-Kn_BL.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/lpi2-tgm.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/3EzQhW0a.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DMTIwejG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsIc3RVK.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/fybaL0A-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BifhSqXX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/g4Mvzxsx.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DS17s2tU.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/B-DAUW-u.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CX68_OgI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DSJ1rPnI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/tZp6t9zN.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DuWRkWPg.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.DgZdZZPn.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DeSqgjHc.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="alternate" type="application/rss+xml" title="Thomas Reidemeister" href="http://reidemeister.com/api/rss.xml"/> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EHW6Z8HZ08"></script><!----><!--s11s7s--><meta data-key="description" name="description" content="7-segment displays."/> <meta property="og:type" content="article"/> <meta property="og:title" content="MCS-51 Real-World interfacing - 7 Segment Displays"/> <meta name="twitter:title" content="MCS-51 Real-World interfacing - 7 Segment Displays"/> <meta property="og:description" content="7-segment displays."/> <meta name="twitter:description" content="7-segment displays."/> <meta property="og:image:width" content="676"/> <meta property="og:image:height" content="437"/><!----><title>MCS-51 Real-World interfacing - 7 Segment Displays</title>
+		<link href="../_app/immutable/assets/0.1Ga5dCEE.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogQuote.8TWGGipd.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogTable.K5KlPf1M.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/YoutubePlayer.DRLVl_9I.css" rel="stylesheet">
+		<!-- You can add global <meta> tags here, but anything not global or dynamic should be a `<svelte:head>` tag on the proper page(s) instead. -->
+	</head>
+	<body class="tui-bg-blue-black">
+		<div id="svelte"><!--[--><!--[0--><!--[--><div class="layout"><header><nav class="tui-nav"><a href="/" class="tui-panel cyan-168 full-width black-255-text tui-no-shadow center"><b style="font-size: 2.0em;">Thomas Reidemeister</b></a> <span class="tui-datetime" data-format="d/M/1993 h:m:s a"></span> <ul><li class="tui-sidenav-button"><a href="/">Home</a></li> <!--[--><!--[0--><li class="tui-dropdown"><a href="/blog">Blog</a> <!--[-1--><!--]--></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/about"><!---->About<!----></a></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/tools"><!---->Tools<!----></a></li><!--]--><!--]--></ul><!----></nav></header><!----> <!----><main id="main" tabindex="-1"><!--[--><article class="tui-window"><div class="tui-window-titlebar"><span class="tui-window-titlebar-rule-corner"></span> <button class="tui-fieldset-button left" style="margin-top: 0px"><span class="green-255-text">■</span></button> <span class="tui-window-titlebar-rule"></span> <span class="tui-window-titlebar-text">MCS-51 Real-World interfacing - 7 Segment Displays</span> <span class="tui-window-titlebar-rule"></span> <button class="tui-fieldset-button right" style="margin-top: 0px"><span class="green-255-text">↑</span></button> <span class="tui-window-titlebar-rule-corner"></span></div> <fieldset class="tui-fieldset" style="margin-top: 0px"><div class="white-168-text" style="overflow: auto;"><img class="cover-image tui-shadow" src="/images/spartus.jpg" alt="" style="aspect-ratio: 676 / 437;display: block; margin-left: auto; margin-right: auto;" width="676" height="437"/><br/><br/> <div class="blogquote-center svelte-xxg3ag"><div class="tui-window purple-168 white-255-text center"><fieldset class="tui-fieldset no-legend tui-border-solid"><!---->If you had one of these babies back in the day, you cannot skip Karate warmups anymore!<!----></fieldset></div></div><!----> <p>My great-grandparents got one of these watches back in the late 1970s. It was not quite the Spartus digital watch
+shown above, but rather an East German clone of the same design (including the fake wood grain). This clock survived until,
+unfortunately, my great-grandmother passed away about 10 years ago, and it disappeared when her estate was settled.</p> <p>I used to hear stories about how that clock went everywhere with them: vacations, great-grandpa’s hospital stays, chemotherapy, until it found its permanent
+residence in my grandmother’s living room after my great-grandpa passed away from cancer in the early 80s. For folks
+who grew up in the true analog world, greeting the German Emperor as kids, making it through WW2, and then witnessing
+the rise and fall of the Iron Curtain, this clock was truly a symbol of modernity and progress. For me, it was
+great-grandpa—a symbol of a man who suddenly disappeared from my life when I was just a toddler.
+If you ask kids today, it will be perceived as an unloved piece of junk at a yard sale.</p> <p>In fact, <a href="https://www.youtube.com/watch?v=cxrkC-pMH_s" rel="nofollow">East Germany bankrupted itself</a> trying to keep up with the chip wars and
+perception of modernity in the 70s and 80s. We were the Silicon Valley of the Eastern Bloc, but the fall of the Iron Curtain
+and German reunification did not bail out the industry.</p> <p>So, keeping up with the retro blog and the <a href="/blog/2025.10.19">apparent appetite</a> for classic embedded systems design, let’s look at some
+real-world interfacing with MCS-51 series microcontrollers.</p> <h1 id="7-segment-displays"><a aria-hidden="true" tabindex="-1" href="#7-segment-displays"><span class="icon icon-link"></span></a>7-Segment Displays</h1> <p>Segmented displays have been around for over a century, with the first patents dating back to the early 1900s. With
+Vacuum Fluorescent Display (VFD) technology becoming popular in the 1950s and 60s, 7-segment displays became a staple
+in digital clocks, calculators, and other electronic devices. The introduction of LEDs in the late 1960s further revolutionized
+display technology, making 7-segment displays a staple from NASA spacecraft to VCRs (shown below).</p> <img class="tui-shadow white-168 black-255-text" src="/images/grundig_vcr.jpg" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>Compared to discrete <a href="/blog/2025.11.01">LED illumination</a>, 7-segment displays offer a more compact and efficient way to display
+numerical information without the loss of contrast seen in other display types. They are easy to read from a distance
+or in challenging lighting conditions (e.g., outdoors, vending machines, household appliances, …).</p> <p>The displays typically consist of seven segments (labeled A to G) arranged in a figure-eight pattern, along with an optional decimal point (DP).
+Each segment can be individually controlled to create various numerical digits (0-9) and some alphabetic characters, as
+shown below. They typically come in two configurations: common anode and common cathode. In a common anode display, all the anodes of the segments are connected together,
+while in a common cathode display, all the cathodes are connected together. This configuration affects how you control the segments
+using the microcontroller. The segments typically come in blocks of 4, 8, or even 12 digits, and can be driven directly from the microcontroller.</p> <img class="tui-shadow white-168 black-255-text" src="/images/CL3641AH.png" style="width: 400px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>Considering the challenges discussed in the previous post about conserving pins, we also need to consider how to drive multiple digits
+with limited I/O pins. One common method is to use multiplexing, where each digit is activated one at a time in rapid succession.
+This creates the illusion of all digits being lit simultaneously to the human eye, while only one digit is actually lit at any given moment.
+This technique significantly reduces the number of I/O pins required to control multiple digits. In essence, you need to set the
+segments and then select the right digit to display it on.</p> <p>Staying with the HC680-ES2 development board from the previous post, we can connect an 8-digit 7-segment display to the microcontroller
+using the following pin configuration:</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_7seg_iface.png" style="width: 900px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>We use a <a href="https://www.ti.com/lit/ds/symlink/sn74hc138.pdf" rel="nofollow">74HC138</a> 3-to-8 line decoder to select which digit to activate, while the segments are connected to
+a buffer <a href="https://www.ti.com/lit/ds/symlink/sn74hc245.pdf" rel="nofollow">74HC245</a> to drive the segments. To avoid aliasing issues, the segments should be deactivated every time the
+digit is switched. Since 8 bits are needed to encode the 7 segments plus the decimal point, we can use a single byte
+to represent the segments to be lit. So the best way to do this for an MCU is to wire up an 8-bit GPIO port to the segments.
+To map the segments efficiently to digits, we can use a lookup table (LUT) to map each digit (0-9) to its corresponding segment pattern.</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_seg_labels.png" style="width: 350px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>Since A-G and DP are mapped to bits 0-7 of the byte, we can create a LUT as follows:</p> <pre class="language-c"><!----><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdint.h></span></span>
+
+<span class="token keyword">const</span> <span class="token class-name">uint8_t</span> segment_map<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">//dGFEDCBA</span>
+  <span class="token number">0</span>b00111111<span class="token punctuation">,</span> <span class="token comment">// 0</span>
+  <span class="token number">0</span>b00000110<span class="token punctuation">,</span> <span class="token comment">// 1</span>
+  <span class="token number">0</span>b01011011<span class="token punctuation">,</span> <span class="token comment">// 2</span>
+  <span class="token number">0</span>b01001111<span class="token punctuation">,</span> <span class="token comment">// 3</span>
+  <span class="token number">0</span>b01100110<span class="token punctuation">,</span> <span class="token comment">// 4</span>
+  <span class="token number">0</span>b01101101<span class="token punctuation">,</span> <span class="token comment">// 5</span>
+  <span class="token number">0</span>b01111101<span class="token punctuation">,</span> <span class="token comment">// 6</span>
+  <span class="token number">0</span>b00000111<span class="token punctuation">,</span> <span class="token comment">// 7</span>
+  <span class="token number">0</span>b01111111<span class="token punctuation">,</span> <span class="token comment">// 8</span>
+  <span class="token number">0</span>b01101111<span class="token punctuation">,</span> <span class="token comment">// 9</span>
+  <span class="token number">0</span>b01110111<span class="token punctuation">,</span> <span class="token comment">// A</span>
+  <span class="token number">0</span>b01111100<span class="token punctuation">,</span> <span class="token comment">// b</span>
+  <span class="token number">0</span>b00111001<span class="token punctuation">,</span> <span class="token comment">// C</span>
+  <span class="token number">0</span>b01011110<span class="token punctuation">,</span> <span class="token comment">// d</span>
+  <span class="token number">0</span>b01111001<span class="token punctuation">,</span> <span class="token comment">// E</span>
+  <span class="token number">0</span>b01110001<span class="token punctuation">,</span> <span class="token comment">// F</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token class-name">uint8_t</span> segment_dp <span class="token operator">=</span> <span class="token number">0</span>b10000000<span class="token punctuation">;</span> <span class="token comment">// Decimal point segment</span></code><!----></pre> <p>Now, just to test it, let’s start with a simple hex counter on the first digit. By default, the 3-to-8 decoder is already
+mapped to <code>LED8</code>, so we can just interact with <code>P0</code> to test the segments.</p> <pre class="language-c"><!----><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">LED_DIGIT</span> <span class="token expression">P0</span></span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Display hex digits 0-F with decimal point on</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">16</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      LED_DIGIT <span class="token operator">=</span> segment_map<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">|</span> segment_dp<span class="token punctuation">;</span> <span class="token comment">// Display digit with decimal point</span>
+      <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint16_t</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span><span class="token number">60000</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Simple delay</span>
+      LED_DIGIT <span class="token operator">=</span> <span class="token number">0x00</span><span class="token punctuation">;</span> <span class="token comment">// Turn off all segments</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p>The end result looks as follows:</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_7seg_single.gif" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>The full source can be found on <a href="https://github.com/treideme/stc89c52-demos/tree/main/02_7_segment" rel="nofollow">GitHub</a>.</p> <p>Now, onto mapping multiple digits. We can simply shift the desired digit to <code>P2.2-P2.4</code> to select the digit to display
+on every iteration. To avoid flickering, we need to cycle through all digits rapidly. Here is a simple implementation
+that displays a counting number on all 8 digits:</p> <pre class="language-c"><!----><code class="language-c"><span class="token keyword">void</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token class-name">uint16_t</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>t<span class="token operator">--</span><span class="token punctuation">)</span>
+    <span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  P0 <span class="token operator">=</span> <span class="token number">0x00</span><span class="token punctuation">;</span> <span class="token comment">// Initialize port</span>
+  P2 <span class="token operator">=</span> <span class="token number">0x00</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Display hex digits 0-7 with decimal point on, incrementing on each digitit</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span><span class="token number">8</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      P2 <span class="token operator">=</span> i<span class="token operator">&lt;&lt;</span><span class="token number">2</span><span class="token punctuation">;</span> <span class="token comment">// activate digit i (P2_2..P2_4)</span>
+      LED_DIGIT <span class="token operator">=</span> segment_map<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">|</span> segment_dp<span class="token punctuation">;</span> <span class="token comment">// Display digit with decimal point</span>
+      <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Short delay for multiplexing</span>
+<span class="token comment">//      delay(60000); // Long delay to make multiplexing visible</span>
+      LED_DIGIT <span class="token operator">=</span> <span class="token number">0x00</span><span class="token punctuation">;</span> <span class="token comment">// Turn off all segments</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p>The end result looks as follows for the short delay (fast multiplexing):</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_7seg_dyn.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>If you slow it down enough, you can see the multiplexing effect:</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_7seg_dyn.gif" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>The full source can be found on <a href="https://github.com/treideme/stc89c52-demos/tree/main/02_7_segment_dyn" rel="nofollow">GitHub</a>.</p> <h1 id="odd-hardware-issues"><a aria-hidden="true" tabindex="-1" href="#odd-hardware-issues"><span class="icon icon-link"></span></a>Odd Hardware Issues</h1> <p>Okay, there is an interesting problem with the 7-segment display on the HC6800-ES2 board. The segments mapped to <code>P0.5</code> and <code>P0.6</code> show correlated failures. Whenever <code>P0.6</code> is low, it pulls <code>P0.5</code> low as well. This is not a software issue,
+as I have tested this with a simple loop that toggles these pins independently. Extensive component testing revealed
+that the fault was solder residue. Given the <code>$20 CAD</code> price point of the board in 2020, I cannot complain too
+much. After cleaning the board with
+hexane (brake cleaner) and a brush, the issue disappeared. There was a <code>300 Ohm</code> resistance between the two pins
+when measured with a multimeter before cleaning. So, if you ever run into weird correlated pin issues on these boards,
+try cleaning them first. The vendor of the dev kit should invest maybe another <code>$1 CAD</code> per board into ultrasonic
+residue cleaning.</p> <h1 id="conclusion"><a aria-hidden="true" tabindex="-1" href="#conclusion"><span class="icon icon-link"></span></a>Conclusion</h1> <p>7-segment displays are a classic and effective way to display numerical information in embedded systems.
+By using multiplexing techniques and lookup tables, we can efficiently control multiple digits with limited I/O pins.
+Even though there is a serious retro vibe to these displays, they are still widely used in various applications where
+contrast and readability are essential. In the next posts in the series, we will look at dot-matrix and character LCDs.</p> <p>Further down the road, I want to wrap up the MCS-51 series with a custom design that revives the above clock.</p><!----> <div class="tui-divider"></div> <br/><b>Published:</b> 2025-11-15 <br/> <b>Updated  :</b> 2025-11-15 <!--[0--><aside class="post-footer"><ul class="post-footer__categories"><!--[--><li class="no-bullet"><a href="/blog/category/coding/" class="tui-button white-168">coding</a></li><li class="no-bullet"><a href="/blog/category/embedded/" class="tui-button white-168">embedded</a></li><li class="no-bullet"><a href="/blog/category/8051/" class="tui-button white-168">8051</a></li><!--]--></ul></aside><!--]--> <br/> Not a spam bot? Want to leave comments or provide editorial guidance? Please click any
+			of the social links below and make an effort to connect. I promise I read all messages and
+			will respond at my choosing. <div class="post-pagination"><!--[0--><a href="/blog/2025.11.17" class="tui-button white-168 prev-link">← MCS-51 Real-World interfacing - Character LCDs</a><!--]--> <!--[0--><a href="/blog/2025.11.01" class="tui-button white-168 next-link">MCS-51 Real-World interfacing - Basic User Interfaces →</a><!--]--></div></div></fieldset></article><!--]--><!----></main><!----> <div class="tui-statusbar"><ul><li><a href="/api/rss.xml" data-sveltekit-reload="" target="_blank">RSS</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://x.com/treideme1" data-sveltekit-reload="" target="_blank">𝕏</a></li> <span class="tui-statusbar-divider"></span> <li><a href="http://github.com/treideme" data-sveltekit-reload="" target="_blank">GitHub</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.linkedin.com/in/thomasreidemeister" data-sveltekit-reload="" target="_blank">In</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.instagram.com/treideme/" data-sveltekit-reload="" target="_blank">📸</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://dblp.org/pid/93/7009.html" data-sveltekit-reload="" target="_blank">DPLB</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://patents.google.com/?inventor=Thomas+REIDEMEISTER" data-sveltekit-reload="" target="_blank"> 🔬 </a></li> <span class="tui-statusbar-divider"></span> <li style="float: right;"><a href="/terms">© 2026 Thomas Reidemeister</a></li></ul></div><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_ih7hdl = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BLr9_bnc.js"),
+						import("../_app/immutable/entry/app.CjXFn_g_.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

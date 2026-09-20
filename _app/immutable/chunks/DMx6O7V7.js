@@ -1,0 +1,8 @@
+import{M as e,P as t,pt as n}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";var r={title:`Beginning the Blog`,date:`2010-02-03`,updated:`2025-10-03`,categories:[`gradschool`],coverImage:`/images/thomas_2010.jpg`,coverWidth:113,coverHeight:113,excerpt:`Motivation for this blog.`},{title:i,date:a,updated:o,categories:s,coverImage:c,coverWidth:l,coverHeight:u,excerpt:d}=r,f=t(`<p>I recently got intrigued by the idea of having my own blog and just started this one. My blog will be complementary to
+my website, giving hints and useful tips about surviving Computer Engineering grad school and several challenges of the
+daily life. I also want to provide resources for undergraduate students attending tutorials that I am co-hosting.</p> <p>As many people I know might have suspected, I am not Canadian. I am originally from Germany. I studied Computer Systems
+in Engineering (CSE) there and discovered the University of Waterloo during a four-month internship. After finishing
+grad school in Germany, I decided to take on a PhD in Waterloo. I am currently researching error detection and fault
+diagnosis in business information systems.</p> <p>My hobbies are working on old Diesel-Mercs, Goju-Ryu Karate and technical challenges, including building your own
+car-alarm system or custom CNC machines, hacking mobile devices and hanging out with model engineers. Therefore,
+future posts of this blog will probably be a mixture of these topics and my research interests.</p> <p><a href="https://survivalengineer.blogspot.com/2010/02/beginning-blog-i-recently-got-intrigued.html" rel="nofollow">Cross Posted from my old Blog</a>.</p>`,1);function p(t){var r=f();n(6),e(t,r)}export{p as default,r as metadata};

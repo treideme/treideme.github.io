@@ -1,0 +1,1 @@
+import"../chunks/C5Qr1tWr.js";import"../chunks/xihTtKlq.js";import{t as e}from"../chunks/B13O_4br.js";function t(t,n){let{posts:r,month:i,year:a}=n.data;e(t,{get posts(){return r},get month(){return i},get year(){return a}})}export{t as component};

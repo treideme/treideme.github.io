@@ -1,0 +1,167 @@
+import{$ as e,E as t,M as n,P as r,mt as i,pt as a,tt as o}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";import{t as s}from"./DPw4rzvf.js";var c={title:`Touring NSIS`,date:`2026-02-07`,updated:`2026-02-07`,categories:[`coding`],coverImage:`/images/nsis_demo_install_screenshot.png`,coverWidth:1024,coverHeight:768,excerpt:`Installing software like it is the 1990s again.`},{title:l,date:u,updated:d,categories:f,coverImage:p,coverWidth:m,coverHeight:h,excerpt:g}=c,_=r(`<p>Going back way back to the early 90s, I remember the wonderfully written installers for Windows 3.1 that
+installed tools like <a href="https://en.wikipedia.org/wiki/Lotus_1-2-3" rel="nofollow">Lotus 1-2-3</a>, <a href="https://en.wikipedia.org/wiki/Lotus_Freelance_Graphics" rel="nofollow">Freelance Graphics</a> and others. This was the time
+when a guy in a suit sold you computers. The development tools hidden behind these installers were a closely
+guarded secret. However, sometime around the millennium, Winamp came around installer looked and behaved like something
+out of a much more expensive piece of software - a proper wizard, a license page, a progress bar, an uninstaller
+that actually showed up in Add/Remove Programs (in Windows 95 times).
+It didn’t occur to me for years that the same company that made the MP3 player, Nullsoft, also gave away the tool that built
+that installer, for free, to anyone. That tool is <a href="https://nsis.sourceforge.io/" rel="nofollow">NSIS</a> (the Nullsoft Scriptable Install System), and a shocking
+amount of the Windows software you’ve installed in the last 25 years - Firefox for a long stretch, most game mod tools,
+half of SourceForge was packaged with it.</p> <p>NSIS never went away. It’s still actively maintained, still free, and still the pragmatic choice for anyone who
+wants a real installer without paying for InstallShield or wrestling with WiX’s XML dialect. This post is a tour
+through what it can actually do, backed by a small demo project that GitHub Actions builds, installs <strong>in GUI
+mode</strong> (not silently), screenshots mid-install, and verifies - all on a disposable Windows runner.</p> <p>Repo: <a href="https://github.com/treideme/nsis-demo" rel="nofollow">github.com/treideme/nsis-demo</a></p> <h1 id="what-nsis-actually-is"><a aria-hidden="true" tabindex="-1" href="#what-nsis-actually-is"><span class="icon icon-link"></span></a>What NSIS Actually Is</h1> <p>At its core, NSIS is a script (<code>.nsi</code>) and a compiler (<code>makensis.exe</code>) that turns that script into a single
+self-contained <code>.exe</code>. There’s no runtime dependency, no XML, no MSI database format to reverse-engineer when
+something goes wrong - just an imperative scripting language with variables, functions, conditionals, and a
+plugin system, compiled directly into the installer’s own resources. Contrast that with WiX, where you’re
+authoring an XML description of an MSI table structure that Windows Installer then interprets at runtime. NSIS
+is closer to writing a small program than describing a database.</p> <h1 id="anatomy-of-the-demo-script"><a aria-hidden="true" tabindex="-1" href="#anatomy-of-the-demo-script"><span class="icon icon-link"></span></a>Anatomy of the Demo Script</h1> <p>The demo installer (<code>install.nsi</code>) installs a stand-in “app” (<code>notepad.exe</code>, copied from the CI runner itself
+at build time - I’m not shipping Microsoft’s binary in the repo) plus the Visual C++ Redistributable, and walks
+through most of the feature set worth knowing about.</p> <h2 id="version-resource-and-branding"><a aria-hidden="true" tabindex="-1" href="#version-resource-and-branding"><span class="icon icon-link"></span></a>Version resource and branding</h2> <pre class="language-nsis"></pre> <p>This is what populates the Details tab in Windows Explorer’s file properties dialog for the compiled <code>.exe</code>:
+easy to forget, and the first thing that makes an installer look homemade when it’s missing.</p> <p>For the UI itself, <a href="https://nsis.sourceforge.io/Docs/Modern%20UI%202/Readme.html" rel="nofollow">Modern UI 2</a> (<code>MUI2.nsh</code>)
+provides the whole page-flow macro set. I skipped the flat default background in favour of something more fun:</p> <pre class="language-nsis"></pre> <p><code>BGGradient</code> paints a full-screen gradient behind the wizard (blue to black, white text), the way installers
+looked before Windows XP normalized the flat white background. It’s one line, and it’s the single most visually
+distinctive thing in the whole script.</p> <h2 id="a-custom-page-with-nsdialogs"><a aria-hidden="true" tabindex="-1" href="#a-custom-page-with-nsdialogs"><span class="icon icon-link"></span></a>A custom page with nsDialogs</h2> <p>MUI2 gives you Welcome, License, Components, Directory, InstFiles, and Finish pages out of the box. For anything
+else, <a href="https://nsis.sourceforge.io/Docs/nsDialogs/Readme.html" rel="nofollow"><code>nsDialogs</code></a> lets you build an arbitrary page from
+Win32 controls. I used it to show release notes, read from a plain-text file at build time, before the user gets
+to the components page:</p> <pre class="language-nsis"></pre> <p><code>$&#123;RELNOTES&#125;</code> is a compiler define passed on the command line (<code>/DRELNOTES=stage\\ReleaseNotes.txt</code>), pointed at
+whichever <a href="https://github.com/treideme/nsis-demo/tree/master/releasenotes" rel="nofollow"><code>releasenotes/*.md</code></a> file matches the
+version being built. There’s no Markdown rendering happening; it’s read as plain text into a read-only edit
+control. But that’s the whole trick: the release note a user reads during install is the same file that lives
+in version control, picked automatically by version number.</p> <h2 id="skipping-work-thats-already-done"><a aria-hidden="true" tabindex="-1" href="#skipping-work-thats-already-done"><span class="icon icon-link"></span></a>Skipping work that’s already done</h2> <p>The Visual C++ Redistributable section checks the registry before doing anything:</p> <pre class="language-nsis"></pre> <p>This is shown to the user as an optional, checked-by-default entry on the Components page
+(<code>!insertmacro MUI_PAGE_COMPONENTS</code>), so it’s both a demonstration of <code>$&#123;If&#125;</code>/<code>$&#123;Else&#125;</code> logic from <code>LogicLib.nsh</code> and of <code>ExecWait</code> chain-installing another installer and capturing its exit code. On the actual CI runner, the
+redistributable is already present, so this branch skips, which is itself worth seeing actually happen.</p> <p>Previous-install detection is intentionally the boring version. A well-behaved installer always installs to the
+same path, so there’s no need for a filesystem-wide search plugin. Just check whether the entry point is
+already there and clean it up first:</p> <pre class="language-nsis"></pre> <p>And the uninstaller is a normal <code>Section "Uninstall"</code>: it removes the files, the shortcuts, and the <code>Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall</code> registry key that makes the app show up (and be
+removable) in Add/Remove Programs in the first place. It’s easy to write an NSIS installer that never gets this
+far; Add/Remove Programs integration is a few <code>WriteRegStr</code> calls, not something NSIS gives you automatically.</p> <h1 id="running-it-for-real-in-github-actions"><a aria-hidden="true" tabindex="-1" href="#running-it-for-real-in-github-actions"><span class="icon icon-link"></span></a>Running It for Real in GitHub Actions</h1> <p>The interesting part is proving the script actually works, in GUI mode, on a machine that isn’t mine. <a href="https://github.com/treideme/nsis-demo/blob/master/.github/workflows/ci.yml" rel="nofollow"><code>ci.yml</code></a> runs on <code>windows-latest</code> and does the whole thing for real:</p> <ol><li>Installs NSIS itself via <code>choco install nsis</code> (the runner image doesn’t ship it).</li> <li>Stages the payload: copies <code>notepad.exe</code> from the runner’s own <code>System32</code>, downloads the real VC++
+Redistributable from <code>aka.ms</code>, and copies the matching <code>releasenotes/&lt;version&gt;.md</code>.</li> <li>Compiles the installer with <code>makensis</code>.</li> <li>Launches it <strong>without</strong> <code>/S</code> (a real GUI install) and drives the wizard.</li></ol> <p>Driving the wizard without a human is the part with no NSIS-specific answer; it’s just PowerShell and Win32:</p> <pre class="language-powershell"></pre> <p>Each NSIS wizard page keeps the same top-level window and just swaps its contents, and pressing Enter always
+triggers whichever button is the current default (Next, Install, or Finish), including on the custom <code>nsDialogs</code> release-notes page, since its edit control isn’t marked <code>ES_WANTRETURN</code>. Four calls to <code>Advance</code> walk
+through Welcome, the release notes page, Components, and Directory (which relabels its own button to “Install”).</p> <p>The first version of this had a bug worth admitting to: the real install finishes in well under a second (the
+payload is tiny and the runner already has the VC++ runtime), so by the time the screenshot step ran, the wizard
+had already reached the Finish page. I added two deliberate <code>Sleep</code> calls around the file copy in <code>install.nsi</code> (CI-demo padding, not something a real installer needs) purely so there’s an actual window in which to capture
+the InstFiles page. With that fixed, the runner grabs a real mid-install screenshot with <code>System.Drawing.Graphics.CopyFromScreen</code>:</p> <!> <p>That’s an actual screenshot pulled from a completed run, not a mockup. <a href="https://github.com/treideme/nsis-demo/actions/runs/33259793868" rel="nofollow">The run itself is here</a>. After the wizard closes,
+the workflow verifies the payload and the uninstaller exist and that the VC++ runtime registry key is set, zips
+the installed directory tree, and uploads three run artifacts: the installer <code>.exe</code>, the screenshot, and the
+installed files.</p> <h1 id="cutting-a-release"><a aria-hidden="true" tabindex="-1" href="#cutting-a-release"><span class="icon icon-link"></span></a>Cutting a Release</h1> <p><a href="https://github.com/treideme/nsis-demo/blob/master/.github/workflows/release.yml" rel="nofollow"><code>release.yml</code></a> runs the same
+build on a <code>vX.Y.Z</code> tag push, refuses to proceed if there’s no matching <code>releasenotes/X.Y.Z.md</code> (so a release
+without release notes simply can’t happen), and attaches the installer and the notes to a GitHub Release:</p> <pre class="language-powershell"></pre> <p>One thing that cost me a debugging round trip: the default <code>GITHUB_TOKEN</code> GitHub Actions hands a workflow is
+read-only unless the job explicitly opts in, so <code>gh release create</code> failed with an <code>HTTP 403</code> until I added <code>permissions: contents: write</code> to the job. Worth remembering any time a workflow needs to write back to the repo
+it’s running in.</p> <p>The result is a real, tagged release: <a href="https://github.com/treideme/nsis-demo/releases/tag/v1.1.0" rel="nofollow">NSIS Demo v1.1.0</a>, installer and release notes
+attached, built entirely by the tag push.</p> <h1 id="unattended-installs-across-a-fleet"><a aria-hidden="true" tabindex="-1" href="#unattended-installs-across-a-fleet"><span class="icon icon-link"></span></a>Unattended Installs Across a Fleet</h1> <p>Everything above works because the CI runner behaves like a single person sitting at a keyboard: an actual
+interactive session exists, and it’s the only thing happening on the machine. Push this exact installer out to
+a few thousand endpoints through Intune, SCCM, or a login-script GPO instead, and several things stop working.
+The script isn’t wrong; “unattended fleet install” and “GUI wizard automated by pressing Enter” are just two
+different problems that happen to look similar in a demo.</p> <h2 id="session-0-breaks-the-gui-automation-trick"><a aria-hidden="true" tabindex="-1" href="#session-0-breaks-the-gui-automation-trick"><span class="icon icon-link"></span></a>Session 0 breaks the GUI-automation trick</h2> <p>Enterprise deployment tools install as the <code>SYSTEM</code> account with no interactive desktop attached (session 0
+isolation, since Windows Vista). A GUI installer launched that way doesn’t hang waiting for a click that never
+comes; there’s no desktop for it to paint on in the first place. The <code>SetForegroundWindow</code>/<code>SendKeys</code> approach
+in <code>ci.yml</code> only works because GitHub Actions’ Windows runner logs a real user into an interactive session for
+the job. That’s a fine trick for CI and a useless one for a fleet. The actual answer there is NSIS’s native <code>/S</code> silent switch, which skips every page - Welcome, the custom release-notes page, Components, Directory -
+and just runs the <code>Section</code> code with whatever selection state the sections had by default.</p> <h2 id="the-release-notes-page-has-no-unattended-equivalent"><a aria-hidden="true" tabindex="-1" href="#the-release-notes-page-has-no-unattended-equivalent"><span class="icon icon-link"></span></a>The release notes page has no unattended equivalent</h2> <p>The whole point of the <code>nsDialogs</code> page was to put the release notes in front of a human during install. In <code>/S</code> mode nobody ever sees it. Gating on human acknowledgment and running silently on 3,000 machines overnight
+are simply incompatible goals, and that’s not something to patch around - the practical answer for a fleet
+build is to drop the requirement on the silent path and, if the content still matters, log it or ship it as a
+separate document instead.</p> <h2 id="exit-codes-and-reboot-state-dont-propagate-on-their-own"><a aria-hidden="true" tabindex="-1" href="#exit-codes-and-reboot-state-dont-propagate-on-their-own"><span class="icon icon-link"></span></a>Exit codes and reboot state don’t propagate on their own</h2> <p><code>ExecWait</code> on the VC++ Redistributable already captures its return code into <code>$0</code>, but the script currently
+only <code>DetailPrint</code>s it and moves on. If that nested install failed, this installer still exits <code>0</code>. SCCM,
+Intune’s Win32 app “return code” mapping, and any orchestrator that branches on <code>%ERRORLEVEL%</code> need a script
+that actually calls NSIS’s <code>SetErrorLevel</code> (or <code>Abort</code>) when something downstream fails, and that recognizes
+the MSI convention of exit code <code>3010</code> for “succeeded but needs a reboot” if it’s chain-installing anything
+that can trigger one. Skip that, and the fleet quietly records a failed VC++ Redistributable install as a
+success.</p> <h2 id="theres-no-equivalent-of-an-msi-productcode"><a aria-hidden="true" tabindex="-1" href="#theres-no-equivalent-of-an-msi-productcode"><span class="icon icon-link"></span></a>There’s no equivalent of an MSI ProductCode</h2> <p>Windows Installer keeps a database of installed products, queryable by GUID, which is what lets Intune, SCCM,
+and Group Policy Software Installation detect “is this installed, and at what version” without any custom
+logic. NSIS has nothing like it: the only detection surface is whatever gets written into the <code>Uninstall</code> registry key by hand (<code>DisplayName</code>, <code>DisplayVersion</code>, and so on, same as this demo does). That’s exactly what
+Intune’s custom registry detection rules and SCCM’s registry-based detection methods are built to consume, but
+keeping that key accurate is on the script author, and there’s no native upgrade/downgrade logic or
+transactional rollback if an install fails halfway. MSI gets both from the platform; an NSIS script has to
+hand-roll them.</p> <h2 id="logging-is-the-other-gap-sccm-admins-hit-immediately"><a aria-hidden="true" tabindex="-1" href="#logging-is-the-other-gap-sccm-admins-hit-immediately"><span class="icon icon-link"></span></a>Logging is the other gap SCCM admins hit immediately</h2> <p><code>DetailPrint</code> only writes to the in-memory list shown on the InstFiles page; it’s gone the moment the installer
+closes, unlike <code>msiexec /l*v log.txt</code>, which Windows Installer supports natively. NSIS can log to a file, but
+only from a build of <code>makensis</code> itself compiled with logging enabled (<code>NSIS_CONFIG_LOG</code>), which the ordinary
+NSIS download doesn’t ship with. Pulling centralized install logs back from a few thousand endpoints is routine
+with MSI; doing the same here means either building a logging-enabled NSIS toolchain or writing manual <code>FileOpen</code>/<code>FileWrite</code> calls throughout the script.</p> <h2 id="what-actually-adapts-this-for-a-fleet"><a aria-hidden="true" tabindex="-1" href="#what-actually-adapts-this-for-a-fleet"><span class="icon icon-link"></span></a>What actually adapts this for a fleet</h2> <p>In rough order of how much it matters:</p> <ol><li>Always invoke with <code>/S</code>, and if overriding the install directory, <code>/D=C:\\Path</code> has to be the <em>last</em> argument on the command line - NSIS parses it positionally, not as a normal named switch.</li> <li>Parse fleet-controlled switches with <code>GetOptions</code>/<code>GetParameters</code> from <code>FileFunc.nsh</code> (a <code>/SKIPVCREDIST</code> flag that calls <code>$&#123;UnselectSection&#125;</code> on <code>SecVCRedist</code>, for example) - there’s no MSI-style <code>ADDLOCAL=</code>/<code>REMOVE=</code> public-property mechanism to lean on.</li> <li>Check every <code>ExecWait</code> result and call <code>SetErrorLevel</code> deliberately, so the process exit code means
+something to whatever is watching it.</li> <li>Keep the Uninstall registry key accurate and stable across versions, since it’s the only thing an external
+detection rule has to go on.</li> <li>Get a logging-enabled <code>makensis</code>, or add manual file logging, before this ships anywhere without direct
+screen access.</li></ol> <p>The one piece of modern tooling that already understands NSIS specifically is <a href="https://learn.microsoft.com/en-us/windows/package-manager/winget/" rel="nofollow">WinGet</a>: its manifest schema has a
+first-class <code>Nullsoft</code> installer type and passes <code>/S</code> for it automatically. Chocolatey packages take the more
+manual route that’s realistic for most fleets today - a <code>chocolateyInstall.ps1</code> that calls the NSIS <code>.exe</code> with <code>/S</code> and checks <code>$LASTEXITCODE</code> itself, which is item 3 above done by hand, once, in the packaging layer
+instead of the installer script. Either way, NSIS’s job in a fleet context is to be a good citizen when
+something else drives it silently, not to reinvent what Windows Installer already provides.</p> <p>That maps to a simple rule for picking a tool: NSIS for something a person downloads and clicks through once,
+MSI/WiX for something a fleet needs to detect, version, and roll back without a person anywhere near it.</p> <h1 id="summary"><a aria-hidden="true" tabindex="-1" href="#summary"><span class="icon icon-link"></span></a>Summary</h1> <p>NSIS’s reputation as “that installer from the 2000s” undersells it. Modern UI 2 gets you a competent wizard for
+free, <code>nsDialogs</code> gets you out to arbitrary custom pages when that’s not enough, and the scripting language -
+however dated it looks next to a modern build tool - is expressive enough to conditionally skip work, chain-install
+another installer, and clean up after itself on uninstall. None of that requires anything beyond the stock NSIS
+distribution; the one plugin I’d reached for initially (<code>Locate</code>, for scanning Program Files for a prior install)
+turned out to be unnecessary once I remembered that a well-behaved installer always installs to the same place
+anyway.</p> <p>That confidence has a boundary, though: it’s specifically confidence in NSIS for a single machine with a human
+in front of it. The moment the target is a fleet instead of a person, the calculus flips - not because NSIS got
+worse, but because MSI was built for exactly that case and NSIS was never trying to be.</p> <p>Further reading:</p> <ul><li><a href="https://nsis.sourceforge.io/Docs/" rel="nofollow">NSIS documentation</a></li> <li><a href="https://nsis.sourceforge.io/Docs/Modern%20UI%202/Readme.html" rel="nofollow">Modern UI 2 reference</a></li> <li><a href="https://nsis.sourceforge.io/Docs/nsDialogs/Readme.html" rel="nofollow">nsDialogs reference</a></li> <li><a href="https://learn.microsoft.com/en-us/windows/win32/msi/command-line-options" rel="nofollow">msiexec command-line options</a> - what a fleet gets natively that an NSIS script has to hand-roll</li> <li><a href="https://github.com/treideme/nsis-demo" rel="nofollow">github.com/treideme/nsis-demo</a> - the full source, workflows, and run history</li></ul>`,1);function v(r){var c=_(),l=o(e(c),16);t(l,()=>`<code class="language-nsis"><span class="token keyword">VIAddVersionKey</span> <span class="token operator">/</span>LANG<span class="token operator">=</span><span class="token number">0</span> <span class="token string">"ProductName"</span> <span class="token string">"$&#123;APPNAME&#125;"</span>
+<span class="token keyword">VIAddVersionKey</span> <span class="token operator">/</span>LANG<span class="token operator">=</span><span class="token number">0</span> <span class="token string">"CompanyName"</span> <span class="token string">"$&#123;COMPANYNAME&#125;"</span>
+<span class="token keyword">VIAddVersionKey</span> <span class="token operator">/</span>LANG<span class="token operator">=</span><span class="token number">0</span> <span class="token string">"LegalCopyright"</span> <span class="token string">"(C) $&#123;COMPANYNAME&#125;"</span>
+<span class="token keyword">VIAddVersionKey</span> <span class="token operator">/</span>LANG<span class="token operator">=</span><span class="token number">0</span> <span class="token string">"FileVersion"</span> <span class="token string">"$&#123;VERSION&#125;.0"</span>
+<span class="token keyword">VIAddVersionKey</span> <span class="token operator">/</span>LANG<span class="token operator">=</span><span class="token number">0</span> <span class="token string">"ProductVersion"</span> <span class="token string">"$&#123;VERSION&#125;.0"</span>
+<span class="token keyword">VIProductVersion</span> <span class="token string">"$&#123;VERSION&#125;.0"</span></code>`,!0),i(l);var u=o(l,6);t(u,()=>`<code class="language-nsis"><span class="token important">!define</span> MUI_HEADERIMAGE
+<span class="token keyword">BGGradient</span> <span class="token number">0000</span>FF <span class="token number">000000</span> FFFFFF</code>`,!0),i(u);var d=o(u,8);t(d,()=>`<code class="language-nsis">Function ReleaseNotesPageCreate
+  <span class="token keyword">nsDialogs</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Create <span class="token number">1018</span>
+  <span class="token keyword">Pop</span> <span class="token variable">$0</span>
+
+  <span class="token constant">$&#123;NSD_CreateLabel&#125;</span> <span class="token number">0</span> <span class="token number">0</span> <span class="token number">100</span><span class="token operator">%</span> <span class="token number">12</span>u <span class="token string">"What's new in $&#123;APPNAME&#125; $&#123;VERSION&#125;:"</span>
+  <span class="token keyword">Pop</span> <span class="token variable">$1</span>
+
+  <span class="token keyword">nsDialogs</span><span class="token punctuation">:</span><span class="token punctuation">:</span>CreateControl EDIT <span class="token string">"$&#123;DEFAULT_STYLES&#125;|$&#123;ES_MULTILINE&#125;|$&#123;ES_AUTOVSCROLL&#125;|$&#123;ES_READONLY&#125;|$&#123;WS_VSCROLL&#125;"</span> <span class="token constant">$&#123;WS_EX_CLIENTEDGE&#125;</span> <span class="token number">0</span> <span class="token number">15</span>u <span class="token number">100</span><span class="token operator">%</span> <span class="token number">190</span>u <span class="token string">""</span>
+  <span class="token keyword">Pop</span> <span class="token variable">$ReleaseNotesText</span>
+
+  <span class="token keyword">StrCpy</span> <span class="token variable">$4</span> <span class="token string">""</span>
+  <span class="token keyword">ClearErrors</span>
+  <span class="token keyword">FileOpen</span> <span class="token variable">$2</span> <span class="token string">"$&#123;RELNOTES&#125;"</span> r
+  <span class="token keyword">IfErrors</span> notes_missing
+  notes_loop<span class="token punctuation">:</span>
+    <span class="token keyword">FileRead</span> <span class="token variable">$2</span> <span class="token variable">$3</span>
+    <span class="token keyword">IfErrors</span> notes_done
+    <span class="token keyword">StrCpy</span> <span class="token variable">$4</span> <span class="token string">"$4$3"</span>
+    <span class="token keyword">Goto</span> notes_loop
+  notes_done<span class="token punctuation">:</span>
+    <span class="token keyword">FileClose</span> <span class="token variable">$2</span>
+    <span class="token constant">$&#123;NSD_SetText&#125;</span> <span class="token variable">$ReleaseNotesText</span> <span class="token string">"$4"</span>
+    <span class="token keyword">Goto</span> notes_end
+  notes_missing<span class="token punctuation">:</span>
+    <span class="token constant">$&#123;NSD_SetText&#125;</span> <span class="token variable">$ReleaseNotesText</span> <span class="token string">"(No release notes found for this build.)"</span>
+  notes_end<span class="token punctuation">:</span>
+
+  <span class="token keyword">nsDialogs</span><span class="token punctuation">:</span><span class="token punctuation">:</span>Show
+FunctionEnd
+
+<span class="token keyword">Page</span> custom ReleaseNotesPageCreate</code>`,!0),i(d);var f=o(d,8);t(f,()=>`<code class="language-nsis"><span class="token keyword">Section</span> <span class="token string">"Visual C++ Redistributable (x64)"</span> SecVCRedist
+  <span class="token keyword">ReadRegDWORD</span> <span class="token variable">$0</span> <span class="token property">HKLM</span> <span class="token string">"SOFTWARE&#92;Microsoft&#92;VisualStudio&#92;14.0&#92;VC&#92;Runtimes&#92;x64"</span> <span class="token string">"Installed"</span>
+  <span class="token constant">$&#123;If&#125;</span> <span class="token variable">$0</span> <span class="token operator">==</span> <span class="token number">1</span>
+    <span class="token keyword">DetailPrint</span> <span class="token string">"VC++ Redistributable already installed, skipping."</span>
+  <span class="token constant">$&#123;Else&#125;</span>
+    <span class="token keyword">DetailPrint</span> <span class="token string">"Installing VC++ Redistributable (this can take a minute)..."</span>
+    <span class="token keyword">InitPluginsDir</span>
+    <span class="token keyword">SetOutPath</span> <span class="token string">"$PLUGINSDIR"</span>
+    <span class="token keyword">File</span> <span class="token string">"/oname=vc_redist.x64.exe"</span> <span class="token string">"$&#123;SRC&#125;&#92;vc_redist.x64.exe"</span>
+    <span class="token keyword">ExecWait</span> <span class="token string">'"$PLUGINSDIR&#92;vc_redist.x64.exe" /install /quiet /norestart'</span> <span class="token variable">$0</span>
+    <span class="token keyword">DetailPrint</span> <span class="token string">"VC++ Redistributable installer exit code: $0"</span>
+  <span class="token constant">$&#123;EndIf&#125;</span>
+<span class="token keyword">SectionEnd</span></code>`,!0),i(f);var p=o(f,6);t(p,()=>`<code class="language-nsis"><span class="token keyword">IfFileExists</span> <span class="token string">"$INSTDIR&#92;$&#123;ENTRYPOINT&#125;"</span> <span class="token number">0</span> NoOldInstall
+  <span class="token keyword">DetailPrint</span> <span class="token string">"Previous installation found at $INSTDIR, removing..."</span>
+  <span class="token keyword">ClearErrors</span>
+  <span class="token keyword">RMDir</span> <span class="token operator">/</span>r <span class="token string">"$INSTDIR"</span>
+  <span class="token keyword">IfErrors</span> <span class="token number">0</span> NoOldInstall
+    <span class="token keyword">DetailPrint</span> <span class="token string">"Could not fully remove the previous installation (in use?). Continuing anyway."</span>
+NoOldInstall<span class="token punctuation">:</span></code>`,!0),i(p);var m=o(p,12);t(m,()=>`<code class="language-powershell"><span class="token variable">$proc</span> = <span class="token function">Start-Process</span> <span class="token operator">-</span>FilePath <span class="token punctuation">.</span>&#92;NsisDemoSetup<span class="token punctuation">.</span>exe <span class="token operator">-</span>PassThru
+
+<span class="token keyword">function</span> Advance <span class="token punctuation">&#123;</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$i</span> = 0<span class="token punctuation">;</span> <span class="token variable">$i</span> <span class="token operator">-lt</span> 20<span class="token punctuation">;</span> <span class="token variable">$i</span><span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$proc</span><span class="token punctuation">.</span>HasExited<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token keyword">return</span> <span class="token punctuation">&#125;</span>
+    <span class="token variable">$proc</span><span class="token punctuation">.</span>Refresh<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$proc</span><span class="token punctuation">.</span>MainWindowHandle <span class="token operator">-ne</span> 0<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token namespace">[Native.Win32]</span>::SetForegroundWindow<span class="token punctuation">(</span><span class="token variable">$proc</span><span class="token punctuation">.</span>MainWindowHandle<span class="token punctuation">)</span> <span class="token punctuation">|</span> <span class="token function">Out-Null</span>
+      <span class="token function">Start-Sleep</span> <span class="token operator">-</span>Milliseconds 300
+      <span class="token namespace">[System.Windows.Forms.SendKeys]</span>::SendWait<span class="token punctuation">(</span><span class="token string">'&#123;ENTER&#125;'</span><span class="token punctuation">)</span>
+      <span class="token keyword">return</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">Start-Sleep</span> <span class="token operator">-</span>Milliseconds 300
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code>`,!0),i(m);var h=o(m,6);s(h,{src:`/images/nsis_demo_install_screenshot.png`,alt:`NSIS Demo installer mid-install`,width:`600`});var g=o(h,8);t(g,()=>`<code class="language-powershell">gh release create <span class="token string">"$&#123;&#123; github.ref_name &#125;&#125;"</span> &#96;
+  <span class="token string">"NsisDemoSetup-$&#123;&#123; steps.version.outputs.version &#125;&#125;.exe"</span> &#96;
+  <span class="token string">"releasenotes/$&#123;&#123; steps.version.outputs.version &#125;&#125;.md"</span> &#96;
+  <span class="token operator">--</span>title <span class="token string">"NSIS Demo $&#123;&#123; steps.version.outputs.version &#125;&#125;"</span> &#96;
+  <span class="token operator">--</span>notes-file <span class="token string">"releasenotes/$&#123;&#123; steps.version.outputs.version &#125;&#125;.md"</span></code>`,!0),i(g),a(48),n(r,c)}export{v as default,c as metadata};

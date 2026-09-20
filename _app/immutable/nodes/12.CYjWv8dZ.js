@@ -1,0 +1,1 @@
+import"../chunks/C5Qr1tWr.js";import"../chunks/xihTtKlq.js";import{t as e}from"../chunks/B13O_4br.js";function t(t,n){let{page:r,totalPosts:i,posts:a}=n.data;e(t,{get page(){return r},get totalPosts(){return i},get posts(){return a}})}export{t as component};

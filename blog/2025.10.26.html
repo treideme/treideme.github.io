@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/js/tuicss.min.js"></script>
+		<link href="../_app/immutable/entry/start.BLr9_bnc.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/AdeW3F8v.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C5Qr1tWr.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dt-HX3Vu.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.CjXFn_g_.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/uBIymjUX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.Dko8UQj9.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DRByVC-c.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsF7k-Jl.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/UrVpzM6D.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/e3uk7f1g.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BJ6dgZOD.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BtpA1xRJ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/D7rxoVVC.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BcR_fFiR.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C_WrjxST.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CGfmOE7W.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/U4Q-MCo3.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dy-Kn_BL.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/lpi2-tgm.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/3EzQhW0a.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DMTIwejG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsIc3RVK.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/fybaL0A-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BifhSqXX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/g4Mvzxsx.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DS17s2tU.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/B-DAUW-u.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CX68_OgI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DSJ1rPnI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/tZp6t9zN.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DuWRkWPg.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.DgZdZZPn.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DeSqgjHc.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="alternate" type="application/rss+xml" title="Thomas Reidemeister" href="http://reidemeister.com/api/rss.xml"/> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EHW6Z8HZ08"></script><!----><!--s11s7s--><meta data-key="description" name="description" content="Interrupt Processing."/> <meta property="og:type" content="article"/> <meta property="og:title" content="Interrupt Processing on MCS-51 and Derivatives"/> <meta name="twitter:title" content="Interrupt Processing on MCS-51 and Derivatives"/> <meta property="og:description" content="Interrupt Processing."/> <meta name="twitter:description" content="Interrupt Processing."/> <meta property="og:image:width" content="678"/> <meta property="og:image:height" content="696"/><!----><title>Interrupt Processing on MCS-51 and Derivatives</title>
+		<link href="../_app/immutable/assets/0.1Ga5dCEE.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogQuote.8TWGGipd.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogTable.K5KlPf1M.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/YoutubePlayer.DRLVl_9I.css" rel="stylesheet">
+		<!-- You can add global <meta> tags here, but anything not global or dynamic should be a `<svelte:head>` tag on the proper page(s) instead. -->
+	</head>
+	<body class="tui-bg-blue-black">
+		<div id="svelte"><!--[--><!--[0--><!--[--><div class="layout"><header><nav class="tui-nav"><a href="/" class="tui-panel cyan-168 full-width black-255-text tui-no-shadow center"><b style="font-size: 2.0em;">Thomas Reidemeister</b></a> <span class="tui-datetime" data-format="d/M/1993 h:m:s a"></span> <ul><li class="tui-sidenav-button"><a href="/">Home</a></li> <!--[--><!--[0--><li class="tui-dropdown"><a href="/blog">Blog</a> <!--[-1--><!--]--></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/about"><!---->About<!----></a></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/tools"><!---->Tools<!----></a></li><!--]--><!--]--></ul><!----></nav></header><!----> <!----><main id="main" tabindex="-1"><!--[--><article class="tui-window"><div class="tui-window-titlebar"><span class="tui-window-titlebar-rule-corner"></span> <button class="tui-fieldset-button left" style="margin-top: 0px"><span class="green-255-text">■</span></button> <span class="tui-window-titlebar-rule"></span> <span class="tui-window-titlebar-text">Interrupt Processing on MCS-51 and Derivatives</span> <span class="tui-window-titlebar-rule"></span> <button class="tui-fieldset-button right" style="margin-top: 0px"><span class="green-255-text">↑</span></button> <span class="tui-window-titlebar-rule-corner"></span></div> <fieldset class="tui-fieldset" style="margin-top: 0px"><div class="white-168-text" style="overflow: auto;"><img class="cover-image tui-shadow" src="/images/8051_interrupt_system.png" alt="" style="aspect-ratio: 678 / 696;display: block; margin-left: auto; margin-right: auto;" width="678" height="696"/><br/><br/> <p>This article is written in support of the interrupt tool I wrote for the <a href="/tools">MCS-51 series</a>. Most of the MCS-51 (8051)
+derivatives have a similar architecture when it comes to external interrupt processing, so this article should be
+applicable to most of them.</p> <h1 id="what-is-an-interrupt"><a aria-hidden="true" tabindex="-1" href="#what-is-an-interrupt"><span class="icon icon-link"></span></a>What is an Interrupt?</h1> <p>An interrupt is a signal to the processor that the current code execution should be paused to handle a more urgent task.
+Usually this is signalled by a peripheral device that needs immediate attention, such as a timer overflow, data received
+on a serial port, or an external event like a button press. This event sets the interrupt request flag in the
+microcontroller’s interrupt system.</p> <p>If the <code>EA</code> (Enable All) bit in corresponding <code>IE</code> (Interrupt Enable) register is set, and the specific interrupt is
+enabled, the processor will pause its current task and jump to a predefined memory location called the interrupt vector.
+The blog image shows all possible interrupt sources for a typical MCS-51 microcontroller. In modern variants there may be
+more interrupt sources, but the basic principles remain the same.</p> <p>Many MCS-51 derivatives have programmable interrupt priorities, which allow
+the user to define which interrupt has precedence over another. If all interrupt priorities are the same the MCS-51
+architecture uses a polling scheme to determine which interrupt to service first. By adjusting the priority levels, more critical
+interrupts can be serviced before less critical ones, and interrupts of the same priority are handled serially. The MCS-51
+supports preemptive interrupt handling, meaning that a higher priority interrupt can interrupt the processing of a lower priority
+interrupt.</p> <p>In instruction processing the following happens if an interrupt is serviced (meaning <code>EA</code> and the specific interrupt enable bit are set):</p> <ol><li>The current instruction finishes executing.</li> <li>The Program Counter (PC) is pushed onto the stack to save the return address. The interrupt state of all other sources is preserved internally.</li> <li>The PC is loaded with the address of the interrupt service routine (ISR) corresponding to the interrupt source.</li> <li>The ISR executes, handling the interrupt.</li> <li>At the end of the ISR, a <code>RETI</code> (Return from Interrupt) instruction is executed, which pops the return address from the stack back into the PC.</li> <li>The processor resumes execution from where it left off before the interrupt occurred.</li></ol> <p>In addition to the above your compiler may perform additional context saving and restoring for registers that are used
+within the ISR. This is to ensure that the main program’s state is preserved correctly.</p> <p>What makes the MCS-51 architecture interesting is that there is not much that needs to be preserved, as there are only a few
+registers. This leads to a practical exceptional low interrupt latency compared to more modern architectures. In an essence
+you give up processing speed (i.e. more efficient register use on most modern architectures) for latency. While other
+architectures, especially DSPs, use windowing to get around this problem, this also introduces consistency issues if the
+windowing runs out. A good example for this are <a href="https://www.cadence.com/content/dam/cadence-www/global/en_US/documents/tools/silicon-solutions/compute-ip/isa-summary.pdf" rel="nofollow">Cadence DSPs</a></p> <p>One thing to keep in mind is that the address of the interrupt service routine is fixed and that the interrupt vector
+itself does not contain any address mappings. As such the typical pattern is to have a small stub at the interrupt vector
+that jumps to the actual ISR, which can be located anywhere in memory. The following example is the address map of the
+STC89C52 microcontroller, which is a popular MCS-51 derivative.</p> <div class="blogtable-center svelte-vz13oo"><div class="tui-window" style="text-align: left;"><fieldset class="tui-fieldset"><!--[0--><legend class="center">STC89C52 Interrupt Map</legend><!--]--> <table class="tui-table striped-purple svelte-vz13oo" style="100%"><thead><tr><th><strong>Source</strong></th><th><strong>Vector Address</strong></th></tr></thead> <tbody><tr><td><strong>RST</strong></td><td>0000H</td></tr><tr><td><strong>IE0</strong></td><td>0003H</td></tr><tr><td><strong>TF0</strong></td><td>000BH</td></tr><tr><td><strong>IE1</strong></td><td>0013H</td></tr><tr><td><strong>TF1</strong></td><td>001BH</td></tr><tr><td><strong>RI+TI</strong></td><td>0023H</td></tr><tr><td><strong>TF2+EXF2</strong></td><td>002BH</td></tr><tr><td><strong>IE2</strong></td><td>0033H</td></tr><tr><td><strong>IE3</strong></td><td>003BH</td></tr></tbody><!----></table></fieldset></div></div><!----> <p>As seen above the interrupt vectors are located at fixed memory addresses, this also includes the reset vector at <code>0000H</code>.
+The common way to populate these (your compiler does this for you automatically) is to have a small jump instruction at the vector address
+that jumps to the actual ISR. Example,</p> <pre class="language-asm"><!----><code class="language-asm">    ORG 0
+    LJMP MAIN    ; 3-byte instruction
+    LJMP INT0INT ; EXT 0 vector address
+    ORG 000BH    ;Timer 0 vector
+    LJMP T0INT
+    ORG 001BH    ;Timer 1 vector
+    LJMP T1INT
+    ORG 0030H
+    ...</code><!----></pre> <h1 id="external-interrupts"><a aria-hidden="true" tabindex="-1" href="#external-interrupts"><span class="icon icon-link"></span></a>External Interrupts</h1> <p>Leaving aside the internal interrupts (timers, serial ports, etc.) for now, which get covered in other blog posts, let’s look
+at the external interrupts. The MCS-51 architecture supports two external interrupts, <code>INT0</code> and <code>INT1</code>, which are
+mapped to pins on the microcontroller. These interrupts can be configured to trigger on either a low-level signal or a falling edge,
+depending on the settings in the <code>TCON</code> (Timer Control) register. Modern derivatives such as the STC89C5x series support
+up to 4 external interrupts (<code>INT2</code> and <code>INT3</code>), but the principles remain the same. Some other implementations take this
+as far as providing interrupts on a per-port-pin basis, which can be useful in certain applications.</p> <p>On most classic implementations these external interrupts are active low, meaning that they are triggered when the signal
+goes from high to low. A typical implementation is shown as follows.</p> <img class="tui-shadow white-168 black-255-text" src="/images/exti_low.png" style="width: 400px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="8051 External Interrupt Circuit"/><!----> <p>Pressing the switch causes a negative edge transition as the voltage switches down from logic high (Vcc) to logic low (GND), which
+triggers the interrupt. Note that a pull-up resistor is used to ensure that the input pin is at a defined logic high level when the switch is not pressed.</p> <p>This interrupt can be configured to be either level-triggered or edge-triggered using the <code>IT0</code> and <code>IT1</code> bits in the <code>TCON</code> register.
+When set to level-triggered, the interrupt is activated as long as the input pin remains low. When set to edge-triggered, the interrupt
+is activated only on the transition from high to low.</p> <p>The button press is one example an external interrupt source, other examples include sensors, communication signals, or
+any other external event that requires immediate attention from the microcontroller.</p> <p>In the <a href="/tools">Tools</a> section of this blog I have created an interrupt configuration tool that allows you to
+easily configure external interrupts for MCS-51 derivatives, using the STC89C5x as a baseline case and generate
+code for <a href="https://sdcc.sourceforge.net/" rel="nofollow">SDCC</a>.</p> <p>So conceptually the external interrupt is like your significant other half pulling you away from your work to attend to something
+more urgent, like taking out the trash or answering the doorbell. You stop what you’re doing, handle the urgent task, and then return to your previous activity.</p> <p>I plan to post more on peripheral interrupts (timers, serial ports, etc.) in future articles.</p> <p>Good references for further reading:</p> <ul><li><a href="https://www.stcmicro.com/datasheet/STC89C51RC-en.pdf" rel="nofollow">STC89C5x Datasheet</a> and the <a href="https://ww1.microchip.com/downloads/en/devicedoc/doc0265.pdf" rel="nofollow">“Original” Atmel (eh Microchip one)</a></li> <li><a href="https://www.goodreads.com/book/show/5668103-the-8051-microcontroller" rel="nofollow">Scott MacKenzie: The 8051 Microcontroller (1994)</a></li></ul><!----> <div class="tui-divider"></div> <br/><b>Published:</b> 2025-10-26 <br/> <b>Updated  :</b> 2025-10-26 <!--[0--><aside class="post-footer"><ul class="post-footer__categories"><!--[--><li class="no-bullet"><a href="/blog/category/coding/" class="tui-button white-168">coding</a></li><li class="no-bullet"><a href="/blog/category/embedded/" class="tui-button white-168">embedded</a></li><li class="no-bullet"><a href="/blog/category/8051/" class="tui-button white-168">8051</a></li><!--]--></ul></aside><!--]--> <br/> Not a spam bot? Want to leave comments or provide editorial guidance? Please click any
+			of the social links below and make an effort to connect. I promise I read all messages and
+			will respond at my choosing. <div class="post-pagination"><!--[0--><a href="/blog/2025.10.27" class="tui-button white-168 prev-link">← Timers on the MCS-51 Series Microcontrollers</a><!--]--> <!--[0--><a href="/blog/2025.10.22" class="tui-button white-168 next-link">GPIOs on MCS-51 Derivatives →</a><!--]--></div></div></fieldset></article><!--]--><!----></main><!----> <div class="tui-statusbar"><ul><li><a href="/api/rss.xml" data-sveltekit-reload="" target="_blank">RSS</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://x.com/treideme1" data-sveltekit-reload="" target="_blank">𝕏</a></li> <span class="tui-statusbar-divider"></span> <li><a href="http://github.com/treideme" data-sveltekit-reload="" target="_blank">GitHub</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.linkedin.com/in/thomasreidemeister" data-sveltekit-reload="" target="_blank">In</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.instagram.com/treideme/" data-sveltekit-reload="" target="_blank">📸</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://dblp.org/pid/93/7009.html" data-sveltekit-reload="" target="_blank">DPLB</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://patents.google.com/?inventor=Thomas+REIDEMEISTER" data-sveltekit-reload="" target="_blank"> 🔬 </a></li> <span class="tui-statusbar-divider"></span> <li style="float: right;"><a href="/terms">© 2026 Thomas Reidemeister</a></li></ul></div><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_ih7hdl = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BLr9_bnc.js"),
+						import("../_app/immutable/entry/app.CjXFn_g_.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

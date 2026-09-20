@@ -1,0 +1,182 @@
+import{$ as e,E as t,M as n,P as r,mt as i,pt as a,tt as o}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";import{t as s}from"./DPw4rzvf.js";import{t as c}from"./BrJmRK04.js";import"./WppY4ym1.js";import"./BIw1C4rS.js";import"./DPsrAEoc.js";var l={title:`MCS-51 Real-World Interfacing - Dot-Matrix LCDs`,date:`2025-11-18`,updated:`2025-11-18`,categories:[`coding`,`embedded`,`8051`],coverImage:`/images/bosch_lcd.png`,coverWidth:533,coverHeight:400,excerpt:`ST7920 LCD Controller interfacing.`},{title:u,date:d,updated:f,categories:p,coverImage:m,coverWidth:h,coverHeight:g,excerpt:_}=l,v=r(`"I'm still looking at the world in eight-bit resolution."<br/> - The Matrix`,1),y=r(`<!> <p>As we continue our classic embedded systems series, let’s look at another common display technology that was used
+frequently at the height of the MCS-51 era. As we saw in the <a href="/blog/2025.11.15">previous article</a> about LCDs,
+by consolidating the controller for complex tasks into a single chip, we can greatly simplify the interfacing and
+programming effort required to drive these displays. If you grew up as a Xillenial or Gen X, you may remember the first
+Game Boy, which used a matrix monochrome LCD too; it even came with 4 colors per pixel.</p> <p>Looking at my 2007 Bosch stove (blog image above), these displays are still around today, although more modern displays
+have taken over in recent years, as OLED and TFT displays have become more affordable and offer much better
+contrast and colors.</p> <h1 id="sitronix-st7920-lcd-controller"><a aria-hidden="true" tabindex="-1" href="#sitronix-st7920-lcd-controller"><span class="icon icon-link"></span></a>Sitronix ST7920 LCD Controller</h1> <p>Full source <a href="https://github.com/treideme/stc89c52-demos/tree/main/04_st7920_lcd" rel="nofollow">here</a>.</p> <p>That said, the most dominant LCD controller for low-cost dot-matrix LCDs you will find is based on <a href="/images/ST7920.pdf">Sitronix’s ST7920</a> chipsets. This controller supports both graphic and text modes, making it versatile for various applications. It loosely
+follows the design principles of the <a href="/images/HD44780.pdf">Hitachi HD44780</a> controller, which was widely used in character LCDs,
+but Sitronix claims that it is a completely homegrown design (wink). Sitronix entered the market in the late 90s
+and quickly dominated the low-cost LCD controller market by the 2010s.</p> <p>The controller supports multiple interface modes, including 8-bit and 4-bit parallel interfaces, as well as a serial peripheral interface (SPI).
+Unfortunately, the one I bought from <a href="https://www.aliexpress.com/item/1005006944485825.html" rel="nofollow">Aliexpress</a> has the configuration
+pin <code>PSB</code> tied to GND, which forces it into serial mode only. The label reads <code>12864B-V2.3</code>. Unfortunately, the online
+references for older revisions of this display, which have <code>PSB</code> tied to a specific bridge resistor, don’t seem to be available
+for this particular model; otherwise, I would have desoldered the bridge. This is a bit unfortunate, as the MCS-51 series
+does not have SPI peripherals, and bit-banging SPI is not very efficient on this architecture.</p> <p>For many platforms, you will find existing libraries that support the ST7920 controller, including <a href="https://github.com/olikraus/u8glib" rel="nofollow">u8glib</a>, <a href="https://github.com/libdriver/st7920" rel="nofollow">libdriver</a>, and many others. Most of these libraries use the ST7920
+in SPI mode, which makes perfect sense for more modern microcontrollers that have SPI peripherals built-in. One of the
+issues, though, is that many of these are written in C++, and the ones that have C bindings are wrapped up in build
+tools that are not very MCS-51 friendly (e.g., cmake, scons…). All the libraries shadow the display’s framebuffer to provide
+advanced graphics capabilities, which is problematic for memory-constrained systems like the MCS-51 series. Worse, since the
+MCS-51 needs special handling for RAM mapped to the <code>XRAM</code> space (either external RAM or additional internal RAM banks),
+most libraries will not port easily.</p> <p>For educational purposes, and to keep things minimalist, we will construct this driver from scratch with bit-banged SPI
+in mind. Looking at the HC6800-ES-V2 schematic, we can see the following connections.</p> <!><br/> <p>In SPI mode, we only need <code>E</code> (SCK <code>P2.7</code>), <code>RS / RD</code> (CS <code>P2.6</code>), and <code>RW / WR</code> (SID, <code>P2.5</code>), and if
+needed, <code>RST</code> (<code>P3.4</code>). Looking at the timing diagram, when <code>PSB</code> is low, we can clock in commands as follows.</p> <!><br/> <p>This leads us to the following interface definitions. While the datasheet has elaborate initialization sequences for
+8-bit and 4-bit parallel modes, the SPI mode is much simpler, as we can directly clock in commands and data. For
+safety, the only command we need for a simple demo is the display ON command.</p> <pre class="language-c"></pre> <p>As we see in the timing chart above, we can break up the transfer into 3 bytes (24 bits). In essence, we need to toggle <code>SCLK</code> and <code>SID</code> accordingly. <code>SID</code> is latched on the rising edge of <code>SCLK</code>. We can wrap this up in a simple loop for
+8 bits.</p> <pre class="language-c"></pre> <p>The distinction between command and data is done by setting the <code>RS</code> bit in the opening byte after the framing bits. Then
+we break up the command and data byte into two nibbles as required by the ST7920 protocol.</p> <pre class="language-c"></pre> <p>Now what is left is the initialization and a convenience function to write directly into the character RAM. When the
+ST7920 powers up, it starts in character mode by default and is set to auto-increment. So we can directly write data
+to the first line of the display after initialization without going through elaborate setup sequences.</p> <pre class="language-c"></pre> <p>This leaves us with the following hello world program. No <code>XRAM</code> needed and ample space left in the <code>IRAM</code> for stack and variables.</p> <pre class="language-c"></pre> <p>The end result looks as follows. Note the pin order is reversed on the 128x64 LCD compared to the HD44780 character LCDs,
+I guess the HC600-ES2 board designer just copied the pinout from the existing header footprint without thinking too much about it.
+It is a little crummy to fit the display, but it can be made to work.</p> <!><br/> <h1 id="graphics-mode"><a aria-hidden="true" tabindex="-1" href="#graphics-mode"><span class="icon icon-link"></span></a>Graphics Mode</h1> <p>Full source <a href="https://github.com/treideme/stc89c52-demos/tree/main/04_st7920_graph" rel="nofollow">here</a>.</p> <p>Ok now that we have the text mode working, let’s see how we can leverage the graphic mode of the ST7920. The controller
+itself has a 128x64 pixel graphic RAM, which is mapped in a somewhat peculiar way. The display is divided into two
+halves of 128x32 pixels each. The second half is the overflow to the right of the first half. Each dot is represented
+by one bit that is written in 16-bit increments. So to set a pixel at (x,y) we need to calculate the address accordingly. The
+following function sets a pixel in graphic mode.</p> <pre class="language-c"></pre> <p>Further, to get into graphic mode, we need to enable the extended instruction set and set the display to graphic mode. We
+do this by using the extended function enable command.</p> <!><br/> <p>Setting the flag <code>G</code> determines whether the framebuffer is visible or not. So if we do not want to show aliasing effects
+when erasing the framebuffer with <code>clear_graphics()</code>, we can initialize the display in extended mode, clear the framebuffer,
+and then switch to graphics mode. The same can be done when buffering images in the background.</p> <pre class="language-c"></pre> <p>So the first thing we can do is to draw a simple pattern on the display. For this, we can just iterate over all pixels
+and set them based on a simple pattern. Here is a simple example that draws a running line pattern.</p> <pre class="language-c"></pre> <!><br/> <p>Since we have a full graphic framebuffer, we can also draw bitmaps. For this, we need to prepare the bitmap data in a
+suitable format. Each byte represents 8 vertical pixels, so we need to arrange our bitmap data accordingly. All that
+can be done with simple tools and a bit of scripting. Staying with the inclusive theme of the early 1990s, lets use
+a Cindy Crawford shoot by <a href="https://en.wikipedia.org/wiki/Helmut_Newton" rel="nofollow">late Helmut Newton</a> as our subject.</p> <!><br/> <p>With a little bit of <a href="https://www.gimp.org/" rel="nofollow">Gimp</a> magic we can scale and dither the image to 128x64 pixels. Use <a href="https://en.wikipedia.org/wiki/Floyd%E2%80%93Steinberg_dithering" rel="nofollow">Floyd-Steinberg dithering</a> for best results, as
+we only have 1-bit per pixel to work with.</p> <!><br/> <p>With Python, we can now convert this into a C header file that we can include in our project.</p> <p>The full source can be found <a href="https://github.com/treideme/stc89c52-demos/blob/main/04_st7920_graph/convert_to_bitmask.py" rel="nofollow">here</a>.
+The things to keep in mind for the conversion. The 16-bit are written in <code>MSB</code> first order, so we need to reverse the bits in each byte. I might turn this into a tool later, but for now here is a simple
+Python script that does the conversion. Also do not forget to invert the value since in the ST7920 a <code>1</code> bit
+makes the pixel black.</p> <p>With the generated header file we can now include the bitmap in our project and display it on the LCD.</p> <pre class="language-c"></pre> <p>The end result looks as follows:</p> <!><br/> <p>This is only scratching the surface of what can be done with the ST7920 controller. With some more effort, we could implement
+line drawing algorithms, shapes, and even simple animations. One drawback to keep in mind for the ST7920 is that as soon
+as you enable the extended instruction set, you lose access to the character RAM, so mixing text and graphics is not
+straightforward. For simple status displays, this is not a big issue, but for more complex UIs, you may have to
+save a font bitmap in graphic RAM and render text manually. This makes pre-existing libraries extremely flash and RAM
+hungry.</p>`,1);function b(r){var l=y(),u=e(l);c(u,{children:(e,t)=>{a();var r=v();a(2),n(e,r)},$$slots:{default:!0}});var d=o(u,18);s(d,{src:`/images/8051_lcd12864.png`,width:`400`});var f=o(d,5);s(f,{src:`/images/hd7920_spi.png`,width:`500`});var p=o(f,5);t(p,()=>`<code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ST7920_SCLK</span> <span class="token expression">P2_7</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ST7920_CS</span> <span class="token expression">P2_6</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ST7920_SID</span> <span class="token expression">P2_5</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ST7920_RST</span> <span class="token expression">P3_4</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ST7920_DISP_ON</span>         <span class="token expression"><span class="token number">0x0C</span></span></span></code>`,!0),i(p);var m=o(p,4);t(m,()=>`<code class="language-c"><span class="token keyword">void</span> <span class="token function">st7920_byte</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> d<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">8</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// MSB first</span>
+    ST7920_SCLK <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Toggle bits on rising edge</span>
+    ST7920_SID <span class="token operator">=</span> d <span class="token operator">&amp;</span> <span class="token number">0x80</span><span class="token punctuation">;</span>
+    d <span class="token operator">&lt;&lt;=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    ST7920_SCLK <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Reset state</span>
+  <span class="token punctuation">&#125;</span>
+  ST7920_SCLK <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Reset state</span>
+<span class="token punctuation">&#125;</span></code>`,!0),i(m);var h=o(m,4);t(h,()=>`<code class="language-c"><span class="token keyword">void</span> <span class="token function">st7920_command</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> cmd<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  ST7920_CS <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token function">st7920_byte</span><span class="token punctuation">(</span><span class="token number">0</span>b11111000<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//                 |+- RS set to 0 for command</span>
+  <span class="token comment">//                 +-- RW set to 0 for write</span>
+  <span class="token function">st7920_byte</span><span class="token punctuation">(</span><span class="token number">0xF0</span> <span class="token operator">&amp;</span> cmd<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// high nibble</span>
+  <span class="token function">st7920_byte</span><span class="token punctuation">(</span><span class="token number">0xF0</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>cmd <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// low nibble</span>
+  ST7920_CS <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">st7920_data</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> data<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  ST7920_CS <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token function">st7920_byte</span><span class="token punctuation">(</span><span class="token number">0</span>b11111010<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">//                 |+- RS set to 1 for data</span>
+  <span class="token comment">//                 +-- RW set to 0 for write</span>
+  <span class="token function">st7920_byte</span><span class="token punctuation">(</span><span class="token number">0xF0</span> <span class="token operator">&amp;</span> data<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// high nibble</span>
+  <span class="token function">st7920_byte</span><span class="token punctuation">(</span><span class="token number">0xF0</span> <span class="token operator">&amp;</span> <span class="token punctuation">(</span>data <span class="token operator">&lt;&lt;</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// low nibble</span>
+  ST7920_CS <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code>`,!0),i(h);var g=o(h,4);t(g,()=>`<code class="language-c"><span class="token keyword">void</span> <span class="token function">st7920_text</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span><span class="token operator">*</span> str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">*</span>str<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">st7920_data</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token operator">*</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    str<span class="token operator">++</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">st7920_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Figure 8-bit interface from ST7920 datasheet</span>
+  ST7920_SCLK <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Reset state</span>
+  ST7920_RST <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Force reset</span>
+  ST7920_CS <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment">// Defined state</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">40000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ST7920_RST <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">40000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wait for more than 40ms after Vcc rises to 4.5V</span>
+<span class="token punctuation">&#125;</span></code>`,!0),i(g);var _=o(g,4);t(_,()=>`<code class="language-c"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">st7920_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">st7920_command</span><span class="token punctuation">(</span>ST7920_DISP_ON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">st7920_text</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code>`,!0),i(_);var b=o(_,4);s(b,{src:`/images/8051_matrix_lcd.png`,width:`500`});var x=o(b,9);t(x,()=>`<code class="language-c"><span class="token comment">/**
+ * Set graphics cursor position
+ * @param x Word of bit mask in X direction (0-8) (i.e. bit 0..128)
+ * @param y Row in Y direction (0-63)
+ *
+ * Note the 12864B-V2.3 seems to be mapped such that 256x32 pixels are 128x64 with the 
+ * overflow going to the next row.
+ *
+ * +--------------------+--------------------+
+ * | Row 1: 0...7       | Row 32: 8...15     |
+ * | Row 2: 0...7       | Row 33: 8...15     |
+ * |....                | ...                |
+ * +--------------------+--------------------+
+ */</span>
+<span class="token keyword">void</span> <span class="token function">st7920_pos</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> x<span class="token punctuation">,</span> <span class="token class-name">uint8_t</span> y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>y <span class="token operator">>=</span> <span class="token number">32</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Wrap around for 128x64 mode</span>
+    x <span class="token operator">+=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+    y <span class="token operator">-=</span> <span class="token number">32</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token function">st7920_command</span><span class="token punctuation">(</span>ST7920_ADDR <span class="token operator">|</span> <span class="token punctuation">(</span>y <span class="token operator">&amp;</span> <span class="token number">0x3F</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Set GDRAM Y address</span>
+  <span class="token function">st7920_command</span><span class="token punctuation">(</span>ST7920_ADDR <span class="token operator">|</span> <span class="token punctuation">(</span>x <span class="token operator">&amp;</span> <span class="token number">0x0F</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Set GDRAM X address</span>
+<span class="token punctuation">&#125;</span></code>`,!0),i(x);var S=o(x,4);s(S,{src:`/images/extended_function_set.png`,width:`700`});var C=o(S,5);t(C,()=>`<code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ST7920_EXTENDED_MODE</span>   <span class="token expression"><span class="token number">0x34</span> </span><span class="token comment">// Extended instruction set (GRAM vs DRAM)</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">ST7920_GRAPHICS_MODE</span>   <span class="token expression"><span class="token number">0x36</span> </span><span class="token comment">// Graphics mode (actually enable GRAM for display)</span></span>
+
+<span class="token keyword">void</span> <span class="token function">clear_graphics</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> <span class="token number">64</span><span class="token punctuation">;</span> row<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">st7920_pos</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>row<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> col <span class="token operator">&lt;</span> <span class="token number">8</span><span class="token punctuation">;</span> col<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">st7920_data</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">st7920_data</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">st7920_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Figure 8-bit interface from ST7920 datasheet</span>
+  ST7920_SCLK <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Reset state</span>
+  ST7920_RST <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Force reset</span>
+  ST7920_CS <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>  <span class="token comment">// Defined state</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">40000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  ST7920_RST <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">40000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wait for more than 40ms after Vcc rises to 4.5V</span>
+  <span class="token function">st7920_command</span><span class="token punctuation">(</span>ST7920_EXTENDED_MODE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Extended mode to make GDRAM accessible</span>
+  <span class="token function">clear_graphics</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                     <span class="token comment">// Clear graphics RAM</span>
+  <span class="token function">st7920_command</span><span class="token punctuation">(</span>ST7920_GRAPHICS_MODE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Enable GRAM mapping</span>
+<span class="token punctuation">&#125;</span></code>`,!0),i(C);var w=o(C,4);t(w,()=>`<code class="language-c">  <span class="token function">st7920_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Running line demo</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> row <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> <span class="token number">64</span><span class="token punctuation">;</span> row<span class="token operator">+=</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> col <span class="token operator">&lt;</span> <span class="token number">8</span><span class="token punctuation">;</span> col<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">st7920_pos</span><span class="token punctuation">(</span>col<span class="token punctuation">,</span> row<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">st7920_data</span><span class="token punctuation">(</span><span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Draw dotted line</span>
+        <span class="token function">st7920_data</span><span class="token punctuation">(</span><span class="token number">0xFF</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Draw dotted line</span>
+        <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">50000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// Erase line again</span>
+        <span class="token function">st7920_pos</span><span class="token punctuation">(</span>col<span class="token punctuation">,</span> row<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">st7920_data</span><span class="token punctuation">(</span><span class="token number">0x0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">st7920_data</span><span class="token punctuation">(</span><span class="token number">0x0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span></code>`,!0),i(w);var T=o(w,2);s(T,{src:`/images/8051_lcd_line.png`,width:`300`});var E=o(T,5);s(E,{src:`/images/cindy_crawford_helmut_newton.jpg`,width:`500`});var D=o(E,5);s(D,{src:`/images/cindy_crawford_helmut_newton_bitmask.png`,width:`386`});var O=o(D,9);t(O,()=>`<code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"cindy.h"</span></span>
+
+<span class="token comment">// ...</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">st7920_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Cindy Crawford</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> row <span class="token operator">&lt;</span> <span class="token number">64</span><span class="token punctuation">;</span> row<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">st7920_pos</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> row<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> col <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> col <span class="token operator">&lt;</span> <span class="token number">8</span><span class="token punctuation">;</span> col<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">st7920_data</span><span class="token punctuation">(</span>cindy_crawford_helmut_newton_bitmask<span class="token punctuation">[</span>row <span class="token operator">*</span> <span class="token number">16</span> <span class="token operator">+</span> col <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">st7920_data</span><span class="token punctuation">(</span>cindy_crawford_helmut_newton_bitmask<span class="token punctuation">[</span>row <span class="token operator">*</span> <span class="token number">16</span> <span class="token operator">+</span> col <span class="token operator">*</span> <span class="token number">2</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+
+
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code>`,!0),i(O);var k=o(O,4);s(k,{src:`/images/cindy_crawford_helmut_newton_lcd.png`,width:`300`}),a(3),n(r,l)}export{b as default,l as metadata};

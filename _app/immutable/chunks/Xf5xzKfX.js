@@ -1,0 +1,59 @@
+import{$ as e,M as t,P as n,pt as r,tt as i}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";import{t as a}from"./DPw4rzvf.js";import"./BrJmRK04.js";import"./WppY4ym1.js";import"./BIw1C4rS.js";import"./DPsrAEoc.js";var o={title:`IoT Contest: Hardware Design`,date:`2023-06-06`,updated:`2025-10-04`,categories:[`covid-19`,`coding`,`embedded`,`karate`],coverImage:`/images/production_pcb.png`,coverWidth:960,coverHeight:959,excerpt:`PCB Design Considerations.`},{title:s,date:c,updated:l,categories:u,coverImage:d,coverWidth:f,coverHeight:p,excerpt:m}=o,h=n(`<ul><li><a href="2023.04.30">See Part 1 for the Contest Overview</a></li> <li><a href="2023.06.16">See Part 3 for the Final Submission</a></li></ul> <p>As always you find the design files on my <a href="https://github.com/treideme/reaction-trainer-hw" rel="nofollow">GitHub</a>.</p> <p>Designing a sensor that meets the specific requirements of a particular application involves overcoming several
+hardware challenges. From creating a Printed Circuit Board (PCB) using Computer-Aided Engineering (CAE) software to
+carefully selecting the right components, every step in the design process is crucial. Additionally, designing for
+manufacturing adds another layer of complexity. In this blog post, we will delve into the intricacies of tackling these
+hardware challenges, exploring the essential considerations and techniques involved in crafting a successful sensor
+design.</p> <p>The design of the sensor encompasses several key components, each playing a crucial role in its functionality and
+performance. These components include the microcontroller, power management system, visual feedback module, proximity
+sensing unit, and RF frontend. Ensuring the seamless integration of these components within a suitable enclosure presents
+a significant challenge. Considering that mechanical lead times often pose a bottleneck in the design process, a signal
+light was chosen as the ideal enclosure. In the subsequent paragraphs, we will delve into each of these sections
+individually, exploring their intricate details and considerations.</p> <!> <h1 id="the-microcontroller"><a aria-hidden="true" tabindex="-1" href="#the-microcontroller"><span class="icon icon-link"></span></a>The Microcontroller</h1> <p>As a participant in the contest, I have made a deliberate choice to utilize the CH32V208W platform for my project. This
+platform features a <a href="https://www.wch-ic.com/products/CH32V208.html" rel="nofollow">32-bit RISCV</a> controller renowned for its affordability and versatility, offering a rich selection of
+peripheral interfaces to cater to a wide range of requirements. Specifically tailored for this contest, the essential
+peripherals I will be utilizing include an on-chip RF peripheral with a <a href="https://github.com/openwch/ch32v20x/tree/main/EVT/EXAM/BLE/LIB" rel="nofollow">proprietary library</a>, enabling seamless integration
+of the Bluetooth Low Energy interface. Additionally, an I2C interface will be employed to connect an accelerometer, an
+ADC will facilitate power sensing, a USB connection will allow for factory flash and firmware upgrades, and additional
+pins will be allocated for driving high-power LEDs, providing comprehensive visual feedback. By leveraging the
+capabilities of the CH32V208W platform and carefully selecting the necessary peripherals, I aim to create an
+efficient and effective solution for this contest.</p> <!> <p>The presented diagram illustrates the essential circuitry encompassing the microcontroller. In the case of this
+particular chip, the requirements are relatively straightforward, consisting of a few stabilizing capacitors and
+external oscillators to ensure precise timing for both the USB and RF front end. While the chip does feature internal
+oscillators that could potentially enable autonomous operation, it remains imperative to incorporate at least one
+high-speed external oscillator to guarantee accurate timing for USB and RF functionalities. Although the inclusion of
+a 32768Hz oscillator is optional, I opted to adhere to the development kit specifications in order to mitigate any
+potential design risks. Once the debug interface is enabled via the <a href="https://www.wch-ic.com/downloads/WCHISPTool_Setup_exe.html" rel="nofollow">WCH ISP tool</a>, the debug connector no longer
+necessitates a reset line. The bootloader is activated by bridging BOOT0 to VCC or closing J2. It is worth noting
+that the chip is conveniently available in a <a href="https://www.lcsc.com/product-detail/C5187528.html" rel="nofollow">QFN-68 package from LCSC</a>. However, due to the challenging nature of
+hand soldering, I have decided to enlist the services of <a href="https://jlcpcb.com/" rel="nofollow">JLC-PCB to handle the entire assembly process</a>, ensuring
+optimal results and reliability.</p> <p>One issue that was not documented was the inclusion of the VINT capacitor for the internal regulator. The development
+kit at a 1uF capacitor. Since I am cheap and want to save on feeder setup fees, I added a 10uF capacitor instead to
+share volume across other parts of the design. Fingers crossed, this will work.</p> <h1 id="the-rf-frontend-for-bluetooth-low-energy"><a aria-hidden="true" tabindex="-1" href="#the-rf-frontend-for-bluetooth-low-energy"><span class="icon icon-link"></span></a>The RF Frontend for Bluetooth Low Energy</h1> <p>The above schematic shows antenna design and guestimated antenna matching. <a href="https://www.wch.cn/" rel="nofollow">Nanjing Qinheng Microelectronics (WCH)</a> provides guidance in Chinese on how to lay out an inverted F-antenna. I found a well-maintained library for several
+WCH footprints, including the antennas from <a href="https://github.com/sad-electronics" rel="nofollow">Sad Electronics</a>. I <a href="https://github.com/treideme/wch-kicad-lbr" rel="nofollow">forked it</a> to add schematic symbols for the CH32V208 and
+adapt the antenna footprints for existing Kicad schematic antenna symbols. Expect a merge request, once the design works. <a href="https://www.infineon.com/assets/row/public/documents/cross-divisions/42/infineon-an91445-antenna-design-and-rf-layout-guidelines-applicationnotes-en.pdf?fileId=8ac78c8c7cdc391c017d073e054f6227" rel="nofollow">Infineon has a good application note</a> on the design theory behind it. Putting the footprint in place is less than half
+the battle for RF design. The bigger challenge is calibrating the layout to the environment, as minuscule changes in
+the PCB dielectric or ground plane will throw the reference design out of calibration. <a href="https://www.ti.com/lit/an/swra726/swra726.pdf" rel="nofollow">Texas Instruments has a good application note</a> for this. Because the
+ground plane next to the IFA section is critical I used this plugin to generate <a href="https://github.com/weirdgyn/viastitching" rel="nofollow">strips of vias</a> in the plane.</p> <h1 id="the-usb-interface"><a aria-hidden="true" tabindex="-1" href="#the-usb-interface"><span class="icon icon-link"></span></a>The USB Interface</h1> <!> <p>The USB interface is fairly straightforward. Since I do not require high-speed USB, I did not route the USB interface
+explicitly as <a href="https://www.pcbway.com/blog/PCB_Design_Tutorial/KiCad____How_to_make_differential_pair_traces.html" rel="nofollow">differential pair</a> and eyeballed it instead. Make sure you have ample ground-planes and around the trace
+pairs. This should be ok. To protect against accidental electronic discharge, I put a TVS array right behind the
+USB connector.</p> <h1 id="power"><a aria-hidden="true" tabindex="-1" href="#power"><span class="icon icon-link"></span></a>Power</h1> <!> <p>The power design for the sensor follows a relatively straightforward approach. To enable independent operation, a
+lithium polymer battery has been selected as the power source. Whenever the sensor is externally connected via USB,
+the battery is charged, and it directly supplies power to the high-power LEDs. Furthermore, the battery voltage is
+stepped down to 3.3V, which powers the microcontroller and other peripherals. It is important to note that this voltage
+dropout may not be ideal, considering that lithium batteries can discharge as low as 3.0V. However, this design decision
+was made to maintain consistency with the development kit and minimize deviations. In a future sensor revision, a
+significant reworking of this aspect is expected. To minimize battery discharge when the microcontroller is in low-power
+standby mode, an LDO (Low Dropout) regulator with a minimal quiescent current was carefully chosen, ensuring efficient
+power management.</p> <h1 id="visual-feedback"><a aria-hidden="true" tabindex="-1" href="#visual-feedback"><span class="icon icon-link"></span></a>Visual Feedback</h1> <!> <p>For visual feedback to the user, a pair of high-power LED arrays was chosen. Since the microcontroller does not have the
+drive strength to drive the LEDs directly, the output is buffered using a <a href="https://datasheet.lcsc.com/lcsc/1809200014_Nexperia-74HC573PW-118_C5944.pdf" rel="nofollow">74573 logic buffer</a>. This is a classic design
+from lost Intel 8051 days when microcontroller pins were in short supply, the logic latch can be enabled and disabled,
+freeing up the pins for other purposes. The 74HC logic levels permit a 3.3V logic input on one side and can drive higher
+voltages on the other side, making this a low-cost logic-level translator at the same time.</p> <h1 id="motion-sensing"><a aria-hidden="true" tabindex="-1" href="#motion-sensing"><span class="icon icon-link"></span></a>Motion Sensing</h1> <!> <p>Motion sensing is performed by an <a href="https://www.st.com/en/mems-and-sensors/lis3dh.html" rel="nofollow">accelerometer from ST</a>. The choice
+was essential fell on what is in stock and low-cost
+at LCSC. So I found this ST accelerometer that can interrupt the microcontroller when a certain acceleration (i.e. shock,
+smack…) is reached and provide haptic feedback to the user that a leg of their exercise routine has been completed.</p> <h1 id="enclosure"><a aria-hidden="true" tabindex="-1" href="#enclosure"><span class="icon icon-link"></span></a>Enclosure</h1> <!> <p>Since I did not have the time to design a fully-fledged enclosure the PCB was designed to fit a signal light. The <a href="https://www.alibaba.com/product-detail/N-3071-AC-DC-type-Red_62070396542.html" rel="nofollow">N-3071 line</a> of signal lights
+provides a low-cost platform for the enclosure, even considering that you discard the
+original circuit. I tried to source lights that have a clear acrylic cover but could not source them in time.</p> <h1 id="conclusion"><a aria-hidden="true" tabindex="-1" href="#conclusion"><span class="icon icon-link"></span></a>Conclusion</h1> <p>This concludes the system overview of the electrical design of the sensor. I initially planned to include proximity
+sensing via an infrared distance sensor as well as audible feedback from an I2S amplifier and a speaker too, but I
+did not have enough space to route that out inside the chosen enclosure. In the next revision, these features may be
+added. The upcoming article will outline the software stack using RT-Thread.</p>`,1);function g(n){var o=h(),s=i(e(o),8);a(s,{src:`/images/system_overview.png`,alt:`High Level Schematic`,width:`700`});var c=i(s,6);a(c,{src:`/images/reaction_mcu.png`,alt:`CH32V208W Pinout`,width:`700`});var l=i(c,12);a(l,{src:`/images/usb_interface.png`,alt:`USB Interface`,width:`700`});var u=i(l,6);a(u,{src:`/images/power.png`,alt:`Power Design`,width:`700`});var d=i(u,6);a(d,{src:`/images/led_interfacing.png`,alt:`Visual Interfacing`,width:`700`});var f=i(d,6);a(f,{src:`/images/motion.png`,alt:`Accelerometer Interface`,width:`700`});var p=i(f,6);a(p,{src:`/images/enclosure.jpg`,alt:`Enclosure`,width:`700`}),r(6),t(n,o)}export{g as default,o as metadata};

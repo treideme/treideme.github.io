@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/js/tuicss.min.js"></script>
+		<link href="../_app/immutable/entry/start.BLr9_bnc.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/AdeW3F8v.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C5Qr1tWr.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dt-HX3Vu.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.CjXFn_g_.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/uBIymjUX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.Dko8UQj9.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DRByVC-c.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsF7k-Jl.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/UrVpzM6D.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/e3uk7f1g.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BJ6dgZOD.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BtpA1xRJ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/D7rxoVVC.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BcR_fFiR.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C_WrjxST.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CGfmOE7W.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/U4Q-MCo3.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dy-Kn_BL.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/lpi2-tgm.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/3EzQhW0a.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DMTIwejG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsIc3RVK.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/fybaL0A-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BifhSqXX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/g4Mvzxsx.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DS17s2tU.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/B-DAUW-u.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CX68_OgI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DSJ1rPnI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/tZp6t9zN.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DuWRkWPg.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.DgZdZZPn.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DeSqgjHc.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="alternate" type="application/rss+xml" title="Thomas Reidemeister" href="http://reidemeister.com/api/rss.xml"/> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EHW6Z8HZ08"></script><!----><!--s11s7s--><meta data-key="description" name="description" content="HD44780 LCD Controller interfacing."/> <meta property="og:type" content="article"/> <meta property="og:title" content="MCS-51 Real-World interfacing - Character LCDs"/> <meta name="twitter:title" content="MCS-51 Real-World interfacing - Character LCDs"/> <meta property="og:description" content="HD44780 LCD Controller interfacing."/> <meta name="twitter:description" content="HD44780 LCD Controller interfacing."/> <meta property="og:image:width" content="533"/> <meta property="og:image:height" content="400"/><!----><title>MCS-51 Real-World interfacing - Character LCDs</title>
+		<link href="../_app/immutable/assets/0.1Ga5dCEE.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogQuote.8TWGGipd.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogTable.K5KlPf1M.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/YoutubePlayer.DRLVl_9I.css" rel="stylesheet">
+		<!-- You can add global <meta> tags here, but anything not global or dynamic should be a `<svelte:head>` tag on the proper page(s) instead. -->
+	</head>
+	<body class="tui-bg-blue-black">
+		<div id="svelte"><!--[--><!--[0--><!--[--><div class="layout"><header><nav class="tui-nav"><a href="/" class="tui-panel cyan-168 full-width black-255-text tui-no-shadow center"><b style="font-size: 2.0em;">Thomas Reidemeister</b></a> <span class="tui-datetime" data-format="d/M/1993 h:m:s a"></span> <ul><li class="tui-sidenav-button"><a href="/">Home</a></li> <!--[--><!--[0--><li class="tui-dropdown"><a href="/blog">Blog</a> <!--[-1--><!--]--></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/about"><!---->About<!----></a></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/tools"><!---->Tools<!----></a></li><!--]--><!--]--></ul><!----></nav></header><!----> <!----><main id="main" tabindex="-1"><!--[--><article class="tui-window"><div class="tui-window-titlebar"><span class="tui-window-titlebar-rule-corner"></span> <button class="tui-fieldset-button left" style="margin-top: 0px"><span class="green-255-text">■</span></button> <span class="tui-window-titlebar-rule"></span> <span class="tui-window-titlebar-text">MCS-51 Real-World interfacing - Character LCDs</span> <span class="tui-window-titlebar-rule"></span> <button class="tui-fieldset-button right" style="margin-top: 0px"><span class="green-255-text">↑</span></button> <span class="tui-window-titlebar-rule-corner"></span></div> <fieldset class="tui-fieldset" style="margin-top: 0px"><div class="white-168-text" style="overflow: auto;"><img class="cover-image tui-shadow" src="/images/sharp-PC-1500A.jpg" alt="" style="aspect-ratio: 533 / 400;display: block; margin-left: auto; margin-right: auto;" width="533" height="400"/><br/><br/> <p>Continuing the classic embedded systems series, let’s look at another common display technology: character LCDs.
+In the late 1960s, segmented LCDs began to appear in control displays. The two major boosts were the development of the <a href="https://en.wikipedia.org/wiki/Twisted_nematic_field_effect" rel="nofollow">Twisted Nematic (TN) LCD</a> in 1970, and the invention of the <a href="https://en.wikipedia.org/wiki/Super-twisted_nematic_display" rel="nofollow">STN LCD</a> in 1984, which allowed for better contrast.</p> <p>Throughout the 1980s and 1990s, character LCDs became a staple in consumer electronics, from calculators to early portable computers. Many Gen Xers will remember devices like the <a href="https://en.wikipedia.org/wiki/Sharp_PC-1500" rel="nofollow">Sharp PC-1500A</a>, or some Xillenials, whose parents couldn’t afford a C64 or Commodore Amiga, and ended up with a <a href="https://en.wikipedia.org/wiki/VTech_PreComputer_1000" rel="nofollow">V-Tech PreComputer</a>.</p> <img class="tui-shadow white-168 black-255-text" src="/images/vitech-precomputer.jpg" style="width: 200px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----> <p>Transitioning from <a href="/blog/2025.11.15">7-segment displays</a> to character LCDs was a significant step up in terms of usability and information density. In the good old days, people learned BASIC on 16x2 or 20x4 character LCDs, which allowed for displaying not only numbers but also text, making them ideal for user interfaces in embedded systems. Even in the 2010s, I designed the first generation of <a href="https://www.acushot.ca/" rel="nofollow">needle-free injectors for veterinary applications</a> that used 16x2 character LCDs for user feedback and configuration.</p> <h1 id="hd44780-lcd-controller"><a aria-hidden="true" tabindex="-1" href="#hd44780-lcd-controller"><span class="icon icon-link"></span></a>HD44780 LCD Controller</h1> <p>Unlike the <a href="/blog/2025.11.15">7-segment display</a> or <a href="/blog/2025.11.01">LED matrix display</a>, character LCDs typically use a dedicated controller chip to manage the display. Nearly all character LCDs you find today are based on the <a href="https://en.wikipedia.org/wiki/Hitachi_HD44780" rel="nofollow">Hitachi HD44780</a> LCD controller standard, which was introduced in the early 1980s and now exists in numerous clones. The controller itself comes with a built-in character generator ROM that supports a standard set of characters, including alphanumeric characters and some special symbols. In the early days, there were three variants of the HD44780 controller:</p> <ul><li>Japanese Standard Font</li> <li>European Standard Font</li> <li>Custom Font</li></ul> <p>These days, most LCDs come with a full ASCII and Japanese Katakana character set. All characters of the fonts are mapped
+to 8x5 dot matrix patterns and are stored as such in the character generator ROM.</p> <img class="tui-shadow white-168 black-255-text" src="/images/hd44780-crom.png" style="width: 200px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>Now the HD44780 controller can operate in two modes: 8-bit mode and 4-bit mode. In 8-bit mode, all eight data lines (D0-D7)
+are used for data transfer, allowing for faster communication. In 4-bit mode, only the upper four data lines (D4-D7) are used,
+which reduces the number of required I/O pins on the microcontroller but requires two data transfers for each byte of data. This
+was originally designed to support 4-bit microcontrollers, but is still widely used today to save I/O pins. I
+uploaded the full <a href="/images/HD44780.pdf">datasheet for the HD44780 controller</a> for reference. A further simplification is
+to tie the <code>R/W</code> pin to ground, which makes the LCD write-only from the microcontroller’s perspective, as most operations
+are purely timeout-based and do not require reading back from the LCD if the timing is respected with an acceptable margin.</p> <img class="tui-shadow white-168 black-255-text" src="/images/hd44780-4-bit-interface.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----> <p>However, it turns out that despite only having an MCU with limited I/O pins, the HC6800-ES-V2.0 has the entire port <code>P0</code> wired up to the LCD data lines D0-D7. So we can use the 8-bit mode for simplicity. <code>RS</code>, <code>R/W</code>, and <code>E</code> are connected to <code>P2.6</code>, <code>P2.5</code>, and <code>P2.7</code>, respectively. <code>V0</code> is connected to a potentiometer for contrast adjustment.</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_lcd1602.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----> <p>Which matches the datasheet reference circuit quite well.</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_1602_8bit.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----> <h1 id="initializing-the-display"><a aria-hidden="true" tabindex="-1" href="#initializing-the-display"><span class="icon icon-link"></span></a>Initializing the Display</h1> <p>What we inherited from the kit is a 16x2 character LCD, which means it can display 16 characters per line and has 2 lines,
+and uses a 8x5 dot matrix for each character. To initialize the display, we need to send a series of commands to set it up
+for operation. The initialization sequence at minimum involves the following steps:</p> <ol><li>Wait for the display to come out of reset (usually a few milliseconds).</li> <li>Set the function set command to configure the display for 8-bit mode, 2-line display, and 5x8 dot character font.</li></ol> <p>Each command is  latched by setting the <code>RS</code> pin high. On the falling edge, the command is read from the data bus by
+the LCD controller.</p> <ul><li>The <code>RS</code> pin is set low for writes to the instruction register. It is set high for writes to the data register.</li> <li>The <code>R/W</code> pin is set low for write operations. It is set high for read operations.</li></ul> <p>With each command there is an expectation for maximum execution time. For most commands, this is around 37 microseconds, but for some commands like
+clearing the display or returning the cursor to the home position, it can take up to 1.52 milliseconds. To keep things simple, we can use fixed delays after each command to
+ensure the LCD has enough time to process them. Let’s start with the command and pin interface.</p> <pre class="language-c"><!----><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_E</span>  <span class="token expression">P2_7</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_RS</span> <span class="token expression">P2_6</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_RW</span> <span class="token expression">P2_5</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_DATA</span> <span class="token expression">P0</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_FUNC_SET</span>        <span class="token expression"><span class="token number">0x30</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_DISP_CLEAR</span>      <span class="token expression"><span class="token number">0x01</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_DISP_OFF</span>        <span class="token expression"><span class="token number">0x08</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_DISP_ON</span>         <span class="token expression"><span class="token number">0x0C</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_CURSOR_ON</span>       <span class="token expression"><span class="token number">0x0E</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_CURSOR_OFF</span>      <span class="token expression"><span class="token number">0x0C</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_CURSOR_BLINK</span>    <span class="token expression"><span class="token number">0x0F</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_RETURN_HOME</span>     <span class="token expression"><span class="token number">0x02</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_ENTRY_MODE</span>      <span class="token expression"><span class="token number">0x06</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_2_ROWS</span>          <span class="token expression"><span class="token number">0x08</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_POSITION</span>        <span class="token expression"><span class="token number">0x80</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_ROW2_START</span>      <span class="token expression"><span class="token number">0x40</span></span></span></code><!----></pre> <p>Now we need to create some helper functions to send commands to the LCD.</p> <pre class="language-c"><!----><code class="language-c"><span class="token keyword">void</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token class-name">uint16_t</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>t<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token comment">// Simple delay loop (more than 1us at 12MHz)</span>
+    <span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">hd44780_byte</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> d<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  HD44780_E <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  HD44780_DATA <span class="token operator">=</span> d<span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Enable pulse width</span>
+  HD44780_E <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Data hold time</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">hd44780_command</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> cmd<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  HD44780_RS <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Command mode</span>
+  HD44780_RW <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// Write mode</span>
+  <span class="token function">hd44780_byte</span><span class="token punctuation">(</span>cmd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wait for command to process</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p>Following <a href="/images/HD44780.pdf">Figure 23 from the HD44780 datasheet</a>, we can implement the 8-bit initialization
+sequence as follows:</p> <pre class="language-c"><!----><code class="language-c"><span class="token keyword">void</span> <span class="token function">hd44780_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Figure 23 from HD44780 datasheet</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">15000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wait for more than 15ms after Vcc rises to 4.5V</span>
+
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_FUNC_SET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wait for more than 4.1ms</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_FUNC_SET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wait for more than 1ms</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_FUNC_SET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wait for more than 100us</span>
+
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_FUNC_SET <span class="token operator">|</span> HD44780_2_ROWS<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_DISP_OFF<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_DISP_CLEAR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_ENTRY_MODE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p>With the row offset on the second row starting at address <code>0x40</code>, we can now turn this into a simple hello world program.</p> <pre class="language-c"><!----><code class="language-c"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">hd44780_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_DISP_ON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_text</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span><span class="token punctuation">(</span>HD44780_POSITION <span class="token operator">|</span> HD44780_ROW2_START<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_text</span><span class="token punctuation">(</span><span class="token string">"From 8051!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p>The result looks as follows.</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_lcd_example.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>The full code can be found on <a href="https://github.com/treideme/stc89c52-demos/tree/main/03_hd44780_lcd" rel="nofollow">GitHub</a>.</p> <h1 id="custom-characters"><a aria-hidden="true" tabindex="-1" href="#custom-characters"><span class="icon icon-link"></span></a>Custom Characters</h1> <p>Looking closely at the character set, you will see that there are 8 repeating unused character slots in the beginning
+column. The HD44780 controller allows us to define up to 8 custom characters by writing to the Character Generator RAM
+(CGRAM).</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_hd44780_keymap.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----> <p>This is mapped to addresses <code>0x40</code> to <code>0x7F</code>. Each row in the character generator rom is one row of the 5x8 dot matrix.
+So you can simply bitmask 8 bytes per character to define your own patterns. There are even <a href="https://maxpromer.github.io/LCD-Character-Creator/" rel="nofollow">online generators that help you</a> for arduino that can be pasted in
+here. Let’s try a heart shape.</p> <pre class="language-c"><!----><code class="language-c"><span class="token keyword">const</span> <span class="token class-name">uint8_t</span> custom_char_heart<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token number">0</span>b00000<span class="token punctuation">,</span>
+  <span class="token number">0</span>b01010<span class="token punctuation">,</span>
+  <span class="token number">0</span>b11111<span class="token punctuation">,</span>
+  <span class="token number">0</span>b11111<span class="token punctuation">,</span>
+  <span class="token number">0</span>b11111<span class="token punctuation">,</span>
+  <span class="token number">0</span>b01110<span class="token punctuation">,</span>
+  <span class="token number">0</span>b00100<span class="token punctuation">,</span>
+  <span class="token number">0</span>b00000
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code><!----></pre> <p>Now we need to add the custom character to the CGRAM. We can do this by sending the appropriate command to set the CGRAM address,</p> <pre class="language-c"><!----><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_CGRAM_ADDR</span>      <span class="token expression"><span class="token number">0x40</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">HD44780_DRAM_ADDR</span>       <span class="token expression"><span class="token number">0x80</span></span></span>
+
+<span class="token keyword">void</span> <span class="token function">hd44780_custom_char</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> location<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token class-name">uint8_t</span><span class="token operator">*</span> charmap<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  location <span class="token operator">&amp;=</span> <span class="token number">0x7</span><span class="token punctuation">;</span> <span class="token comment">// We only have 8 locations 0-7</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_CGRAM_ADDR <span class="token operator">|</span> <span class="token punctuation">(</span>location <span class="token operator">&lt;&lt;</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// each location takes 8 bytes</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">uint8_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">8</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">hd44780_data</span><span class="token punctuation">(</span>charmap<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">// Return to DDRAM</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_DRAM_ADDR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">hd44780_custom_char</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> custom_char_heart<span class="token punctuation">)</span><span class="token punctuation">;</span></code><!----></pre> <p>Updating the main program to display the heart character:</p> <pre class="language-c"><!----><code class="language-c"><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token function">hd44780_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_custom_char</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> custom_char_heart<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span>HD44780_DISP_ON<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_text</span><span class="token punctuation">(</span><span class="token string">"Hello, World!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_command</span><span class="token punctuation">(</span><span class="token punctuation">(</span>HD44780_POSITION <span class="token operator">|</span> HD44780_ROW2_START<span class="token punctuation">)</span> <span class="token operator">|</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_data</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Custom heart character</span>
+  <span class="token function">hd44780_text</span><span class="token punctuation">(</span><span class="token string">"From 8051!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">hd44780_data</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Custom heart character</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p>The end result looks as follows.</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_lcd_custom.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <h1 id="summary"><a aria-hidden="true" tabindex="-1" href="#summary"><span class="icon icon-link"></span></a>Summary</h1> <p>Character LCDs based on the HD44780 controller are a staple in embedded systems, providing a simple and effective way
+to display text and custom characters. The internal controller RAM is set up in a way that it takes in ASCII characters
+directly. There is also the ability to define custom characters, which can be useful for creating simple graphics or symbols.</p> <p>What I am missing on the dev kit is backlight control. This is hardwired on the dev kit. In a real-world application, you
+would typically want to control the backlight. Either via a dedicated pin or using PWM for brightness control. This can
+be a useful tool to save power or even from a UI perspective signal flashing error conditions.</p> <p>As opposed to the 7-segment display, character LCDs are more versatile and can display a wider range of information.
+However, they come at the cost of reduced contrast and viewing angles compared to LED-based displays. It is a good
+compromise for many applications that operate indoors under constant lighting conditions. For outdoor or high-contrast applications,
+you might want to consider OLED, e-ink displays instead, or classical <a href="/blog/2025.11.15">7-segment displays</a> for numeric-only applications.</p><!----> <div class="tui-divider"></div> <br/><b>Published:</b> 2025-11-17 <br/> <b>Updated  :</b> 2025-11-17 <!--[0--><aside class="post-footer"><ul class="post-footer__categories"><!--[--><li class="no-bullet"><a href="/blog/category/coding/" class="tui-button white-168">coding</a></li><li class="no-bullet"><a href="/blog/category/embedded/" class="tui-button white-168">embedded</a></li><li class="no-bullet"><a href="/blog/category/8051/" class="tui-button white-168">8051</a></li><!--]--></ul></aside><!--]--> <br/> Not a spam bot? Want to leave comments or provide editorial guidance? Please click any
+			of the social links below and make an effort to connect. I promise I read all messages and
+			will respond at my choosing. <div class="post-pagination"><!--[0--><a href="/blog/2025.11.18" class="tui-button white-168 prev-link">← MCS-51 Real-World Interfacing - Dot-Matrix LCDs</a><!--]--> <!--[0--><a href="/blog/2025.11.15" class="tui-button white-168 next-link">MCS-51 Real-World interfacing - 7 Segment Displays →</a><!--]--></div></div></fieldset></article><!--]--><!----></main><!----> <div class="tui-statusbar"><ul><li><a href="/api/rss.xml" data-sveltekit-reload="" target="_blank">RSS</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://x.com/treideme1" data-sveltekit-reload="" target="_blank">𝕏</a></li> <span class="tui-statusbar-divider"></span> <li><a href="http://github.com/treideme" data-sveltekit-reload="" target="_blank">GitHub</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.linkedin.com/in/thomasreidemeister" data-sveltekit-reload="" target="_blank">In</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.instagram.com/treideme/" data-sveltekit-reload="" target="_blank">📸</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://dblp.org/pid/93/7009.html" data-sveltekit-reload="" target="_blank">DPLB</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://patents.google.com/?inventor=Thomas+REIDEMEISTER" data-sveltekit-reload="" target="_blank"> 🔬 </a></li> <span class="tui-statusbar-divider"></span> <li style="float: right;"><a href="/terms">© 2026 Thomas Reidemeister</a></li></ul></div><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_ih7hdl = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BLr9_bnc.js"),
+						import("../_app/immutable/entry/app.CjXFn_g_.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

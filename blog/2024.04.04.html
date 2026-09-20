@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/js/tuicss.min.js"></script>
+		<link href="../_app/immutable/entry/start.BLr9_bnc.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/AdeW3F8v.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C5Qr1tWr.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dt-HX3Vu.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.CjXFn_g_.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/uBIymjUX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.Dko8UQj9.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DRByVC-c.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsF7k-Jl.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/UrVpzM6D.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/e3uk7f1g.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BJ6dgZOD.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BtpA1xRJ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/D7rxoVVC.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BcR_fFiR.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C_WrjxST.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CGfmOE7W.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/U4Q-MCo3.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dy-Kn_BL.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/lpi2-tgm.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/3EzQhW0a.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DMTIwejG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsIc3RVK.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/fybaL0A-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BifhSqXX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/g4Mvzxsx.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DS17s2tU.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/B-DAUW-u.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CX68_OgI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DSJ1rPnI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/tZp6t9zN.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DuWRkWPg.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.DgZdZZPn.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DeSqgjHc.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="alternate" type="application/rss+xml" title="Thomas Reidemeister" href="http://reidemeister.com/api/rss.xml"/> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EHW6Z8HZ08"></script><!----><!--s11s7s--><meta data-key="description" name="description" content="My Goju Ryu Shodan Essay."/> <meta property="og:type" content="article"/> <meta property="og:title" content="The Road to Shodan"/> <meta name="twitter:title" content="The Road to Shodan"/> <meta property="og:description" content="My Goju Ryu Shodan Essay."/> <meta name="twitter:description" content="My Goju Ryu Shodan Essay."/> <meta property="og:image:width" content="428"/> <meta property="og:image:height" content="321"/><!----><title>The Road to Shodan</title>
+		<link href="../_app/immutable/assets/0.1Ga5dCEE.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogQuote.8TWGGipd.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogTable.K5KlPf1M.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/YoutubePlayer.DRLVl_9I.css" rel="stylesheet">
+		<!-- You can add global <meta> tags here, but anything not global or dynamic should be a `<svelte:head>` tag on the proper page(s) instead. -->
+	</head>
+	<body class="tui-bg-blue-black">
+		<div id="svelte"><!--[--><!--[0--><!--[--><div class="layout"><header><nav class="tui-nav"><a href="/" class="tui-panel cyan-168 full-width black-255-text tui-no-shadow center"><b style="font-size: 2.0em;">Thomas Reidemeister</b></a> <span class="tui-datetime" data-format="d/M/1993 h:m:s a"></span> <ul><li class="tui-sidenav-button"><a href="/">Home</a></li> <!--[--><!--[0--><li class="tui-dropdown"><a href="/blog">Blog</a> <!--[-1--><!--]--></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/about"><!---->About<!----></a></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/tools"><!---->Tools<!----></a></li><!--]--><!--]--></ul><!----></nav></header><!----> <!----><main id="main" tabindex="-1"><!--[--><article class="tui-window"><div class="tui-window-titlebar"><span class="tui-window-titlebar-rule-corner"></span> <button class="tui-fieldset-button left" style="margin-top: 0px"><span class="green-255-text">■</span></button> <span class="tui-window-titlebar-rule"></span> <span class="tui-window-titlebar-text">The Road to Shodan</span> <span class="tui-window-titlebar-rule"></span> <button class="tui-fieldset-button right" style="margin-top: 0px"><span class="green-255-text">↑</span></button> <span class="tui-window-titlebar-rule-corner"></span></div> <fieldset class="tui-fieldset" style="margin-top: 0px"><div class="white-168-text" style="overflow: auto;"><img class="cover-image tui-shadow" src="/images/April_03_2011.jpg" alt="" style="aspect-ratio: 428 / 321;display: block; margin-left: auto; margin-right: auto;" width="428" height="321"/><br/><br/> <p><strong>This is my Shodan essay for Goju Ryu Karate, written in April 2024, shortly before my Shodan test.</strong></p> <div class="blogquote-center svelte-xxg3ag"><div class="tui-window purple-168 white-255-text center"><fieldset class="tui-fieldset no-legend tui-border-solid"><!---->”Pressure makes diamonds. Do you want to be a diamond?”<br/> - Christopher Voss<!----></fieldset></div></div><!----> <h1 id="1-introduction"><a aria-hidden="true" tabindex="-1" href="#1-introduction"><span class="icon icon-link"></span></a>1. Introduction</h1> <p>The journey to Shodan in Goju Ryu Karate is a multifaceted experience, rich in lessons, challenges,
+and transformative growth. It is a path that extends far beyond the physical mastery of
+martial arts techniques, delving into personal development, philosophical understanding, and
+community engagement. As I reflect on this journey, I recognize that it encompasses not only
+the evolution of my skills in the dojo but also the shaping of my character and life philosophy.
+If I were to begin this journey again to this point now, I would have a different perspective, a
+deeper appreciation for the complexities and nuances of the martial arts path and proceeded on
+a more dedicated and mindful trajectory.</p> <h1 id="2-my-story-so-far"><a aria-hidden="true" tabindex="-1" href="#2-my-story-so-far"><span class="icon icon-link"></span></a>2. My Story So Far</h1> <p>My journey with martial arts has been a winding path, marked by early encounters and a rediscovery in adulthood.
+As a teenager, martial arts brushed my life through family and friends: my best friend practiced <a href="https://marzipanbujinkan.blogspot.com/" rel="nofollow">Ninjutsu</a>,
+my aunt was dedicated to <a href="https://www.ohtsuka-radebeul.de/" rel="nofollow">Wado Ryu Karate practitioner</a>, and my dad had a stint in Judo.
+Even after moving from Germany to Canada, my casual tryst with a boxing bag for cardio hinted at a latent interest,
+yet it never truly captivated me.</p> <h2 id="21-the-early-encounters"><a aria-hidden="true" tabindex="-1" href="#21-the-early-encounters"><span class="icon icon-link"></span></a>2.1 The Early Encounters</h2> <p>It was not until grad school, at the age of 27 in 2009, that the martial arts world truly resonated
+with me. Inspired by the martial arts movies, I sought a fitness practice that offered more than
+physical exertion and more purposeful engagement than monotonic gym routines. I was searching for purpose, guidance,
+and a sense of community. My search ended at the University of <a href="http://www.uwkarate.ca/" rel="nofollow">Waterloo’s Karate Club</a>, see below, where I
+found all three. Despite the on-and-off training dictated by my scholarship in grad school that required me to spend
+one term with the industry partner each year, the journey was enriching, filled with seminars, community engagements, and
+a slow but steady progress to a blue belt by 2012.</p> <img class="tui-shadow white-168 black-255-text" src="/images/April_03_2011.jpg" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Karate Club at University of Waterloo, April 2011"/><!----> <h2 id="22-the-hiatus"><a aria-hidden="true" tabindex="-1" href="#22-the-hiatus"><span class="icon icon-link"></span></a>2.2 The Hiatus</h2> <p>However, as life unfolded with its myriad responsibilities - graduation, marriage, starting a family, and
+entrepreneurship - the rigor of martial arts training slid to the background. At the same time the departure of my
+esteemed teacher furthered the disconnect, underscoring the irreplaceable value of excellent martial arts mentors.
+So for about 10 years after my blue belt, martial arts remained a dormant passion, a chapter that seemed closed forever.</p> <h2 id="23-the-reboot"><a aria-hidden="true" tabindex="-1" href="#23-the-reboot"><span class="icon icon-link"></span></a>2.3 The Reboot</h2> <p>The turning point came during the COVID-19 pandemic. When the first lockdowns were announced in early 2020, I
+got a <a href="2022.05.28">heavy boxing bag again and a set of crash mats</a>, revisited old martial arts training videos, and
+followed online tutorials hosted by <a href="https://www.youtube.com/channel/UCHO1XcwkJmTS0Hb1NkBks9A" rel="nofollow">Taekwondo</a> (and <a href="https://www.youtube.com/@AlexWongTKD" rel="nofollow">here</a>), <a href="https://www.youtube.com/@GojuRyuKarateCentre" rel="nofollow">Karate</a>, <a href="https://www.youtube.com/channel/UC70qwffU7qQvTVm26wziD8A" rel="nofollow">Judo</a>,
+and <a href="https://www.youtube.com/channel/UCTbfN2g-U7Fmxykmn7Tf4bw" rel="nofollow">Wushu</a> practitioners.</p> <p>Starting martial arts training again as an older untrained person was really tough. Returning
+at nearly age 40, I faced a starkly different physical reality: almost 17 kg heavier, less flexible,
+and markedly less agile. What I had going for me was will power and in an odd way the time to
+dedicate myself to the art again in my garage as the world came to a halt during the lockdowns.
+Similarly, I feel that dedicated practitioners that were robbed off their Dojo time during the
+lockdowns and sought to hosting virtual seminars as an escape to keep their art going. When
+the lockdowns were lifted and my former university club hosted trial sessions, I decided to give
+it a shot again. My goal was simple: If I make it through the trial sessions, I will stick with
+through the term and see how it goes. I had two months to restart my training before hitting age
+40, and I did. Not only did I survive, but I advanced through the ranks, regained lost technique,
+and slowly embraced the new, yet slower, learning curve. Capacity limits and sporadic further
+lockdowns made it hard to attend in-person classes after the initial contact.</p> <p>Aside from the head instructor at the club there is a remarkable age difference between me and
+the other students. A lot of members that where lower belts (see banner picture) when I left the club in
+2012 had become black belts and had long tenures as instructors at this club or began teaching in
+other clubs or capacities. Aside from witnessing their journey, it was awe-inspiring how much
+energy and dedication every one put in to keep classes going and the club alive through such
+difficult times during the pandemic. If it were not for these challenging circumstances and their
+inspiration, I would likely have never found my way back to the dojo.</p> <p>As the Shodan grading looms just two weeks away, my martial arts journey reflects a tapestry
+of life’s lessons, embodied in the art of Karate. I hope I can be a worthy recipient of the black
+belt, a testament to the resilience and perseverance that others progressed through in this club.</p> <h1 id="3-an-new-path"><a aria-hidden="true" tabindex="-1" href="#3-an-new-path"><span class="icon icon-link"></span></a>3 An New Path</h1> <p>If I were to begin my martial arts journey again, knowing what I know now, I would approach
+it with a different mindset and focus. There are aspects that I would change or emphasize more,
+based on the lessons learned and experiences gained over the years. Here are some key elements
+that would shape my new path to Shodan if I were to start now.</p> <p>In the coming sections of this essay, I will explore the transformative journey of my martial
+arts training, from initial motivations to current aspirations. Initially, my goal was simple: to
+find a better form of exercise. I focused on building physical strength and learning self-defense,
+without much thought for the deeper aspects of the martial arts. Surprisingly, I found myself
+part of a community that I had not actively sought but came to value immensely.
+Over time, my approach and understanding evolved. I moved from hesitancy around sparring
+to embracing it as a crucial learning experience, recognizing that martial arts are not just about
+physical skills but also about testing them under pressure. I once imagined a straightforward path
+to achieving my black belt, but I have come to appreciate the journey’s unpredictable nature, full
+of challenges and personal growth.</p> <p>As I grew older, my physical capabilities changed, but I gained patience, resilience, and a
+deeper self-awareness. My life became busier, requiring me to develop skills in time management
+and prioritization. While I initially had no plans to teach or lead, I now feel a strong desire
+to give back to the community that has given so much to me.</p> <p>Looking ahead, I remain committed to personal growth, self-improvement, and lifelong learning in
+martial arts. The constants in my journey—showing up, putting in the work, embracing
+challenges, and valuing the support of mentors and peers—remain my guiding principles.
+These reflections set the stage for a deeper dive into each aspect of my journey, highlighting
+the lessons learned, the obstacles overcome, and the ongoing process of personal and martial
+development.</p> <h2 id="31-evolving-motivations-and-goals"><a aria-hidden="true" tabindex="-1" href="#31-evolving-motivations-and-goals"><span class="icon icon-link"></span></a>3.1 Evolving Motivations and Goals</h2> <p>When I first started my martial arts training, my main goal was pretty simple: I wanted a better
+way to exercise. I was not looking for any deep, life-changing experience; I just wanted to get
+fit and maybe learn some self-defense. I joined the Karate club without really thinking too much
+about what martial arts could mean beyond that. It was more about the physical workout than
+anything else.</p> <p>As time went on, though, something changed. I began to see martial arts in a different light.
+It was not just about getting stronger or being able to defend myself. I started to appreciate
+the deeper aspects of the practice—the art, the philosophy, and the rich history behind each
+movement and technique. Martial arts became more than just a workout routine; it turned into a
+journey of self-discovery and learning.</p> <p>Interestingly, I found a community almost by accident. I was not specifically looking for one,
+but as I spent more time in the dojo, training and interacting with others, I became part of a
+group that shared common interests and goals. This sense of belonging and shared purpose was
+something I had not anticipated but came to deeply value.</p> <p>Now, my motivation for practicing martial arts is very different from when I started. It’s not
+just about physical fitness or self-defense anymore. It’s about a deeper appreciation for the art
+itself, the life lessons it teaches, and the community it brings me to. Martial arts have become a
+meaningful part of my life, offering a sense of connection and understanding that goes beyond
+the physical aspects of training.</p> <h2 id="32-physical-challenges-and-limitations"><a aria-hidden="true" tabindex="-1" href="#32-physical-challenges-and-limitations"><span class="icon icon-link"></span></a>3.2 Physical Challenges and Limitations</h2> <p>When I resumed my martial arts training, the physical challenges were immediately apparent
+compared to my younger self. Being older and out of training, I found myself heavier and
+less agile than in my younger days. My stamina had diminished, and movements that once felt
+natural were now strenuous. This physical reality was a stark contrast to my earlier years when
+youth provided a natural advantage in flexibility and endurance.</p> <p>Yet, this physical transformation was only one part of the change. Mentally and emotionally,
+I experienced a significant shift. The initial frustration of not being able to perform as I once
+could turn into a lesson in patience and resilience.</p> <p>This also becomes visible when training with much younger students who are also participating in the same class.
+Research shows that VO2 max, a measure of the body’s ability to consume
+oxygen during exercise and a good marker for general fitness, decreases by about 1% per year
+after the age of 25 (see <a href="https://en.wikipedia.org/wiki/Outlive:_The_Science_and_Art_of_Longevity" rel="nofollow">Attia</a>). This means
+that older adults have to work harder to maintain
+their fitness levels and may struggle to keep up with younger individuals in high-intensity
+activities. The figure below illustrates this decline in VO2 max with age.</p> <img class="tui-shadow white-168 black-255-text" src="/images/vo2max_graph.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="VO2 max decline with age"/><!----> <p>For me, this meant that I had to play and experiment with various forms of cross-training to
+keep up with the demands of the martial arts training. I learned to value supportive training exercises like strength
+training, flexibility work (see <a href="https://sanghkim.com/books-sang-h-kim" rel="nofollow">Kim</a>), and cardiovascular conditioning to
+improve my physical abilities. I experimented with various forms of exercise, from self-directed
+weightlifting and running to group fitness classes. For resistance training I tried traditional martial arts
+conditioning exercises (see <a href="https://ymaa.com/publishing/book/art-hojo-undo-power-training-traditional-karate" rel="nofollow">Clarke</a> and <a href="https://canada.humankinetics.com/products/training-and-conditioning-for-judo" rel="nofollow">Broussal-Derval</a>) as well as standard
+free weight training. In self-directed training, I could not reach the required intensity to materially
+improve my stamina, regardless of approach. It was not until I finally started discovering functional
+high intensity training that added a competitive group aspect like <a href="https://f45training.com/" rel="nofollow">F45</a> that I saw
+material improvements in cardiovascular fitness.</p> <p>The other drawback one faces at higher age is the increased risk of injury and compared to
+younger peers longer recovery times. This is especially true for high-impact settings like Karate
+continuous sparring Kumite or Jiu-Jitsu randori. Prone to injuries are the knees, shoulders,
+lower back, fingers, as well as soft tissue injuries like sprains and strains. While sparing gear
+can help to mitigate some of the risks, it helps to further pad the joints and wear protective gear
+like knee braces or bracing pants. Further, I feel that Creatine supplementation has helped to
+improve my recovery times and reduce the risk of injury to ligaments and tendons (see <a href="https://doi.org/10.1249/JSR.0000000000000863" rel="nofollow">Hall et al.</a>).</p> <p>Overall, the process of returning to martial arts has been a transformative experience, reshaping
+not just my body but also my mind and spirit. It has taught me that personal growth is
+a continuous journey, one that requires not just physical effort but also mental and emotional
+commitment. If I were to start my martial arts journey again at my current age, I would have
+started with a more comprehensive strength and conditioning program to build a solid foundation
+and reduce the risk of injury. Then slowly build up the intensity of the training, Jiu-Jitsu and Kumite sparring.</p> <h2 id="33-33-changing-perspectives-on-kumite-and-sparring"><a aria-hidden="true" tabindex="-1" href="#33-33-changing-perspectives-on-kumite-and-sparring"><span class="icon icon-link"></span></a>3.3 3.3 Changing Perspectives on Kumite and Sparring</h2> <p>At the beginning of my martial arts journey, the idea of sparring, or Kumite, made me nervous.
+It felt intimidating to face an opponent in a match, even in a controlled environment like the
+dojo.</p> <p>My early view was that real martial arts were shown in competitions or idealized combat
+scenarios, and I was not sure, I was ready for that.</p> <p>Over time, my view on sparring changed dramatically. As I trained more and faced different
+opponents, I started to see sparring as a valuable learning tool, not just a test of strength or
+speed. It became clear that Kumite was about understanding timing, reading the opponent’s
+movements, and applying techniques in real time. It was a way to put everything I learned into
+practice and see what worked and what did not.</p> <p>Now, I actually look forward to sparring sessions. They are opportunities to learn and grow, to
+challenge myself and improve. Sparring has become a key part of my training, a way to explore
+and express martial arts in a dynamic, interactive setting. It’s no longer just about competition or
+proving myself; it’s about embracing the challenge, learning from each bout, and continuously
+refining my skills.</p> <p>This shift in perspective has made me appreciate martial arts even more. I understand now
+that true martial artistry is not just displayed in formal competitions but also in the daily grind
+of training and sparring, where the real learning happens. Through Kumite, I have not only
+improved my physical techniques but also developed mental resilience and strategic thinking.</p> <h2 id="34-balancing-responsibilities-and-training"><a aria-hidden="true" tabindex="-1" href="#34-balancing-responsibilities-and-training"><span class="icon icon-link"></span></a>3.4 Balancing Responsibilities and Training</h2> <p>David McFarlane (visiting pastor at <a href="https://www.creeksidechurch.ca/" rel="nofollow">Creekside Church</a>) made a great
+analogy about balancing responsibilities in life. As my martial arts journey progressed alongside my
+personal and professional life, I came to realize
+that balancing these aspects is much like juggling balls—some are rubber, able to bounce back
+if dropped, while others are glass, precious and fragile, demanding careful handling, that cannot
+come back if dropped.</p> <p>In my early days as a grad student, most of what I juggled felt like a small set of rubber balls.
+Training sessions, academic deadlines, and personal commitments seemed manageable and, if
+occasionally dropped, would not lead to long-lasting consequences. Martial arts training was a
+crucial part of my routine, yet it flexibly fit among other less critical activities.</p> <p>However, as I transitioned into more significant life roles—becoming a parent, a spouse, and
+an entrepreneur—the stakes changed. These new responsibilities were like glass balls, where the
+cost of dropping them was much higher. Family time, raising children, and managing business
+ventures required delicate balancing, highlighting the importance of what could and could not
+be compromised.</p> <p>This shift transformed how I approached martial arts training. It was no longer just about
+finding time; it was about integrating this passion into a life filled with glass balls. The discipline
+and focus I learned from martial arts became invaluable, helping me prioritize and manage my
+time more effectively.</p> <p>While I would have loved to treat training sessions as a sacred glass ball, a non-negotiable
+part of my life, in reality with so many moving parts, it is still a rubber ball, bouncing back when
+dropped but always ready to be picked up. It can be momentarily be set aside and must still
+be continuously nurtured and protected. In this complex juggling act, martial arts remained a
+constant, a grounding force that taught me resilience, focus, and the art of maintaining balance
+in a constantly shifting landscape.</p> <p>After my long hiatus from martial arts (see Section 2), I had to innovate on time management.
+With so many responsibilities I had to find timeslots that were not only available but also sustainable.
+This led me to embrace early morning training sessions, which not only helped me
+start the day with energy and focus but also ensured that I could fit in my training before the
+demands of the day took over see <a href="https://en.wikipedia.org/wiki/The_5am_Club" rel="nofollow">Sharma</a> for more details and inspiration.</p> <p>Further dropping the rubber ball of training also means that there has to be a plan to stick to it
+and pick it up again without any overhead. I began to closely monitor my progress, journal, and
+employ techniques from for habit formation see <a href="https://jamesclear.com/atomic-habits" rel="nofollow">Clear</a> for more techniques. My
+selection of tools includes journaling, combined with a daily goals worksheet and a weekly memento
+mori (Latin for ′ remember that you <code>[have to]</code> die′ ) calendar. Missed tracked habits should not
+span more than a day or two. By making this visual and tracking it, it becomes easier to pick
+up rubber balls again in the daily juggling act. The real efficiency of good habits and related
+support systems shows on bad and busy days. It becomes paramount to identify Resistance
+(see <a href="https://en.wikipedia.org/wiki/The_War_of_Art_(book)" rel="nofollow">Pressfield</a>) and work through it and remembering that
+there is no advancement without putting in the work (see <a href="https://beusefulbook.com/" rel="nofollow">Schwarzenegger</a>).</p> <p>If I were to start my martial arts journey again, I would approach it with a more structured and
+disciplined mindset, integrating it seamlessly into my daily routine and ensuring that it remains
+a priority amidst other responsibilities. This becomes paramount when you have to balance the
+demands of work, family, and personal life, and martial arts at the same time. This is a very
+different setting than when I was a student and had all the flexibility to attend seminars and
+training sessions.</p> <h2 id="35-role-in-the-martial-arts-community"><a aria-hidden="true" tabindex="-1" href="#35-role-in-the-martial-arts-community"><span class="icon icon-link"></span></a>3.5 Role in the Martial Arts Community</h2> <p>In the beginning, my journey in martial arts was mostly about me: getting fit, learning self-defense,
+and enjoying the personal challenge. I did not think much about teaching others or
+being a leader in the martial arts community. It was all about what I could learn and how I could
+improve.</p> <p>But as time went on, my perspective changed. After years of training and experiencing the
+ups and downs of martial arts, I started to see things differently. I realized that martial arts
+weren’t just a personal journey; they were also about being part of a community, a group of
+people sharing the same passion and goals.
+Now, I feel a strong desire to give back to this community that has given me so much. I
+want to help others learn and grow, just like my mentors and peers helped me. Teaching and
+mentoring have become important parts of my martial arts life. They are ways I can contribute
+and help maintain the spirit and traditions of our practice.
+Being a part of the martial arts community means more than just showing up for my own
+training. It is about supporting others, sharing knowledge, and helping to create a positive and
+nurturing environment for everyone. This role is something I now value deeply, and it has
+enriched my experience in martial arts far beyond what I initially imagined.
+If I were to start my martial arts journey again, I would place more emphasis on being an
+active member of the community from the beginning. I would have sought out opportunities
+to help others, share my knowledge, and contribute to the growth and development of the dojo.
+Especially the survival of the club during the COVID-19 pandemic has shown how important it
+is to have a strong community that supports each other. The 2021 and 2022 grading attendance
+proved that the club has a strong community with excellent leadership, despite the challenges of
+the pandemic, see below.</p> <img class="tui-shadow white-168 black-255-text" src="/images/2022_12_karate_grading.jpg" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Karate Grading 2022"/><!----> <h2 id="36-perceptions-of-progression-and-reality"><a aria-hidden="true" tabindex="-1" href="#36-perceptions-of-progression-and-reality"><span class="icon icon-link"></span></a>3.6 Perceptions of Progression and Reality</h2> <p>When I first started in martial arts, I thought my progress would be straightforward. I imagined
+moving up the ranks smoothly, learning new techniques easily, and getting my black belt in a
+set amount of time. This view made me see martial arts training as a straight path where effort
+directly translated to advancement.</p> <p>However, as I spent more time training, I realized that my journey was not going to be a
+straight line. Instead, it was full of ups and downs, moments where I felt stuck and times when I
+suddenly broke through barriers. I learned that progress in martial arts is not just about collecting
+belts or mastering techniques quickly; it is about personal growth, overcoming challenges, and
+continually improving, even if it is not always visible.
+Now, I see progress in martial arts as a non-linear path. It is normal to have periods where it
+feels like I’m not getting any better, followed by times when everything starts to click.
+This understanding has helped me appreciate each step of my journey, knowing that every
+practice, every repetition, and every sparring session contributes to my growth, even if it is not
+immediately obvious.</p> <p>My perception of progress has evolved from focusing on outward achievements or to some
+degree envy of others to valuing the deeper, more personal aspects of growth in martial arts. It is
+about becoming better than I was yesterday, learning from every experience, and understanding
+that the journey is as important as the destination.</p> <h1 id="4-consistent-themes"><a aria-hidden="true" tabindex="-1" href="#4-consistent-themes"><span class="icon icon-link"></span></a>4 Consistent Themes</h1> <p>Throughout my martial arts journey, certain themes have remained constant, shaping my experience
+and guiding my growth. These enduring elements reflect the core of what martial arts are
+about for me. That I would not change if I were to start my journey again.</p> <p>Personal Growth and Self-Improvement: My martial arts journey has been about more than
+just physical training. It’s been a path to personal development, teaching me discipline, patience,
+and resilience. Even as my motivations and circumstances have changed, the goal of bettering
+myself has stayed the same. This pursuit of self-improvement has been a driving force, pushing
+me to keep training and learning.</p> <p>Lifelong Learning: Martial arts have taught me that learning never stops. There’s always a
+new technique to master, a new aspect of the philosophy to understand, or a new challenge to
+overcome. This continuous learning process has kept me engaged and curious, ensuring that my
+journey remains dynamic and rewarding.
+Consistency and Dedication: Showing up for class, practicing regularly, and staying committed
+even when progress seems slow have been key to my journey. This consistency and
+dedication have helped me build a solid foundation in martial arts, allowing me to advance and
+grow over time.</p> <p>Embracing Challenges: My martial arts path has been filled with challenges, from physical
+obstacles to balancing training with life’s other demands. Facing and overcoming these challenges
+has been essential to my development, teaching me about my own strength and resilience.
+Valuing Community and Mentorship: Being part of the martial arts community and having
+the support of mentors and peers have been crucial. This network of guidance, support, and
+camaraderie has not only enhanced my skills but also provided a sense of belonging and shared
+purpose.</p> <p>These consistent themes have been the backbone of my martial arts journey, providing a stable
+foundation as I navigated the various phases of my training and life. They highlight the enduring
+values and lessons that martial arts have offered, making my journey rich and fulfilling.</p> <h1 id="5-uncharted-paths-and-future-horizons"><a aria-hidden="true" tabindex="-1" href="#5-uncharted-paths-and-future-horizons"><span class="icon icon-link"></span></a>5 Uncharted Paths and Future Horizons</h1> <p>As I approach the milestone of my Shodan grading, I reflect on certain aspects of my martial arts
+journey that remain less explored, areas I wish I had delved into more deeply but couldn’t due to
+time constraints or other priorities. These uncharted paths represent both missed opportunities
+and potential future directions for my practice beyond Shodan.</p> <p>Advanced Technical Mastery: While I’ve built a solid foundation in the basic and intermediate
+techniques, I’ve often longed to push further into the advanced technical aspects of martial arts.
+Post-Shodan, I aim to dedicate more time to mastering complex katas and nuanced combat
+strategies, enhancing my skill set to new levels.</p> <p>Cross-Training in Other Martial Arts: My exposure to various martial arts has been limited,
+and I’ve always been curious about how other styles complement and contrast with my training in
+Karate. Exploring disciplines like Jiu-Jitsu, Judo, or a different more sparring-focused
+Karate style could offer fresh perspectives and new challenges, enriching my understanding and
+appreciation of martial arts as a whole.</p> <p>Mindfulness and Meditation: Although martial arts practice is inherently mindful, I’ve often
+overlooked the dedicated practice of meditation and mindfulness as separate pursuits. Going
+forward, I want to integrate these practices more fully into my routine to enhance mental clarity
+and focus, both in the dojo and in daily life.</p> <p>Pursuing <a href="https://www.wkf.net/about-wkf/judges-referees" rel="nofollow">WKF Judge Qualifications</a>: An aspect of my martial
+arts journey I wish to expand on is becoming more involved in the competitive side of the sport, specifically through
+training to be a World Karate Federation (WKF) judge for sparring. This goal reflects a desire
+not only to understand the nuances of martial arts competition more deeply but also to contribute
+to the integrity and fairness of the sport. Being a judge would allow me to play an instrumental
+role in facilitating and promoting martial arts competitions, ensuring that they are conducted
+with respect, precision, and adherence to the sport’s values and rules. This pursuit aligns with
+my broader vision of giving back to the martial arts community and helping to nurture the next
+generation of martial artists.</p> <p>Attending Advanced Seminars: Another path I aim to pursue more vigorously post-Shodan
+is attending advanced seminars led by renowned martial artists. These seminars are invaluable
+for honing advanced skills and gaining insights from masters of the art. My goal is to absorb
+as much knowledge and technique as possible from these gatherings and bring these learnings
+back to the university club, which often experiences high turnover due to graduating students. By
+doing so, I can help ensure continuity and the transfer of advanced knowledge within the club.
+This continuous learning and sharing cycle will not only enrich my own martial arts journey but
+also fortify the club’s foundation, making it a robust training environment that thrives on shared
+knowledge and communal growth.</p> <p>In contemplating these uncharted paths, I see a future rich with opportunities for growth,
+exploration, and contribution. Achieving Shodan is not the end of the journey but a gateway to
+these expansive horizons, offering new avenues for deepening my practice and broadening my
+impact within the martial arts world.</p> <h1 id="6-beyond-martial-arts---a-business-perspective"><a aria-hidden="true" tabindex="-1" href="#6-beyond-martial-arts---a-business-perspective"><span class="icon icon-link"></span></a>6 Beyond Martial Arts - A Business Perspective</h1> <p>Beyond martial arts foundational principles find applications in business sectors as well. The
+discipline, focus, and teamwork cultivated in martial arts training can be translated into valuable
+skills for professional environments.</p> <p>For example, principles practiced in the Dojo seem to resonate with concepts in Total Quality
+Management (TQM) and Lean Management, such as the Toyota Manufacturing System (TMS)
+(see <a href="https://en.wikipedia.org/wiki/The_Toyota_Way" rel="nofollow">Liker</a>) and the 5S methodology (see <a href="https://en.wikipedia.org/wiki/5S_(methodology)" rel="nofollow">Hirano</a>).</p> <p><strong>Continuous Improvement - Kaizen (改善)</strong></p> <ul><li>Karate Principle: In Karate, there is a continuous pursuit of mastery and improvement,
+emphasizing consistent practice and refinement of techniques.</li> <li>Business Application: This aligns with the Kaizen philosophy in TMS, where the focus
+is on continuous, incremental improvement of processes, reducing waste, and increasing
+efficiency.</li></ul> <p><strong>Discipline and Order - Dojo Kun (道場訓)</strong></p> <ul><li>Karate Principle: The Dojo Kun teaches discipline, respect, and commitment, encouraging
+practitioners to maintain order and follow a set of ethical guidelines.</li> <li>Business Application: This mirrors the 5S methodology (Sort, Set in order, Shine,
+Standardize, Sustain), promoting organizational efficiency, safety, and a systematic approach
+to work.</li></ul> <p><strong>Focus and Clarity - Kime (決め)</strong></p> <ul><li>Karate Principle: Kime refers to the focus and energy concentration in executing techniques,
+highlighting the importance of clarity and purpose in each action.</li> <li>Business Application: In business, particularly within TMS, having a clear focus on goals,
+process clarity, and precise execution leads to effective outcomes and reduced errors.</li></ul> <p><strong>Respect and Teamwork - Rei (礼)</strong></p> <ul><li>Karate Principle: Karate teaches respect for others, collaboration, and working together
+to achieve common goals, essential in dojo training and competitions.</li> <li>Business Application: Respect for people is a core component of TMS, fostering teamwork,
+collaboration, and mutual trust, which are crucial for successful business operations.</li></ul> <p><strong>Preparedness and Adaptability - Mushin (無心)</strong></p> <ul><li>Karate Principle: Mushin, or the “mind without mind,” refers to a state of open awareness
+and readiness to adapt, characteristic of experienced martial artists.</li> <li>Business Application: In the context of TMS and business management, being prepared
+and adaptable to changes in the market or operational challenges is vital for sustaining
+competitiveness and innovation.</li></ul> <p>By integrating these Karate principles into business practices, leaders and teams can enhance
+their operational efficiency, improve team dynamics, and foster a culture of respect, continuous
+improvement, and excellence. The correlation between martial arts discipline and business management
+principles like those in TMS and 5S can provide a robust framework for achieving both
+personal and organizational success.</p> <h1 id="7-summary"><a aria-hidden="true" tabindex="-1" href="#7-summary"><span class="icon icon-link"></span></a>7 Summary</h1> <p>As the Shodan grading nears, reflecting on my martial arts path reveals a transformative journey
+from physical fitness to a deeper engagement with the art’s philosophy and community. This
+transition has enriched my understanding and practice, showing me that martial arts encompass
+far more than just the technical skills.
+If I were to restart my journey to Shodan now, I would make changes and maintain other
+consistent practices thought.
+Key shifts in my journey include moving from initial apprehension to embracing the challenges
+of sparring, recognizing the nonlinear nature of progress, and learning to balance the
+demands of personal life with the discipline of martial arts training.
+These experiences have not only shaped my approach to martial arts but also prepared me for
+future roles, including mentoring within the community and possibly judging in competitions.
+Looking ahead, I see a landscape ripe with opportunities for deeper exploration, technical
+mastery, and community contribution in the dojo, personal and business life.</p> <div class="blogquote-center svelte-xxg3ag"><div class="tui-window purple-168 white-255-text center"><fieldset class="tui-fieldset no-legend tui-border-solid"><!---->To all the sensei, sempai, shihan, and kohai who have been part of my martial arts<br/> journey, thank you for your guidance, support, and camaraderie.<!----></fieldset></div></div><!----> <br/> <ul><li><a href="/images/shodan_essay.pdf">As submitted in PDF format for grading on April 4, 2024</a></li></ul><!----> <div class="tui-divider"></div> <br/><b>Published:</b> 2024-04-04 <br/> <b>Updated  :</b> 2025-10-04 <!--[0--><aside class="post-footer"><ul class="post-footer__categories"><!--[--><li class="no-bullet"><a href="/blog/category/karate/" class="tui-button white-168">karate</a></li><!--]--></ul></aside><!--]--> <br/> Not a spam bot? Want to leave comments or provide editorial guidance? Please click any
+			of the social links below and make an effort to connect. I promise I read all messages and
+			will respond at my choosing. <div class="post-pagination"><!--[0--><a href="/blog/2024.05.22" class="tui-button white-168 prev-link">← Camera Calibration Theory</a><!--]--> <!--[0--><a href="/blog/2023.08.25" class="tui-button white-168 next-link">Semihosting on Cheap RISCV Boards →</a><!--]--></div></div></fieldset></article><!--]--><!----></main><!----> <div class="tui-statusbar"><ul><li><a href="/api/rss.xml" data-sveltekit-reload="" target="_blank">RSS</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://x.com/treideme1" data-sveltekit-reload="" target="_blank">𝕏</a></li> <span class="tui-statusbar-divider"></span> <li><a href="http://github.com/treideme" data-sveltekit-reload="" target="_blank">GitHub</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.linkedin.com/in/thomasreidemeister" data-sveltekit-reload="" target="_blank">In</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.instagram.com/treideme/" data-sveltekit-reload="" target="_blank">📸</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://dblp.org/pid/93/7009.html" data-sveltekit-reload="" target="_blank">DPLB</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://patents.google.com/?inventor=Thomas+REIDEMEISTER" data-sveltekit-reload="" target="_blank"> 🔬 </a></li> <span class="tui-statusbar-divider"></span> <li style="float: right;"><a href="/terms">© 2026 Thomas Reidemeister</a></li></ul></div><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_ih7hdl = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BLr9_bnc.js"),
+						import("../_app/immutable/entry/app.CjXFn_g_.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

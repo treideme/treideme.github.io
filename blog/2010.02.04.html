@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/js/tuicss.min.js"></script>
+		<link href="../_app/immutable/entry/start.BLr9_bnc.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/AdeW3F8v.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C5Qr1tWr.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dt-HX3Vu.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.CjXFn_g_.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/uBIymjUX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.Dko8UQj9.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DRByVC-c.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsF7k-Jl.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/UrVpzM6D.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/e3uk7f1g.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BJ6dgZOD.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BtpA1xRJ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/D7rxoVVC.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BcR_fFiR.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C_WrjxST.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CGfmOE7W.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/U4Q-MCo3.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dy-Kn_BL.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/lpi2-tgm.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/3EzQhW0a.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DMTIwejG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsIc3RVK.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/fybaL0A-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BifhSqXX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/g4Mvzxsx.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DS17s2tU.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/B-DAUW-u.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CX68_OgI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DSJ1rPnI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/tZp6t9zN.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DuWRkWPg.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.DgZdZZPn.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DeSqgjHc.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="alternate" type="application/rss+xml" title="Thomas Reidemeister" href="http://reidemeister.com/api/rss.xml"/> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EHW6Z8HZ08"></script><!----><!--s11s7s--><meta data-key="description" name="description" content="Toolchain Bootstrap for Freescale Coldfire."/> <meta property="og:type" content="article"/> <meta property="og:title" content="Building the GNU Compiler Toolchain for the Coldfire Target"/> <meta name="twitter:title" content="Building the GNU Compiler Toolchain for the Coldfire Target"/> <meta property="og:description" content="Toolchain Bootstrap for Freescale Coldfire."/> <meta name="twitter:description" content="Toolchain Bootstrap for Freescale Coldfire."/> <meta property="og:image:width" content="200"/> <meta property="og:image:height" content="200"/><!----><title>Building the GNU Compiler Toolchain for the Coldfire Target</title>
+		<link href="../_app/immutable/assets/0.1Ga5dCEE.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogQuote.8TWGGipd.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogTable.K5KlPf1M.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/YoutubePlayer.DRLVl_9I.css" rel="stylesheet">
+		<!-- You can add global <meta> tags here, but anything not global or dynamic should be a `<svelte:head>` tag on the proper page(s) instead. -->
+	</head>
+	<body class="tui-bg-blue-black">
+		<div id="svelte"><!--[--><!--[0--><!--[--><div class="layout"><header><nav class="tui-nav"><a href="/" class="tui-panel cyan-168 full-width black-255-text tui-no-shadow center"><b style="font-size: 2.0em;">Thomas Reidemeister</b></a> <span class="tui-datetime" data-format="d/M/1993 h:m:s a"></span> <ul><li class="tui-sidenav-button"><a href="/">Home</a></li> <!--[--><!--[0--><li class="tui-dropdown"><a href="/blog">Blog</a> <!--[-1--><!--]--></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/about"><!---->About<!----></a></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/tools"><!---->Tools<!----></a></li><!--]--><!--]--></ul><!----></nav></header><!----> <!----><main id="main" tabindex="-1"><!--[--><article class="tui-window"><div class="tui-window-titlebar"><span class="tui-window-titlebar-rule-corner"></span> <button class="tui-fieldset-button left" style="margin-top: 0px"><span class="green-255-text">■</span></button> <span class="tui-window-titlebar-rule"></span> <span class="tui-window-titlebar-text">Building the GNU Compiler Toolchain for the Coldfire Target</span> <span class="tui-window-titlebar-rule"></span> <button class="tui-fieldset-button right" style="margin-top: 0px"><span class="green-255-text">↑</span></button> <span class="tui-window-titlebar-rule-corner"></span></div> <fieldset class="tui-fieldset" style="margin-top: 0px"><div class="white-168-text" style="overflow: auto;"><img class="cover-image tui-shadow" src="/images/coldfire.jpg" alt="" style="aspect-ratio: 200 / 200;display: block; margin-left: auto; margin-right: auto;" width="200" height="200"/><br/><br/> <p>Tested with…</p> <ul><li>IBM Thinkpad T61p</li> <li>Ubuntu Karmic AMD64 using bash</li></ul> <h2 id="environment-preparation"><a aria-hidden="true" tabindex="-1" href="#environment-preparation"><span class="icon icon-link"></span></a>Environment Preparation</h2> <p>In this tutorial I’m assuming that you are using your own machine to develop the RTX. In order to do any RTX development
+at home, you need a decent development environment, preferrably Linux, and the following tools:</p> <ul><li><a href="https://github.com/pahihu/coldfire" rel="nofollow">Coldfire Emulator</a> : This emulator is able to simulate the Coldfire
+boards used in the lab.</li> <li>A GCC cross-compiler toolchain for the Coldfire target: The instruction set of your home box will likely differ from
+the Coldfire target. As such, you need to get or build a compiler that executes on your home box and generates Coldfire
+instructions. Since GCC does not do this job on its own, you also need to build/download the supportive tools for GCC.</li></ul> <p>Use GCC 3.4.X: I assume many of the readers will actually want to use the newest fancy GCC to build your project. I
+suggest that you use a GNU compiler revision that has matured over the years and is compatible to what we use in the lab.
+In addition some compiler parameters sneakily change from revision to revision, so do warning options and supported
+features.</p> <p>GCC 3.4.X needs to be patched to run on amd64: Many of you may have 64bit machines. There is a defect in the GCC 3.4.X
+that is triggered when cross-compiling on amd64 targets. This bug needs to be patched by you (see below).</p> <h2 id="building-gcc"><a aria-hidden="true" tabindex="-1" href="#building-gcc"><span class="icon icon-link"></span></a>Building GCC</h2> <p>A GCC toolchain needs at least binutils to work. Since the RTX is to be written in C, we just need the “GCC part” of GCC.</p> <p>Lets start by defining some locations where the compiler should go. It is good practice not to stuff the toolchain into
+the regular system directories. I like to use <code>/usr/local/coldfire</code> as prefix for all tools. Lets start by setting
+up the environment:</p> <pre class="language-bash"><!----><code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /usr/local/coldfire/bin
+<span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /usr/local/coldfire/lib
+<span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /usr/local/coldfire/share
+
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">INSTPREFIX</span><span class="token operator">=</span>/usr/local/coldfire
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$&#123;INSTPREFIX&#125;</span>/bin:<span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"export PATH=/usr/local/coldfire/bin:<span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span>"</span> <span class="token operator">>></span> ~/.bashrc
+<span class="token builtin class-name">echo</span> <span class="token string">"setenv PATH /usr/local/coldfire/bin:<span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span>"</span> <span class="token operator">>></span> ~/.cshrc</code><!----></pre> <h2 id="download-and-install-binutils"><a aria-hidden="true" tabindex="-1" href="#download-and-install-binutils"><span class="icon icon-link"></span></a>Download and Install Binutils</h2> <p>Update, use Binutils 2.18 instead of 2.16.1. On more recent Linux distros, 2.16.1 produces invalid M68K opcodes. The
+compiler flag “-Wno-format-security” is used to avoid halt on warnings, because more recent GCC versions became way more
+picky than before.</p> <pre class="language-bash"><!----><code class="language-bash"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> ~/build_env
+<span class="token builtin class-name">cd</span> ~/build_env
+<span class="token function">wget</span> <span class="token parameter variable">-c</span> http://ftp.gnu.org/gnu/binutils/binutils-2.18.tar.bz2
+<span class="token function">tar</span> xvjf binutils-2.18.tar.bz2
+<span class="token builtin class-name">cd</span> binutils-2.18/
+<span class="token assign-left variable">CFLAGS</span><span class="token operator">=</span><span class="token string">"-Wno-format-security"</span> ./configure  <span class="token parameter variable">--target</span><span class="token operator">=</span>m68k-elf <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token variable">$&#123;INSTPREFIX&#125;</span>
+<span class="token assign-left variable">CFLAGS</span><span class="token operator">=</span><span class="token string">"-Wno-format-security"</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></code><!----></pre> <h2 id="downloading-bootstrapping-and-building-gcc"><a aria-hidden="true" tabindex="-1" href="#downloading-bootstrapping-and-building-gcc"><span class="icon icon-link"></span></a>Downloading, Bootstrapping and Building GCC</h2> <p>I prefer to have a tiny standard library for GCC. Newlib provides some basic functionality for embedded systems that can
+be used for debugging purposes or to use convenience functions, such as sprintf. Please note, however, you are not
+allowed to use any of these functions for your RTX project.</p> <p>As described earlier, GCC needs to be fixed to work on amd64 targets. <a href="https://www.rockbox.org/" rel="nofollow">Rockbox</a> provides this
+patch for GCC 3.4.6 (see below).</p> <p><strong>Update</strong>: Some newer GCCs have trouble with compiling this old version of GCC. The main reason is that newer GCCs treat
+warnings more seriously; therefore, an additional flag was added. Also for linking the files, the installation step
+requires m68k-randlib. To include it in the PATH, the path is now issued as prefix to make install. Also with these
+configuration flags, GCC will use its own newlib and does not depend on an external version anymore (extra steps removed).</p> <pre class="language-bash"><!----><code class="language-bash"><span class="token function">wget</span> <span class="token parameter variable">-c</span> <span class="token string">"http://ftp.gnu.org/gnu/gcc/gcc-3.4.6/gcc-core-3.4.6.tar.bz2"</span>
+<span class="token function">wget</span> <span class="token parameter variable">-c</span> <span class="token string">"http://www.rockbox.org/gcc/gcc-3.4.6-amd64.patch"</span>
+
+<span class="token function">tar</span> xvjf gcc-core-3.4.6.tar.bz2
+<span class="token builtin class-name">cd</span> gcc-3.4.6
+patch <span class="token parameter variable">-p1</span> <span class="token operator">&lt;</span> <span class="token punctuation">..</span>/gcc-3.4.6-amd64.patch
+<span class="token function">mkdir</span> build
+<span class="token builtin class-name">cd</span> build
+<span class="token assign-left variable">CFLAGS</span><span class="token operator">=</span><span class="token string">"-Wno-unused-result"</span> <span class="token punctuation">..</span>/configure <span class="token parameter variable">--target</span><span class="token operator">=</span>m68k-elf <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token variable">$&#123;INSTPREFIX&#125;</span> --enable-languages<span class="token operator">=</span><span class="token string">"c"</span> --with-newlib <span class="token punctuation">&#92;</span>
+  --without-headers --disable-shared
+<span class="token assign-left variable">CFLAGS</span><span class="token operator">=</span><span class="token string">"-Wno-unused-result"</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span><span class="token builtin class-name">:</span><span class="token variable">$&#123;INSTPREFIX&#125;</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></code><!----></pre> <p><em>Provided there are no severe errors: Congrats! You have just build your very own GCC toolchain for the Coldfire target!</em></p> <h2 id="installing-and-using-the-coldfire-simulator"><a aria-hidden="true" tabindex="-1" href="#installing-and-using-the-coldfire-simulator"><span class="icon icon-link"></span></a>Installing and Using the Coldfire Simulator</h2> <p>Since you will not have access to the actual hardware at home, you need to simulate the board. There exists a
+Coldfire simulator that is capable of emulating the board you are using for your project. Please note, however, this
+emulator seems to not accurately simulate timer interrupts. As such, the simulated time may significantly differ from
+the actual hardware.</p> <pre class="language-bash"><!----><code class="language-bash"><span class="token comment"># Update 2025, consider this mirror since the original site seems down</span>
+<span class="token comment"># git clone https://github.com/pahihu/coldfire</span>
+<span class="token function">wget</span> <span class="token parameter variable">-c</span> http://www.slicer.ca/coldfire/files/coldfire-0.3.1.tar.gz
+<span class="token function">tar</span> xvzf coldfire-0.3.1.tar.gz
+
+<span class="token builtin class-name">cd</span> coldfire-0.3.1
+./configure <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token variable">$&#123;INSTPREFIX&#125;</span>
+<span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></code><!----></pre> <p>Now compile some sample <code>S19</code> file. Figure the starting address out from the <code>.map</code> file (i.e. <code>0x100100000</code> for the
+RTX project).</p> <pre class="language-undefined"><!----><code class="language-undefined">coldfire --board /usr/local/coldfire/share/coldfire/cjdesign-5307.board
+
+DBUG&gt; DL FILENAME.s19
+DBUG&gt; GO STARTADDRESS</code><!----></pre> <p>On telnet ports <code>5206</code> and <code>5207</code> you can access the serial ports of the device.</p> <h1 id="other-references"><a aria-hidden="true" tabindex="-1" href="#other-references"><span class="icon icon-link"></span></a>Other References</h1> <p>The Coldfire CPU appears to be popular among Atari enthusiasts. A collection of tools and refefences is available on <a href="http://vincent.riviere.free.fr/soft/m68k-atari-mint/" rel="nofollow">Vincent Riviere’s Atari page</a>.</p> <hr/> <p><a href="https://www.eng.uwaterloo.ca/~treideme/coldfire-gcc.php" rel="nofollow">Cross-Posted on my former UWaterloo Website</a></p><!----> <div class="tui-divider"></div> <br/><b>Published:</b> 2010-02-04 <br/> <b>Updated  :</b> 2025-10-04 <!--[0--><aside class="post-footer"><ul class="post-footer__categories"><!--[--><li class="no-bullet"><a href="/blog/category/embedded/" class="tui-button white-168">embedded</a></li><li class="no-bullet"><a href="/blog/category/gradschool/" class="tui-button white-168">gradschool</a></li><!--]--></ul></aside><!--]--> <br/> Not a spam bot? Want to leave comments or provide editorial guidance? Please click any
+			of the social links below and make an effort to connect. I promise I read all messages and
+			will respond at my choosing. <div class="post-pagination"><!--[0--><a href="/blog/2010.02.06" class="tui-button white-168 prev-link">← On Designing Bootloaders and Grey-box-Testing Firmware (Part 1/2)</a><!--]--> <!--[0--><a href="/blog/2010.02.03" class="tui-button white-168 next-link">Beginning the Blog →</a><!--]--></div></div></fieldset></article><!--]--><!----></main><!----> <div class="tui-statusbar"><ul><li><a href="/api/rss.xml" data-sveltekit-reload="" target="_blank">RSS</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://x.com/treideme1" data-sveltekit-reload="" target="_blank">𝕏</a></li> <span class="tui-statusbar-divider"></span> <li><a href="http://github.com/treideme" data-sveltekit-reload="" target="_blank">GitHub</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.linkedin.com/in/thomasreidemeister" data-sveltekit-reload="" target="_blank">In</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.instagram.com/treideme/" data-sveltekit-reload="" target="_blank">📸</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://dblp.org/pid/93/7009.html" data-sveltekit-reload="" target="_blank">DPLB</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://patents.google.com/?inventor=Thomas+REIDEMEISTER" data-sveltekit-reload="" target="_blank"> 🔬 </a></li> <span class="tui-statusbar-divider"></span> <li style="float: right;"><a href="/terms">© 2026 Thomas Reidemeister</a></li></ul></div><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_ih7hdl = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BLr9_bnc.js"),
+						import("../_app/immutable/entry/app.CjXFn_g_.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

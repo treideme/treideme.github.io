@@ -1,0 +1,97 @@
+import{$ as e,E as t,M as n,P as r,mt as i,pt as a,tt as o}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";import{t as s}from"./DPw4rzvf.js";import{t as c}from"./BrJmRK04.js";import{t as l}from"./DPsrAEoc.js";var u={title:`Reviving a Parallel-Port Iomega ZIP Drive on Ubuntu 22.04`,date:`2026-01-10`,updated:`2026-01-10`,categories:[`coding`],coverImage:`/images/zip250_disk_case.jpg`,coverWidth:700,coverHeight:703,excerpt:`Getting a SCSI-over-parallel-port drive from the 90s talking to a desktop that has never had an LPT port.`},{title:d,date:f,updated:p,categories:m,coverImage:h,coverWidth:g,coverHeight:_,excerpt:v}=u,y=r(`"So make copies of your stuff on 100MB ZIP disks so nothing gets lost ... almost"<br/> — Iomega, 1998`,1),b=r(`<!> <p>About 20 years after moving to Canada, my parents decided to clean up their
+basement storage room in my old hometown in Germany. An ominous
+box turned up that contained a working Hi8 camcorder with a stack of tapes and
+a stack of ZIP disks. The camcorder was a nice surprise, still working, but
+the ZIP disks were a blast from the past. Iomega’s 100 MB and 250 MB removable
+magnetic disks were a popular backup medium in the 1990s. This was my favourite
+removable backup medium for a while (besides CDRs) right up until undergrad school.</p> <!><br/> <p>Unfortunately, the related drive was nowhere to be found. I remember I went through
+several iterations from the original parallel-port model to an internal one and
+finally a USB model, but the disks themselves were still around. A search on eBay
+turned up a few hits, but it seems the USB ones sell at a premium and the internal
+ones are unobtainium. I found a discounted external parallel-port one of questionable
+quality and decided to give it a go.</p> <!><br/> <h1 id="two-chips-two-drivers"><a aria-hidden="true" tabindex="-1" href="#two-chips-two-drivers"><span class="icon icon-link"></span></a>Two Chips, Two Drivers</h1> <p>Not all parallel ZIP drives are the same underneath. Iomega shipped two generations
+of the interface electronics, and Linux has a separate SCSI-over-parallel-port driver
+for each:</p> <ul><li><strong><code>ppa</code></strong>: the original chipset used in the first ZIP 100 parallel drives (1995).
+Falls back to SPP/nibble mode if EPP isn’t available, which keeps it compatible
+but painfully slow, well under 1 MB/s in the worst case.</li> <li><strong><code>imm</code></strong>: the “Matchmaker” chipset used in later ZIP 100 units and in essentially
+all ZIP 250 parallel drives. It needs EPP (or ECP) mode to perform reasonably, and
+is the one you want if, like here, the drive is a 250.</li></ul> <p>Both are still present in mainline Linux as <code>drivers/scsi/ppa.c</code> and <code>drivers/scsi/imm.c</code>. They register with the kernel’s <code>parport</code> subsystem rather than
+talking to the hardware directly, which is the detail that matters for everything
+that follows: get <code>parport</code> working first, and the SCSI side is almost incidental.</p> <h1 id="what-you-actually-need"><a aria-hidden="true" tabindex="-1" href="#what-you-actually-need"><span class="icon icon-link"></span></a>What You Actually Need</h1> <p>The drive itself was never the hard part. The obstacles are all upstream of it:</p> <ul><li><strong>A parallel port.</strong> No 2020s consumer motherboard has one. The fix is a PCIe
+multi-I/O card. Look for one built around a real chipset (MosChip MCS9900/9901,
+Oxford OXPCIe952, WCH CH382/CH383) rather than an unbranded board with no
+datasheet. <code>parport_pc</code> ships with a PCI ID table for most of these, so once the
+card is in a slot, Linux generally finds it without any manual configuration.</li> <li><strong>Not a USB-to-parallel dongle.</strong> This is the mistake that eats the most time.
+Virtually every cheap USB-parallel cable on the market implements the USB Printer
+Class (Centronics-only, effectively write-only), because that’s all a printer
+needs. The <code>ppa</code>/<code>imm</code> drivers need genuine bidirectional/EPP byte-mode access
+through <code>parport</code>, which a USB Printer Class device does not expose. If the
+adapter’s box just says “for printing,” it will not work here. Trust me, I bought one and wasted a week trying to make it work.</li> <li><strong>The drive’s own power supply.</strong> Parallel ZIP drives are not bus-powered (the
+parallel port carries no power pins that matter here), so the original brick, or a
+compatible replacement (they’re common 12V/1A-ish wall warts), is required.</li> <li><strong>A DB25 parallel cable</strong>, ideally a proper IEEE 1284 bidirectional one rather
+than an old unidirectional printer cable that only wires the pins a printer needs.</li></ul> <p>If the PCIe card has a jumper or BIOS/firmware option for the port mode, set it to <strong>EPP</strong> if that’s offered, ECP as a second choice. Plain SPP will still work with <code>ppa</code>, but noticeably slower, and <code>imm</code> wants EPP/ECP to begin with.</p> <p>What worked for me almost out of the box was a Startech PEX1P2 parallel PCIe card.
+My workstation is an older Intel i7-9700KF on an ASRock B360M Pro4 motherboard.
+My recently upgraded NVIDIA 5060Ti 16GB took quite some space, so I made the mistake
+of plugging it into the PCIe x16 slot that was meant for the second graphics card
+to no avail. Only after moving it to the PCIe x1 slot did the card get detected.</p> <h1 id="bringing-the-port-up"><a aria-hidden="true" tabindex="-1" href="#bringing-the-port-up"><span class="icon icon-link"></span></a>Bringing the Port Up</h1> <p>With the card installed and the drive cabled and powered, the first checkpoint is
+just confirming Linux sees the port at all, before SCSI enters the picture:</p> <pre class="language-bash"></pre> <p>A working PCIe card shows up in <code>dmesg</code> along these lines (the exact I/O base and
+IRQ will differ):</p> <pre class="language-text"></pre> <p>If nothing shows up, check <code>lspci</code> for the card and confirm <code>parport_pc</code> actually
+claimed it. Some very generic-chipset cards need <code>parport_serial</code> instead, since
+that module handles a different family of combined serial+parallel PCI devices.</p> <h1 id="loading-the-scsi-bridge-driver"><a aria-hidden="true" tabindex="-1" href="#loading-the-scsi-bridge-driver"><span class="icon icon-link"></span></a>Loading the SCSI Bridge Driver</h1> <p>Once <code>/dev/parport0</code> exists, load the driver that matches the drive generation, <code>imm</code> for this ZIP 250:</p> <pre class="language-bash"></pre> <p>A working attach looks like:</p> <pre class="language-text"></pre> <p>If <code>modprobe imm</code> fails with <code>Module imm not found</code>, the running kernel’s module
+set doesn’t include it. Ubuntu keeps some of the less common drivers, this being
+a good example, out of the base <code>linux-modules</code> package, so pull in the extra set
+first:</p> <pre class="language-bash"></pre> <p>If the drive was cold when the module loaded, or the disk wasn’t inserted yet, <code>imm</code>/<code>ppa</code> will just log a “Not Ready” a couple of times and back off. Reinserting
+the disk and re-running <code>modprobe -r imm && modprobe imm</code> is faster than debugging
+what looks like a failure but isn’t.</p> <h1 id="the-devsda4-quirk"><a aria-hidden="true" tabindex="-1" href="#the-devsda4-quirk"><span class="icon icon-link"></span></a>The <code>/dev/sda4</code> Quirk</h1> <p>Once attached, <code>lsblk</code> or <code>fdisk -l /dev/sda</code> will very likely show the actual
+usable filesystem sitting on <strong>partition 4</strong>, not partition 1:</p> <pre class="language-text"></pre> <p>That’s not corruption. It’s just how Iomega’s own driver stack formatted these
+disks back in the 90s, reserving the earlier partition slots for cross-platform
+(Mac) compatibility and putting the DOS/Windows-visible FAT partition fourth. A
+disk labeled “pc formatted,” like the one in the case above, follows this layout.</p> <pre class="language-bash"></pre> <h1 id="making-the-backup-actually-count"><a aria-hidden="true" tabindex="-1" href="#making-the-backup-actually-count"><span class="icon icon-link"></span></a>Making the Backup Actually Count</h1> <p>Whatever “My Files” turns out to be, it’s coming off a 25-year-old removable
+disk, so just copying files off with <code>cp</code> isn’t enough. A magnetic ZIP cartridge
+that’s been sitting in a drawer for two decades is not a medium to trust twice.
+A full raw image first, before touching anything else, means the recovery
+attempt itself can’t make things worse:</p> <pre class="language-bash"></pre> <p><code>conv=noerror,sync</code> tells <code>dd</code> to pad over any bad sectors instead of aborting, which
+matters more here than it would for a healthy modern disk. With the image safely on
+a modern drive, it can be mounted read-only for the actual file recovery, leaving
+the original raw capture untouched:</p> <pre class="language-bash"></pre> <p>(The <code>offset</code> is partition 4’s start sector from the <code>fdisk</code> output above,
+multiplied by the 512-byte sector size. Adjust to match what your own disk
+reports.)</p> <h1 id="when-it-doesnt-attach"><a aria-hidden="true" tabindex="-1" href="#when-it-doesnt-attach"><span class="icon icon-link"></span></a>When It Doesn’t Attach</h1> <p>A few things to check, in rough order of how often they turn out to be the cause:</p> <ul><li><strong>Wrong driver for the chipset.</strong> If <code>imm</code> attaches but every read times out,
+or <code>dmesg</code> shows repeated <code>imm: fifo failed</code> type messages, try <code>ppa</code> instead.
+Older 100 MB drives and a few early 250s used the original chipset.</li> <li><strong>Port stuck in SPP.</strong> If the card has a BIOS/jumper mode setting, and it’s on
+SPP, both drivers still nominally work but can be unreliably slow enough to look
+broken. Switch to EPP if available.</li> <li><strong>IRQ sharing.</strong> Some cheap PCIe multi-I/O cards share a single IRQ across a
+serial-and-parallel combo chip in a way <code>parport_pc</code> doesn’t always negotiate
+cleanly. Check <code>/proc/interrupts</code> for a <code>parport</code> line after loading the driver
+to see whether it’s actually receiving interrupts at all.</li> <li><strong>A genuinely dead drive.</strong> These have belt- or gear-driven mechanisms and a
+laser-assisted head-positioning system that hasn’t run in years. If the drive
+never spins up (no motor noise at all when a disk is inserted), that’s a
+hardware fault in the drive itself, not a Linux/parport problem.</li></ul> <p>With the image captured, whatever “My Files” actually contains is now safe on
+modern storage, no matter what happens to the drive or the disk from here on out.</p> <h1 id="what-was-found"><a aria-hidden="true" tabindex="-1" href="#what-was-found"><span class="icon icon-link"></span></a>What Was Found</h1> <p>So it turns out that, of the 20 disks that were in the box, 2 were permanently damaged,
+17 were readable and blank, and 1 disk contained a copy of my undergraduate thesis in
+progress, which was already backed up elsewhere and has been archived in cloud storage
+for ages. No salacious data, no lost code projects, no old game libraries.</p> <p>I would have hoped to recover a few of those. Fond are the memories of sitting with the guys on
+IRC during file-exchange sessions circa 1996-1999 after school while parents were at work.</p> <p>I fear the small collection of late-90s media laboriously downloaded over a 14.4k modem—including early
+screenshots, clips and indie Japanese cinema—was lost to time during a hardware upgrade from my 486 DX2-66
+to a newer box. Back then, discovering niche films like <a href="https://tiff.net/events/a-new-love-in-tokyo" rel="nofollow">Banmei Takahashi’s A New Love in Tokyo</a>,
+especially Sawa Suzuki in these outfits meant scouring IRC channels after school and broadening horizons
+in from discussions with local slightly weird comic shop owner.
+It was a time when finding art on the young Internet felt like an deliberate, painstaking treasure hunt.</p> <p>Today’s algorithmically driven social media algorithms deliver endless short-form content instantaneously,
+trading that slow sense of discovery for immediate convenience. While I miss the thrill of the hunt, I’m
+glad the rest of my archived project files are now safely stored on modern cloud infrastructure,
+and <a href="/blog/2022.07.18">indestructible M-DISCs</a> rather than relying on 25-year-old magnetic media.</p> <p>Back in the day before USB drives were common, this was an extremely useful backup medium.
+I remember copying libraries of games, code projects and other data from friends’ computers
+onto these disks. This eventually turned into external HDDs, USB flash drives and cloud storage over the years.</p> <p>The ZIP drive with cables now rests in my home office’s retro interfacing box alongside
+USB 3.5” floppy drives, USB IDE adapters, and a few other oddities that are still useful
+to have around for the occasional retro-computing task.</p> <p>Further reading:</p> <ul><li><a href="https://www.kernel.org/doc/html/latest/admin-guide/parport.html" rel="nofollow">Linux kernel <code>parport</code> subsystem documentation</a></li> <li><a href="https://github.com/torvalds/linux/blob/master/drivers/scsi/imm.c" rel="nofollow"><code>drivers/scsi/imm.c</code></a> and <a href="https://github.com/torvalds/linux/blob/master/drivers/scsi/ppa.c" rel="nofollow"><code>drivers/scsi/ppa.c</code></a> source, for anyone who wants to see exactly what the SCSI-over-parallel bridge is doing</li></ul>`,1);function x(r){var u=b(),d=e(u);c(d,{children:(e,t)=>{a();var r=y();a(2),n(e,r)},$$slots:{default:!0}});var f=o(d,4);l(f,{id:`ABGxzHFBz0c`,animations:`false`,width:`500`});var p=o(f,5);s(p,{src:`/images/zip_drive_parallel_unit.jpg`,alt:`Iomega ZIP parallel-port external drive`,width:`500`});var m=o(p,25);t(m,()=>`<code class="language-bash"><span class="token function">sudo</span> modprobe parport
+<span class="token function">sudo</span> modprobe parport_pc
+<span class="token function">ls</span> /dev/parport*
+<span class="token function">dmesg</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-i</span> parport</code>`,!0),i(m);var h=o(m,4);t(h,()=>`<code class="language-text">parport0: PC-style at 0xde00, irq 19</code>`,!0),i(h);var g=o(h,8);t(g,()=>`<code class="language-bash"><span class="token function">sudo</span> modprobe imm
+<span class="token function">dmesg</span> <span class="token operator">|</span> <span class="token function">tail</span> <span class="token parameter variable">-n</span> <span class="token number">20</span></code>`,!0),i(g);var _=o(g,4);t(_,()=>`<code class="language-text">imm: Version 2.05 (for Linux 2.4.0)
+scsi0 : Iomega VPI2 (imm) interface
+scsi 0:0:0:0: Direct-Access     IOMEGA   ZIP 250          J.03 PQ: 0 ANSI: 2
+sd 0:0:0:0: [sda] Attached SCSI removable disk</code>`,!0),i(_);var v=o(_,4);t(v,()=>`<code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> linux-modules-extra-<span class="token variable"><span class="token variable">$(</span><span class="token function">uname</span> <span class="token parameter variable">-r</span><span class="token variable">)</span></span></code>`,!0),i(v);var x=o(v,8);t(x,()=>`<code class="language-text">Disk /dev/sda: 238.5 MiB
+Device     Boot Start    End Sectors  Size Id Type
+/dev/sda4        32 488392  488361  238.5M  6 FAT16</code>`,!0),i(x);var S=o(x,4);t(S,()=>`<code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /mnt/zip
+<span class="token function">sudo</span> <span class="token function">mount</span> <span class="token parameter variable">-t</span> vfat /dev/sda4 /mnt/zip
+<span class="token function">ls</span> /mnt/zip</code>`,!0),i(S);var C=o(S,6);t(C,()=>`<code class="language-bash"><span class="token function">sudo</span> <span class="token function">umount</span> /mnt/zip
+<span class="token function">sudo</span> <span class="token function">dd</span> <span class="token assign-left variable">if</span><span class="token operator">=</span>/dev/sda <span class="token assign-left variable">of</span><span class="token operator">=</span>zip250_backup.img <span class="token assign-left variable">bs</span><span class="token operator">=</span>1M <span class="token assign-left variable">conv</span><span class="token operator">=</span>noerror,sync <span class="token assign-left variable">status</span><span class="token operator">=</span>progress</code>`,!0),i(C);var w=o(C,4);t(w,()=>`<code class="language-bash"><span class="token function">sudo</span> <span class="token function">mount</span> <span class="token parameter variable">-o</span> loop,ro,offset<span class="token operator">=</span><span class="token variable"><span class="token variable">$((</span><span class="token number">32</span><span class="token operator">*</span><span class="token number">512</span><span class="token variable">))</span></span> zip250_backup.img /mnt/zip</code>`,!0),i(w),a(28),n(r,u)}export{x as default,u as metadata};

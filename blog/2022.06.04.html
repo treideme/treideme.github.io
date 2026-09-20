@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/js/tuicss.min.js"></script>
+		<link href="../_app/immutable/entry/start.BLr9_bnc.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/AdeW3F8v.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C5Qr1tWr.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dt-HX3Vu.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.CjXFn_g_.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/uBIymjUX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.Dko8UQj9.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DRByVC-c.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsF7k-Jl.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/UrVpzM6D.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/e3uk7f1g.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BJ6dgZOD.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BtpA1xRJ.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/D7rxoVVC.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BcR_fFiR.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/C_WrjxST.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CGfmOE7W.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/U4Q-MCo3.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dy-Kn_BL.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/lpi2-tgm.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/3EzQhW0a.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DMTIwejG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DsIc3RVK.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/fybaL0A-.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BifhSqXX.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/g4Mvzxsx.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DS17s2tU.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/B-DAUW-u.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CX68_OgI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DSJ1rPnI.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/tZp6t9zN.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DuWRkWPg.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.DgZdZZPn.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DeSqgjHc.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="alternate" type="application/rss+xml" title="Thomas Reidemeister" href="http://reidemeister.com/api/rss.xml"/> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EHW6Z8HZ08"></script><!----><!--s11s7s--><meta data-key="description" name="description" content="Playing with Chinese knock-offs of the original AT89C5x series."/> <meta property="og:type" content="article"/> <meta property="og:title" content="MCS-51 / 8051 – Hello STC89C52"/> <meta name="twitter:title" content="MCS-51 / 8051 – Hello STC89C52"/> <meta property="og:description" content="Playing with Chinese knock-offs of the original AT89C5x series."/> <meta name="twitter:description" content="Playing with Chinese knock-offs of the original AT89C5x series."/> <meta property="og:image:width" content="512"/> <meta property="og:image:height" content="288"/><!----><title>MCS-51 / 8051 – Hello STC89C52</title>
+		<link href="../_app/immutable/assets/0.1Ga5dCEE.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogQuote.8TWGGipd.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogTable.K5KlPf1M.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/YoutubePlayer.DRLVl_9I.css" rel="stylesheet">
+		<!-- You can add global <meta> tags here, but anything not global or dynamic should be a `<svelte:head>` tag on the proper page(s) instead. -->
+	</head>
+	<body class="tui-bg-blue-black">
+		<div id="svelte"><!--[--><!--[0--><!--[--><div class="layout"><header><nav class="tui-nav"><a href="/" class="tui-panel cyan-168 full-width black-255-text tui-no-shadow center"><b style="font-size: 2.0em;">Thomas Reidemeister</b></a> <span class="tui-datetime" data-format="d/M/1993 h:m:s a"></span> <ul><li class="tui-sidenav-button"><a href="/">Home</a></li> <!--[--><!--[0--><li class="tui-dropdown"><a href="/blog">Blog</a> <!--[-1--><!--]--></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/about"><!---->About<!----></a></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/tools"><!---->Tools<!----></a></li><!--]--><!--]--></ul><!----></nav></header><!----> <!----><main id="main" tabindex="-1"><!--[--><article class="tui-window"><div class="tui-window-titlebar"><span class="tui-window-titlebar-rule-corner"></span> <button class="tui-fieldset-button left" style="margin-top: 0px"><span class="green-255-text">■</span></button> <span class="tui-window-titlebar-rule"></span> <span class="tui-window-titlebar-text">MCS-51 / 8051 – Hello STC89C52</span> <span class="tui-window-titlebar-rule"></span> <button class="tui-fieldset-button right" style="margin-top: 0px"><span class="green-255-text">↑</span></button> <span class="tui-window-titlebar-rule-corner"></span></div> <fieldset class="tui-fieldset" style="margin-top: 0px"><div class="white-168-text" style="overflow: auto;"><img class="cover-image tui-shadow" src="/images/8051_hello.gif" alt="" style="aspect-ratio: 512 / 288;display: block; margin-left: auto; margin-right: auto;" width="512" height="288"/><br/><br/> <p><a href="https://github.com/treideme/stc89c52-demos" rel="nofollow">Sources available here</a></p> <p>After going over the background of the 8051 architecture in <a href="2022.05.31">part 1</a> of this series, let us have a look at a simple
+“Hello World” example for this microcontroller. For this post, you either need an STC89C52 demo board, or you can
+breadboard a minimal STC89C52-circuit as follows.</p> <p>For the bootstrap on a breadboard you need:</p> <ul><li>STC89C52RC microcontroller</li> <li>12 MHz (or really anything between 1-25MHz) crystal oscillator</li> <li>Loading capacitors for the oscillator (go with 47pF or less for 12Mhz or more, and more for lower frequencies, preferably low ESR types)</li> <li>10K pull-down resistor for reset</li> <li>100nF, 10uF decoupling capacitors</li> <li>10uF debouncing capacitor for the reset line (for stable power-up)</li> <li>An LED with a current-limiting resistor as an output indicator. <a href="https://www.digikey.ca/en/resources/conversion-calculators/conversion-calculator-led-series-resistor" rel="nofollow">Dimension the current limiting resistor, such that the sinking current does not exceed 6mA.</a></li> <li>An FTDI or other serial interface controller to use the bootstrap-loader of the STC to program the chip</li></ul> <img class="tui-shadow white-168 black-255-text" src="/images/8051_connections.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="8051 Breadboard"/><!----> <p>This setup can be inferred from the sample schematic on <a href="http://www.stcmcudata.com/datasheet/stc/STC-AD-PDF/STC89C51RC-english.pdf" rel="nofollow">page 12 of the datasheet</a>.</p> <img class="tui-shadow white-168 black-255-text" src="/images/stc89c52rc-minimal-circuit-inference.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Connection Diagram"/><!----> <p>From the datasheet, it is very simple to derive the above bootstrap circuit. One eye-sore for users of any modern MCU is
+probably the need for an external oscillator to boot. This was probably the drive inside STC to include additional internal
+R/C oscillators in their more advanced STC12/15 variants. In addition to adding a mess of wires, the oscillator increases
+BOM cost, and the number of component placements, and could become a failure source in high-impact applications. For
+example, crystal oscillator failure recovery is a major concern for safety-critical applications that I had worked on
+in my lab days. For example, impacts on the circuit could cause crystal fractures that cause the oscillator to fail
+permanently or shift the frequency. The <a href="https://www.am1.us/wp-content/uploads/Documents/U11625_VIG-TUTORIAL.pdf" rel="nofollow">US Army has a good discussion about this</a>. TL;DR, don’t build a cruise missile
+or airbag controller just around a microcontroller fed by a single Pierce Oscillator. I digress, back to “Hello World” …</p> <p>I’m using the <a href="https://github.com/treideme/stc89c52-demos/blob/main/doc/HC6800-ES%20Schematic.pdf" rel="nofollow">HC6800-ES</a> development
+kit as a platform where D0 is already wired to P2_0. The complete sources are available <a href="https://github.com/treideme/stc89c52-demos" rel="nofollow">here</a>. The actual code for
+blinking the LED looks like this.</p> <pre class="language-c"><!----><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mcs51/8051.h></span></span>
+ 
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ 
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Toggle LED at P2_0</span>
+    P2_0 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">30000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    P2_0 <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">30000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+ 
+<span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token keyword">unsigned</span> <span class="token keyword">int</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>t<span class="token operator">--</span><span class="token punctuation">)</span>
+    <span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p>This can be compiled with SDCC. Please install <a href="http://sdcc.sourceforge.net/" rel="nofollow">SDCC</a> and make sure it is in the <a href="https://www.geeksforgeeks.org/how-to-set-java-path-in-windows-and-linux/" rel="nofollow">PATH environment variable</a> of your system.
+If you save the above snippet to main.c, it can be compiled into an Intel hex for flashing as follows.</p> <pre class="language-bash"><!----><code class="language-bash"><span class="token comment">## Compile from source to object (.rel) file </span>
+sdcc <span class="token parameter variable">--Werror</span> <span class="token parameter variable">-mmcs51</span> --opt-code-size <span class="token parameter variable">-o</span> main.hex main.c
+<span class="token comment"># -Werror = treat warnings as errors (always useful)</span>
+<span class="token comment"># -mmcs51 = use 8051 architecture</span>
+<span class="token comment"># --opt-code-size = optimize for code-size</span>
+<span class="token comment"># -o main.hex (output of compiler)</span>
+<span class="token comment"># main.c (compile main.c)</span></code><!----></pre> <p>This can now be flashed with <a href="https://github.com/grigorig/stcgal" rel="nofollow">stcgal</a> to the board as follows. Make sure stcgal
+is also available in PATH.</p> <pre class="language-bash"><!----><code class="language-bash">stcgal.py <span class="token parameter variable">-P</span> stc89 <span class="token parameter variable">-p</span> /dev/ttyUSB1 main.hex
+<span class="token comment"># Change /dev/ttyUSB1 to whatever your USB-serial converter enumerates to on your platform</span></code><!----></pre> <p>I had an issue where my <a href="https://github.com/grigorig/stcgal/issues/50" rel="nofollow">STC89C52RC</a> was from a new batch release that had a bootloader that was not supported by stcgal
+yet. Luckily others already forked a version of <a href="https://github.com/nrife/stcgal" rel="nofollow">stcgal that supports newer STC89s</a>. I wish the original author would be
+more responsive to pull requests, but sometimes it takes patience or own initiative. The command for nrifes fork of
+stcgal to flash my STC89C52RC is as follows.</p> <pre class="language-bash"><!----><code class="language-bash">stcgal.py <span class="token parameter variable">-P</span> stc89a <span class="token parameter variable">-p</span> /dev/ttyUSB1 main.hex
+<span class="token comment"># Change /dev/ttyUSB1 to whatever your USB-serial converter enumerates to on your platform</span></code><!----></pre> <p>After the above command is issued, connect power to your bread-board setup. Stcgal should handshake with the UART
+bootloader and flash the image onto the chip. After flashing and power cycling you should see a red blinking LED as
+follows.</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_hello.gif" style="width: 512px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="8051 Hello World"/><!----> <p>That is how easy it is to program an 8051 chip with just open-source tools. <a href="https://github.com/treideme/stc89c52-demos" rel="nofollow">The source</a> also includes a sample of how to
+use the <a href="https://mesonbuild.com/" rel="nofollow">meson build system</a> to automate the compilation and flashing. Successful build automation is the first step
+toward continuous integration. The <a href="2022.07.03">next blog shows how to use an 8051 simulator</a> to emulate parts of this chip. Because
+this chip does not have in-system debugging support, any serious attempt to do continuous integration and testing likely
+takes the form of software-based testing with a simulator. There might be a way to build a hardware-in-the-loop testing
+system around this dev-kit, but this would be more tedious than what modern architectures like ARM, and RISCV provide <a href="https://developer.arm.com/documentation/dui0203/j/semihosting/about-semihosting/what-is-semihosting-" rel="nofollow">via semihosting</a>.</p><!----> <div class="tui-divider"></div> <br/><b>Published:</b> 2022-06-04 <br/> <b>Updated  :</b> 2025-10-04 <!--[0--><aside class="post-footer"><ul class="post-footer__categories"><!--[--><li class="no-bullet"><a href="/blog/category/covid-19/" class="tui-button white-168">covid-19</a></li><li class="no-bullet"><a href="/blog/category/coding/" class="tui-button white-168">coding</a></li><li class="no-bullet"><a href="/blog/category/embedded/" class="tui-button white-168">embedded</a></li><li class="no-bullet"><a href="/blog/category/8051/" class="tui-button white-168">8051</a></li><!--]--></ul></aside><!--]--> <br/> Not a spam bot? Want to leave comments or provide editorial guidance? Please click any
+			of the social links below and make an effort to connect. I promise I read all messages and
+			will respond at my choosing. <div class="post-pagination"><!--[0--><a href="/blog/2022.07.03" class="tui-button white-168 prev-link">← MCS-51 / 8051 – STC89C52 Emulation</a><!--]--> <!--[0--><a href="/blog/2022.05.31" class="tui-button white-168 next-link">MCS-51 / 8051 MCU Revived - Introduction →</a><!--]--></div></div></fieldset></article><!--]--><!----></main><!----> <div class="tui-statusbar"><ul><li><a href="/api/rss.xml" data-sveltekit-reload="" target="_blank">RSS</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://x.com/treideme1" data-sveltekit-reload="" target="_blank">𝕏</a></li> <span class="tui-statusbar-divider"></span> <li><a href="http://github.com/treideme" data-sveltekit-reload="" target="_blank">GitHub</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.linkedin.com/in/thomasreidemeister" data-sveltekit-reload="" target="_blank">In</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.instagram.com/treideme/" data-sveltekit-reload="" target="_blank">📸</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://dblp.org/pid/93/7009.html" data-sveltekit-reload="" target="_blank">DPLB</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://patents.google.com/?inventor=Thomas+REIDEMEISTER" data-sveltekit-reload="" target="_blank"> 🔬 </a></li> <span class="tui-statusbar-divider"></span> <li style="float: right;"><a href="/terms">© 2026 Thomas Reidemeister</a></li></ul></div><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_ih7hdl = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.BLr9_bnc.js"),
+						import("../_app/immutable/entry/app.CjXFn_g_.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

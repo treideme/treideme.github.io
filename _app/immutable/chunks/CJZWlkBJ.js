@@ -1,0 +1,18 @@
+import{$ as e,M as t,P as n,pt as r,tt as i}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";import{t as a}from"./DPw4rzvf.js";import"./BrJmRK04.js";import"./WppY4ym1.js";import"./BIw1C4rS.js";import"./DPsrAEoc.js";var o={title:`1D Measurements with Bottlenose and HALCON`,date:`2024-06-06`,updated:`2025-10-04`,categories:[`coding`,`vision`],coverImage:`/images/ruler_landing.png`,coverWidth:1280,coverHeight:720,excerpt:`Metric Camera Calibration.`},{title:s,date:c,updated:l,categories:u,coverImage:d,coverWidth:f,coverHeight:p,excerpt:m}=o,h=n(`<p>In this blog post, we will learn how to perform 1D measurements using MVTec HALCON and Bottlenose. After we explained
+how to calibrate Bottlenose using HALCON in our previous blog post and provided a hands-on guide in this post, we will
+now focus on how to perform 1D measurements using Bottlenose and HALCON.</p> <p>1D measurements are a common task in machine vision applications. They are used to measure the length and orientation
+of lines and edges in an image. A simple application is measuring the distance between lines in an image. Above is a
+crop of a sample image of a ruler that was taken with a Bottlenose camera. If we want to measure the distance between
+the major lines (i.e. centimetres), we can measure them along a known line.</p> <p>The HALCON function gen_measure_rectangle2 generates the rectangle of a given size and orientation at a given position.
+The measurement can be sampled from this rectangle. HALCON supports other operators to extract such measurements too.
+Conceptually they follow a predefined path to extract the measurement, as shown in the following image. The measurement
+rectangle is also annotated in red in the above image.</p> <!><br/> <!><br/> <p>With <a href="https://www.mvtec.com/doc/halcon/2311/en/measure_projection.html" rel="nofollow"><code>measure_projection</code></a> we can then measure the gray-value profile along the line. We could naively try to threshold the
+grey values for the ruler and then measure the distance between the two valleys. However, this approach is not robust
+and will fail if the lighting conditions change. Instead, we compute the first and second derivative of the profile
+and then search for the zero crossings of the first derivative and crosscheck this with the second derivative. This
+approach is more robust and works better than simple thresholding.</p> <p>Below is the gray profile of the profile shown in red from the image above. The peaks in grey intensity highlight
+the divisions.</p> <!><br/> <p>Below we show a Figure that shows the first and second derivative of the smoothed gray profile. The vertical dashed
+lines indicate the zero-crossings in the second derivative, where the threshold (horizontal dashed line) is breached.
+These pixel coordinates on the profile line then indicate the centimetre marks on the ruler.</p> <!><br/> <p>As seen the zero-crossings of the 10 mm lines are clearly visible. With fine-tuning the thresholding one can get the
+exact position of the major centimetre lines. Given the calibration parameters obtained in the previous blog post, we
+can now perform metric measurements with sub 0.2 mm accuracy. As shown in the image below.</p> <!><br/> <hr/> <p>Cross-posted from my <a href="https://www.labforge.ca/?p=2314" rel="nofollow">company blog</a>.</p>`,1);function g(n){var o=h(),s=i(e(o),6);a(s,{src:`/images/profile_line.png`,width:`400`});var c=i(s,3);a(c,{src:`/images/caliper_annotated_clip.png`,width:`400`});var l=i(c,7);a(l,{src:`/images/intensity_plot-2.png`,width:`700`});var u=i(l,5);a(u,{src:`/images/derivative_plot-1.png`,width:`700`});var d=i(u,5);a(d,{src:`/images/annotated_caliper-2.png`,width:`400`}),r(5),t(n,o)}export{g as default,o as metadata};

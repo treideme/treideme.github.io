@@ -1,0 +1,63 @@
+import{$ as e,E as t,M as n,P as r,mt as i,pt as a,tt as o}from"./C5Qr1tWr.js";import"./xihTtKlq.js";import"./DSJ1rPnI.js";var s={title:`Building the GNU Compiler Toolchain for the Coldfire Target`,date:`2010-02-04`,updated:`2025-10-04`,categories:[`embedded`,`gradschool`],coverImage:`/images/coldfire.jpg`,coverWidth:200,coverHeight:200,excerpt:`Toolchain Bootstrap for Freescale Coldfire.`},{title:c,date:l,updated:u,categories:d,coverImage:f,coverWidth:p,coverHeight:m,excerpt:h}=s,g=r(`<p>Tested with…</p> <ul><li>IBM Thinkpad T61p</li> <li>Ubuntu Karmic AMD64 using bash</li></ul> <h2 id="environment-preparation"><a aria-hidden="true" tabindex="-1" href="#environment-preparation"><span class="icon icon-link"></span></a>Environment Preparation</h2> <p>In this tutorial I’m assuming that you are using your own machine to develop the RTX. In order to do any RTX development
+at home, you need a decent development environment, preferrably Linux, and the following tools:</p> <ul><li><a href="https://github.com/pahihu/coldfire" rel="nofollow">Coldfire Emulator</a> : This emulator is able to simulate the Coldfire
+boards used in the lab.</li> <li>A GCC cross-compiler toolchain for the Coldfire target: The instruction set of your home box will likely differ from
+the Coldfire target. As such, you need to get or build a compiler that executes on your home box and generates Coldfire
+instructions. Since GCC does not do this job on its own, you also need to build/download the supportive tools for GCC.</li></ul> <p>Use GCC 3.4.X: I assume many of the readers will actually want to use the newest fancy GCC to build your project. I
+suggest that you use a GNU compiler revision that has matured over the years and is compatible to what we use in the lab.
+In addition some compiler parameters sneakily change from revision to revision, so do warning options and supported
+features.</p> <p>GCC 3.4.X needs to be patched to run on amd64: Many of you may have 64bit machines. There is a defect in the GCC 3.4.X
+that is triggered when cross-compiling on amd64 targets. This bug needs to be patched by you (see below).</p> <h2 id="building-gcc"><a aria-hidden="true" tabindex="-1" href="#building-gcc"><span class="icon icon-link"></span></a>Building GCC</h2> <p>A GCC toolchain needs at least binutils to work. Since the RTX is to be written in C, we just need the “GCC part” of GCC.</p> <p>Lets start by defining some locations where the compiler should go. It is good practice not to stuff the toolchain into
+the regular system directories. I like to use <code>/usr/local/coldfire</code> as prefix for all tools. Lets start by setting
+up the environment:</p> <pre class="language-bash"></pre> <h2 id="download-and-install-binutils"><a aria-hidden="true" tabindex="-1" href="#download-and-install-binutils"><span class="icon icon-link"></span></a>Download and Install Binutils</h2> <p>Update, use Binutils 2.18 instead of 2.16.1. On more recent Linux distros, 2.16.1 produces invalid M68K opcodes. The
+compiler flag “-Wno-format-security” is used to avoid halt on warnings, because more recent GCC versions became way more
+picky than before.</p> <pre class="language-bash"></pre> <h2 id="downloading-bootstrapping-and-building-gcc"><a aria-hidden="true" tabindex="-1" href="#downloading-bootstrapping-and-building-gcc"><span class="icon icon-link"></span></a>Downloading, Bootstrapping and Building GCC</h2> <p>I prefer to have a tiny standard library for GCC. Newlib provides some basic functionality for embedded systems that can
+be used for debugging purposes or to use convenience functions, such as sprintf. Please note, however, you are not
+allowed to use any of these functions for your RTX project.</p> <p>As described earlier, GCC needs to be fixed to work on amd64 targets. <a href="https://www.rockbox.org/" rel="nofollow">Rockbox</a> provides this
+patch for GCC 3.4.6 (see below).</p> <p><strong>Update</strong>: Some newer GCCs have trouble with compiling this old version of GCC. The main reason is that newer GCCs treat
+warnings more seriously; therefore, an additional flag was added. Also for linking the files, the installation step
+requires m68k-randlib. To include it in the PATH, the path is now issued as prefix to make install. Also with these
+configuration flags, GCC will use its own newlib and does not depend on an external version anymore (extra steps removed).</p> <pre class="language-bash"></pre> <p><em>Provided there are no severe errors: Congrats! You have just build your very own GCC toolchain for the Coldfire target!</em></p> <h2 id="installing-and-using-the-coldfire-simulator"><a aria-hidden="true" tabindex="-1" href="#installing-and-using-the-coldfire-simulator"><span class="icon icon-link"></span></a>Installing and Using the Coldfire Simulator</h2> <p>Since you will not have access to the actual hardware at home, you need to simulate the board. There exists a
+Coldfire simulator that is capable of emulating the board you are using for your project. Please note, however, this
+emulator seems to not accurately simulate timer interrupts. As such, the simulated time may significantly differ from
+the actual hardware.</p> <pre class="language-bash"></pre> <p>Now compile some sample <code>S19</code> file. Figure the starting address out from the <code>.map</code> file (i.e. <code>0x100100000</code> for the
+RTX project).</p> <pre class="language-undefined"></pre> <p>On telnet ports <code>5206</code> and <code>5207</code> you can access the serial ports of the device.</p> <h1 id="other-references"><a aria-hidden="true" tabindex="-1" href="#other-references"><span class="icon icon-link"></span></a>Other References</h1> <p>The Coldfire CPU appears to be popular among Atari enthusiasts. A collection of tools and refefences is available on <a href="http://vincent.riviere.free.fr/soft/m68k-atari-mint/" rel="nofollow">Vincent Riviere’s Atari page</a>.</p> <hr/> <p><a href="https://www.eng.uwaterloo.ca/~treideme/coldfire-gcc.php" rel="nofollow">Cross-Posted on my former UWaterloo Website</a></p>`,1);function _(r){var s=g(),c=o(e(s),20);t(c,()=>`<code class="language-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /usr/local/coldfire/bin
+<span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /usr/local/coldfire/lib
+<span class="token function">sudo</span> <span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /usr/local/coldfire/share
+
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">INSTPREFIX</span><span class="token operator">=</span>/usr/local/coldfire
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$&#123;INSTPREFIX&#125;</span>/bin:<span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span>
+<span class="token builtin class-name">echo</span> <span class="token string">"export PATH=/usr/local/coldfire/bin:<span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span>"</span> <span class="token operator">>></span> ~/.bashrc
+<span class="token builtin class-name">echo</span> <span class="token string">"setenv PATH /usr/local/coldfire/bin:<span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span>"</span> <span class="token operator">>></span> ~/.cshrc</code>`,!0),i(c);var l=o(c,6);t(l,()=>`<code class="language-bash"><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> ~/build_env
+<span class="token builtin class-name">cd</span> ~/build_env
+<span class="token function">wget</span> <span class="token parameter variable">-c</span> http://ftp.gnu.org/gnu/binutils/binutils-2.18.tar.bz2
+<span class="token function">tar</span> xvjf binutils-2.18.tar.bz2
+<span class="token builtin class-name">cd</span> binutils-2.18/
+<span class="token assign-left variable">CFLAGS</span><span class="token operator">=</span><span class="token string">"-Wno-format-security"</span> ./configure  <span class="token parameter variable">--target</span><span class="token operator">=</span>m68k-elf <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token variable">$&#123;INSTPREFIX&#125;</span>
+<span class="token assign-left variable">CFLAGS</span><span class="token operator">=</span><span class="token string">"-Wno-format-security"</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></code>`,!0),i(l);var u=o(l,10);t(u,()=>`<code class="language-bash"><span class="token function">wget</span> <span class="token parameter variable">-c</span> <span class="token string">"http://ftp.gnu.org/gnu/gcc/gcc-3.4.6/gcc-core-3.4.6.tar.bz2"</span>
+<span class="token function">wget</span> <span class="token parameter variable">-c</span> <span class="token string">"http://www.rockbox.org/gcc/gcc-3.4.6-amd64.patch"</span>
+
+<span class="token function">tar</span> xvjf gcc-core-3.4.6.tar.bz2
+<span class="token builtin class-name">cd</span> gcc-3.4.6
+patch <span class="token parameter variable">-p1</span> <span class="token operator">&lt;</span> <span class="token punctuation">..</span>/gcc-3.4.6-amd64.patch
+<span class="token function">mkdir</span> build
+<span class="token builtin class-name">cd</span> build
+<span class="token assign-left variable">CFLAGS</span><span class="token operator">=</span><span class="token string">"-Wno-unused-result"</span> <span class="token punctuation">..</span>/configure <span class="token parameter variable">--target</span><span class="token operator">=</span>m68k-elf <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token variable">$&#123;INSTPREFIX&#125;</span> --enable-languages<span class="token operator">=</span><span class="token string">"c"</span> --with-newlib <span class="token punctuation">&#92;</span>
+  --without-headers --disable-shared
+<span class="token assign-left variable">CFLAGS</span><span class="token operator">=</span><span class="token string">"-Wno-unused-result"</span> <span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span><span class="token builtin class-name">:</span><span class="token variable">$&#123;INSTPREFIX&#125;</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></code>`,!0),i(u);var d=o(u,8);t(d,()=>`<code class="language-bash"><span class="token comment"># Update 2025, consider this mirror since the original site seems down</span>
+<span class="token comment"># git clone https://github.com/pahihu/coldfire</span>
+<span class="token function">wget</span> <span class="token parameter variable">-c</span> http://www.slicer.ca/coldfire/files/coldfire-0.3.1.tar.gz
+<span class="token function">tar</span> xvzf coldfire-0.3.1.tar.gz
+
+<span class="token builtin class-name">cd</span> coldfire-0.3.1
+./configure <span class="token parameter variable">--prefix</span><span class="token operator">=</span><span class="token variable">$&#123;INSTPREFIX&#125;</span>
+<span class="token function">make</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token builtin class-name">cd</span> <span class="token punctuation">..</span></code>`,!0),i(d);var f=o(d,4);t(f,()=>`<code class="language-undefined">coldfire --board /usr/local/coldfire/share/coldfire/cjdesign-5307.board
+
+DBUG&gt; DL FILENAME.s19
+DBUG&gt; GO STARTADDRESS</code>`,!0),i(f),a(10),n(r,s)}export{_ as default,s as metadata};
