@@ -1,0 +1,1 @@
+var e=`Thomas Reidemeister`,t=`Personal blog about machine vision, retro computing, and martial arts.`,n=`reidemeister.com`,r=`Thomas Reidemeister`,i=`G-EHW6Z8HZ08`,a=[{title:`Blog`,route:`/blog`},{title:`About`,route:`/about`},{title:`Tools`,route:`/tools`}];export{e as a,t as i,a as n,n as o,r,i as t};
