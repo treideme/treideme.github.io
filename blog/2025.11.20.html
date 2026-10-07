@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="/js/tuicss.min.js"></script>
+		<link href="../_app/immutable/entry/start.Bf5ZtK2E.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/QBhfSVfp.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Du9yKLqO.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/Dt-HX3Vu.js" rel="modulepreload">
+		<link href="../_app/immutable/entry/app.DufG8FK5.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/BaNbYf_w.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/xihTtKlq.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/0.DbE73yTG.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/DRByVC-c.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CqFZ8hw7.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/tZp6t9zN.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/0uJQAr4y.js" rel="modulepreload">
+		<link href="../_app/immutable/nodes/5.CLHtOhoH.js" rel="modulepreload">
+		<link href="../_app/immutable/chunks/CC8B3KY6.js" rel="modulepreload">
+		<!--12qhfyh--><link rel="alternate" type="application/rss+xml" title="Thomas Reidemeister" href="http://reidemeister.com/api/rss.xml"/> <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EHW6Z8HZ08"></script><!----><!--2iqk61--><meta data-key="description" name="description" content="A rotary knob drives a stepper motor one to one on an 8051, once both jobs share a single timer tick."/> <meta property="og:type" content="article"/> <meta property="og:title" content="MCS-51 Real-World Interfacing - Rotary Knobs and Steppers"/> <meta name="twitter:title" content="MCS-51 Real-World Interfacing - Rotary Knobs and Steppers"/> <meta property="og:description" content="A rotary knob drives a stepper motor one to one on an 8051, once both jobs share a single timer tick."/> <meta name="twitter:description" content="A rotary knob drives a stepper motor one to one on an 8051, once both jobs share a single timer tick."/> <meta property="og:image:width" content="500"/> <meta property="og:image:height" content="349"/> <!--[-1--><!--]--><!----><title>MCS-51 Real-World Interfacing - Rotary Knobs and Steppers</title>
+		<link href="../_app/immutable/assets/0.DSsOIXvq.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogQuote.8TWGGipd.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/BlogTable.K5KlPf1M.css" rel="stylesheet">
+		<link href="../_app/immutable/assets/YoutubePlayer.DRLVl_9I.css" rel="stylesheet">
+		<!-- You can add global <meta> tags here, but anything not global or dynamic should be a `<svelte:head>` tag on the proper page(s) instead. -->
+	</head>
+	<body class="tui-bg-blue-black">
+		<div id="svelte"><!--[--><!--[0--><!--[--><div class="layout"><header><nav class="tui-nav"><a href="/" class="tui-panel cyan-168 full-width black-255-text tui-no-shadow center"><b style="font-size: 2.0em;">Thomas Reidemeister</b></a> <span class="tui-datetime" data-format="d/M/1993 h:m:s a"></span> <ul><li class="tui-sidenav-button"><a href="/">Home</a></li> <!--[--><!--[0--><li class="tui-dropdown"><a href="/blog">Blog</a> <!--[-1--><!--]--></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/about"><!---->About<!----></a></li><!--]--><!--[-1--><li class="tui-dropdown"><a href="/tools"><!---->Tools<!----></a></li><!--]--><!--]--></ul><!----></nav></header><!----> <!----><main id="main" tabindex="-1"><!--[--><!--[-1--><!--]--><!----> <article class="tui-window"><div class="tui-window-titlebar"><span class="tui-window-titlebar-rule-corner"></span> <button class="tui-fieldset-button left" style="margin-top: 0px"><span class="green-255-text">■</span></button> <span class="tui-window-titlebar-rule"></span> <span class="tui-window-titlebar-text">MCS-51 Real-World Interfacing - Rotary Knobs and Steppers</span> <span class="tui-window-titlebar-rule"></span> <button class="tui-fieldset-button right" style="margin-top: 0px"><span class="green-255-text">↑</span></button> <span class="tui-window-titlebar-rule-corner"></span></div> <fieldset class="tui-fieldset" style="margin-top: 0px"><div class="white-168-text" style="overflow: auto;"><img class="cover-image tui-shadow" src="/images/w204_rotary_encoder.png" alt="" style="aspect-ratio: 500 / 349;display: block; margin-left: auto; margin-right: auto;" width="500" height="349"/><br/><br/> <!--[--><div class="blogquote-center svelte-xxg3ag"><div class="tui-window purple-168 white-255-text center"><fieldset class="tui-fieldset no-legend tui-border-solid"><!---->Using a rotary controller to type is like trying to thread a needle while riding a rollercoaster.<!----></fieldset></div></div><!----> <p>So far we have covered basic MCS-51 programming and interfacing with simple buttons, button matrices, and various types of
+displays. In this installment, we will explore rotary encoders and stepper motors, which are used in various applications such as
+volume controls, menu navigation, and precise positioning systems.</p> <p>This type of interface has made it to many vehicles, such as the <a href="https://en.wikipedia.org/wiki/IDrive" rel="nofollow">BMW iDrive system</a> or Mercedes knob control interface that came out with the W204
+series (shown above). It is surprising how pervasive they have become since the early 2000s. It is one of these adjacent
+possible inventions that could have been done in the 1980s but was not, until the right mix of technology and need came together.</p> <p>The objective is to control a stepper motor’s position with a rotary knob: turn the knob, and the shaft follows by the
+same angle.</p> <p>Unfortunately, my HC6800-ES development board did not have a rotary encoder pre-soldered and did not ship with a stepper
+motor. However, they included a Darlington array (ULN2003) that can be used to drive a <code>unipolar</code> stepper motor. Note
+that stepper motors with only two coils (bipolar) need an H-bridge driver, which is a bit more complex to implement.</p> <h1 id="rotary-encoder-knobs"><a aria-hidden="true" tabindex="-1" href="#rotary-encoder-knobs"><span class="icon icon-link"></span></a>Rotary Encoder Knobs</h1> <p>Looking at the <a href="https://datasheet4u.com/datasheets/Joy-IT/KY-040/1402050" rel="nofollow">datasheet</a> of the encoder knob module, we can see that it has
+three pins: A, B, and C (common ground). The A and B pins are connected to the two output channels of the rotary encoder,
+which generate quadrature signals as the knob is rotated. The C pin is connected to ground. Independently, the encoder
+also has a built-in push button that can be used for additional functionality.</p> <p>The pattern of the signals on pins A and B can be used to determine the direction of rotation. It is called quadrature encoding
+because the two signals are 90 degrees out of phase. By monitoring the transitions of these signals, we can determine whether the knob
+is being turned clockwise or counterclockwise. The following table summarizes the state transitions for clockwise and counterclockwise rotation:</p> <div class="blogtable-center svelte-vz13oo"><div class="tui-window" style="text-align: left;"><fieldset class="tui-fieldset"><!--[0--><legend class="center">Rotary Encoder State Transitions</legend><!--]--> <table class="tui-table striped-purple svelte-vz13oo" style="100%"><thead><tr><th>Previous State (AB)</th><th>Current State (AB)</th><th>Direction</th></tr></thead> <tbody><tr><td>00</td><td>01</td><td>Clockwise</td></tr><tr><td>01</td><td>11</td><td>Clockwise</td></tr><tr><td>11</td><td>10</td><td>Clockwise</td></tr><tr><td>10</td><td>00</td><td>Clockwise</td></tr><tr><td>00</td><td>10</td><td>Counterclockwise</td></tr><tr><td>10</td><td>11</td><td>Counterclockwise</td></tr><tr><td>11</td><td>01</td><td>Counterclockwise</td></tr><tr><td>01</td><td>00</td><td>Counterclockwise</td></tr></tbody><!----></table></fieldset></div></div><!----> <p>By tracking the changes in the states of pins A and B, we can determine the direction of rotation and
+increment or decrement a counter accordingly. So if <code>B</code> changes first, we are turning clockwise, otherwise counterclockwise.
+Another simplification is to just sample the state of <code>A</code> (CLK) and look at <code>B</code> (DT) to determine the direction. If for
+any transition of <code>A</code> from high to low, <code>B</code> is high, then we are turning counterclockwise, otherwise clockwise. This
+simplifies the code, but now we need at least two transitions per step to register a change.</p> <p>When the button is pressed, it connects the C pin to ground, which can be detected by monitoring the state of the button pin.</p> <p>Depending on what module you get, the pins may already have pull-up resistors built-in.</p> <p>We can connect the A and B pins to two GPIO pins configured as inputs. We can use
+interrupts or polling to monitor the state changes of these pins. To help with debouncing it may be best to sample
+the state from a timer interrupt at a regular interval, say every 1ms, or artificially slow down the reading loop.</p> <p>Let’s start with a simple example that lights up the LEDs <code>D1</code> - <code>D8</code> on the HC6800-ES board to indicate the direction of rotation.
+When turned clockwise, we will light up <code>D1</code> to <code>D8</code> in sequence, and when turned counterclockwise, we will light them down in reverse sequence.</p> <p>While the button is pressed, we will disable the LED updates. Given the lack of an onboard rotary encoder, I used the ISP1
+header to connect one. I connected <code>5V</code> to <code>+</code>, <code>GND</code> to <code>GND</code>, <code>A</code> to <code>P1.7 (CLK)</code>, <code>B</code> to <code>P1.6 (DT)</code>, and the button to <code>P1.5 (SW)</code>.
+Note the buzzer is also connected to <code>P1.5</code>, so you will hear clicks when you press the button.</p> <pre class="language-c"><!----><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mcs51/8051.h></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;mcs51/compiler.h></span> <span class="token comment">// NOP</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;stdint.h></span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">SW</span>  <span class="token expression">P1_5</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">DT</span>  <span class="token expression">P1_6</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">CLK</span> <span class="token expression">P1_7</span></span>
+
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">LED</span> <span class="token expression">P2</span></span>
+
+<span class="token keyword">void</span> <span class="token function">delay</span><span class="token punctuation">(</span><span class="token class-name">uint16_t</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">while</span> <span class="token punctuation">(</span>t<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token comment">// Simple delay loop (more than 1us at 12MHz)</span>
+    <span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  SW <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Enable pull-up</span>
+  DT <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Enable pull-up</span>
+  CLK <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// Enable pull-up</span>
+
+  __bit last_clk <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+  <span class="token class-name">uint8_t</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Read encoder</span>
+    __bit clk <span class="token operator">=</span> CLK<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>last_clk <span class="token operator">==</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> clk <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// Falling edge detected</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>DT <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Clockwise</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">&lt;</span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          count<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+          count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// Counter-clockwise</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>count <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+          count<span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+          count <span class="token operator">=</span> <span class="token number">7</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    last_clk <span class="token operator">=</span> clk<span class="token punctuation">;</span>
+
+    <span class="token comment">// Read switch</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>SW <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      LED <span class="token operator">=</span> <span class="token number">0xFF</span><span class="token punctuation">;</span> <span class="token comment">// Reset on button press</span>
+      <span class="token keyword">while</span><span class="token punctuation">(</span>SW <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Wait for release</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      LED <span class="token operator">=</span> <span class="token operator">~</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> count<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Display count (active low)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">delay</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Debounce delay</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p>The end result looks as follows:</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_enc_connection.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>The full example is <a href="https://github.com/treideme/stc89c52-demos/tree/main/05_enc" rel="nofollow"><code>05_enc</code></a>.</p> <h1 id="stepper-motor-control"><a aria-hidden="true" tabindex="-1" href="#stepper-motor-control"><span class="icon icon-link"></span></a>Stepper Motor Control</h1> <p>A stepper motor is a type of brushless DC motor that divides a full rotation into a number of equal steps. The motor’s
+position can be controlled precisely without the need for feedback systems, making it ideal for applications requiring
+accurate positioning.</p> <p>A staple for recent embedded and RC projects is the <a href="https://www.mouser.com/datasheet/2/758/stepd-01-data-sheet-1143075.pdf" rel="nofollow">28BYJ-48</a> stepper motor, which is small, inexpensive and runs on 5V. It is a unipolar stepper motor with 5 wires:</p> <ul><li>Red: Common wire (connected to Vcc)</li> <li>Orange: Coil 4</li> <li>Yellow: Coil 3</li> <li>Pink: Coil 2</li> <li>Blue: Coil 1</li></ul> <p>The numbering is the datasheet’s, and the list is in the order the wires leave the plug. That order is also the order
+in which the coils have to fire, which matters in a moment.</p> <img class="tui-shadow white-168 black-255-text" src="/images/28BYJ-48-5V.png" style="width: 200px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/> <p>The idea is to energize the coils in a specific sequence to make the motor shaft rotate. The most common driving methods are:</p> <ul><li>Full Step: One phase mode, energizing one coil at a time. <img class="tui-shadow white-168 black-255-text" src="/images/8051_full_step_single.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/></li> <li>Full Step: Two phase mode, energizing two coils at a time for higher torque. <img class="tui-shadow white-168 black-255-text" src="/images/8051_full_step_2p.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/></li> <li>Half Step: Alternating between energizing one and two coils for smoother motion and higher precision (at the loss of torque). <img class="tui-shadow white-168 black-255-text" src="/images/8051_half_step.png" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="Blog Image"/><!----><br/></li></ul> <p><a href="https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ApplicationNotes/ApplicationNotes/doc4214.pdf" rel="nofollow">Atmel (ehm Microchip)</a> has a good
+application note on stepper motor control that goes into more detail. They wire up 12V steppers directly with a discrete
+transistor circuit and explicit protection, but for our small stepper motor the ULN2003 Darlington array on the HC6800-ES board
+will do just fine.</p> <h2 id="wiring-the-motor"><a aria-hidden="true" tabindex="-1" href="#wiring-the-motor"><span class="icon icon-link"></span></a>Wiring the motor</h2> <p>The ULN2003 inputs <code>IN1</code> to <code>IN4</code> are wired to <code>P1.0</code> to <code>P1.3</code>, and its outputs <code>OUT1</code> to <code>OUT4</code> go to the 5-pin
+header <code>P3</code> next to the chip, marked <code>+ A B C D</code> on the silkscreen. The first pin is <code>VCC</code>. The motor’s JST plug goes
+straight on with the red wire on <code>+</code>, which puts orange, yellow, pink and blue on <code>A</code> to <code>D</code>. Because the plug already
+carries the coils in firing order, <code>A</code> to <code>D</code> follow <code>P1.0</code> to <code>P1.3</code> without any rearranging. If a motor only hums,
+two phases are out of order, and the cheap fix is to swap two entries in software rather than re-pin a crimped plug.</p> <p>The ULN2003 does not invert: writing a <code>1</code> to an input energizes the matching coil. It is also the reason the chip is
+on the board at all. A coil of the 5V motor is about 50 ohm, so it draws around 100 mA, and an 8051 pin can source a
+fraction of a milliamp.</p> <h2 id="half-stepping-in-a-table"><a aria-hidden="true" tabindex="-1" href="#half-stepping-in-a-table"><span class="icon icon-link"></span></a>Half-stepping in a table</h2> <p>The three diagrams above collapse into one table of eight entries. Each entry energizes one coil or two neighbours, and
+consecutive entries differ by exactly one coil.</p> <pre class="language-c"><!----><code class="language-c"><span class="token keyword">static</span> <span class="token keyword">const</span> <span class="token class-name">uint8_t</span> half_step<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  <span class="token number">0x01</span><span class="token punctuation">,</span> <span class="token number">0x03</span><span class="token punctuation">,</span> <span class="token number">0x02</span><span class="token punctuation">,</span> <span class="token number">0x06</span><span class="token punctuation">,</span> <span class="token number">0x04</span><span class="token punctuation">,</span> <span class="token number">0x0C</span><span class="token punctuation">,</span> <span class="token number">0x08</span><span class="token punctuation">,</span> <span class="token number">0x09</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code><!----></pre> <p>Walking the index forward turns the shaft one way, walking it backward turns it the other. Through its roughly 64:1
+gearbox, the 28BYJ-48 needs 4096 of these half-steps for one turn of the output shaft.</p> <h2 id="why-the-polling-loop-stops-working"><a aria-hidden="true" tabindex="-1" href="#why-the-polling-loop-stops-working"><span class="icon icon-link"></span></a>Why the polling loop stops working</h2> <p>The encoder demo above polls the knob in a loop, with a busy-wait delay as its debounce. That is fine for LEDs. It falls
+apart the moment the same loop also has to step a motor, because every step needs a delay of its own, and while the CPU
+sits in that delay nobody is watching the knob. Turn it quickly and detents go missing.</p> <p>The fix is to hand both jobs to one timer. Timer 0 fires every millisecond. On this board’s 12 MHz crystal one machine
+cycle is exactly 1 µs, so the reload value is simply 65536 - 1000. Every tick samples the encoder, every second tick
+moves the motor one half-step towards its target, and the main loop does nothing but copy the count onto the LEDs.</p> <p>Sampling on a fixed tick also replaces the debounce delay. Instead of waiting for one falling edge, the decoder uses the
+full transition table from earlier and counts plus or minus one per transition. It only commits a detent when the knob
+settles back at rest with at least half a cycle accumulated. Contact bounce looks like <code>+1 -1 +1 -1</code>, and it nets out to
+nothing.</p> <pre class="language-c"><!----><code class="language-c"><span class="token keyword">void</span> <span class="token function">timer0_isr</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token function">__interrupt</span><span class="token punctuation">(</span>TF0_VECTOR<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token class-name">int8_t</span> d<span class="token punctuation">;</span>
+  <span class="token function">timer0_reload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// Encoder: one sample per tick.</span>
+  d <span class="token operator">=</span> <span class="token function">quad_detent</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>quad<span class="token punctuation">,</span> <span class="token function">AB</span><span class="token punctuation">(</span>CLK<span class="token punctuation">,</span> DT<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>d <span class="token operator">&amp;&amp;</span> detents <span class="token operator">+</span> d <span class="token operator">&lt;=</span> DETENT_LIMIT <span class="token operator">&amp;&amp;</span> detents <span class="token operator">+</span> d <span class="token operator">>=</span> <span class="token operator">-</span>DETENT_LIMIT<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    detents <span class="token operator">+=</span> d<span class="token punctuation">;</span>
+    target <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">int16_t</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">int32_t</span><span class="token punctuation">)</span>detents <span class="token operator">*</span> HALF_STEPS_PER_REV<span class="token punctuation">)</span> <span class="token operator">/</span> DETENTS_PER_REV<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token comment">/* push button handling omitted */</span>
+
+  <span class="token comment">// Stepper: one half-step toward the target every STEP_TICKS.</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">++</span>step_div <span class="token operator">&lt;</span> STEP_TICKS<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  step_div <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>position <span class="token operator">!=</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    position <span class="token operator">+=</span> <span class="token punctuation">(</span>target <span class="token operator">></span> position<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token number">1</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+    P1 <span class="token operator">=</span> P1_INPUTS <span class="token operator">|</span> <span class="token function">stepper_phase</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span><span class="token punctuation">)</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    idle <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>idle <span class="token operator">&lt;</span> IDLE_TICKS <span class="token operator">/</span> STEP_TICKS<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">++</span>idle <span class="token operator">==</span> IDLE_TICKS <span class="token operator">/</span> STEP_TICKS<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      P1 <span class="token operator">=</span> P1_INPUTS<span class="token punctuation">;</span>           <span class="token comment">// all coils off</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code><!----></pre> <p><code>P1_INPUTS</code> is <code>0xF0</code>. It keeps the upper four latches high on every write, so the encoder lines on <code>P1.5</code> to <code>P1.7</code> stay pulled up while the lower nibble drives the motor.</p> <h2 id="two-clicks-per-step"><a aria-hidden="true" tabindex="-1" href="#two-clicks-per-step"><span class="icon icon-link"></span></a>Two clicks per step</h2> <p>The first run on the real board worked, except that the shaft only moved on every second click of the knob.</p> <p>The decoder committed a detent when the knob came back to rest with both lines high, which is where the common KY-040
+sits between clicks. My module clicks twice as often. It rests with both lines high, then with both lines low, then high
+again, so a click is half a quadrature cycle, not a whole one. Half the clicks ended at a rest position the decoder did
+not recognise.</p> <p>From the outside the two kinds of module look identical. The fix is a flag: in half-cycle mode
+both rest positions count, and two transitions in the same direction make a click. The simple falling-edge method from
+the encoder section has the same blind spot. That is what the line about needing two transitions per step was quietly
+admitting.</p> <h2 id="one-knob-turn-one-shaft-turn"><a aria-hidden="true" tabindex="-1" href="#one-knob-turn-one-shaft-turn"><span class="icon icon-link"></span></a>One knob turn, one shaft turn</h2> <p>With every click counted, the shaft overturned the knob. I had assumed 20 clicks per revolution, the usual figure.
+Counting them on the knob gave 30.</p> <p>The motor wants 4096 half-steps per revolution, so a click is 136.53 half-steps, which is not a whole number. Adding 137
+on every click walks the shaft half a half-step further from the knob each time, and 136 drifts the other way.</p> <p>So the target is never accumulated. It is recomputed from the click count every time, multiplying first and dividing
+last. Thirty clicks land on exactly 4096 half-steps, and the error never exceeds one half-step however long the knob is
+turned. Multiply first, divide last, and never add up a rounded number.</p> <p>The product needs 32 bits, because 150 clicks is already 20480 half-steps. The count is clamped at 150 in either
+direction, five turns of the shaft, so the 16-bit target cannot wrap round.</p> <p>Once the motor reaches its target, the coils stay energized and hold the shaft against nothing. A held half-step costs
+100 to 200 mA, and all of it turns into heat. The gearbox holds the shaft well enough on its own, so after 200 ms at
+rest the interrupt switches all four outputs off.</p> <p>Pressing the knob sets the current position as the new zero, without moving the shaft.</p> <img class="tui-shadow white-168 black-255-text" src="/images/8051_enc_stepper.jpg" style="width: 500px; height: 100%; margin-left: auto; margin-right: auto; display:block;" alt="HC6800-ES board with a 28BYJ-48 stepper and a rotary encoder"/><!----><br/> <p>Mark the knob and the shaft, turn the knob a full turn either way, and the two marks line up again. The motor runs at
+500 half-steps per second, about seven turns a minute, so a fast spin of the knob queues up a target and the shaft
+follows a moment later. The LEDs count the clicks, which made the two-clicks problem obvious long before the arithmetic
+was right.</p> <p>The full example is <a href="https://github.com/treideme/stc89c52-demos/tree/main/05_enc_stepper" rel="nofollow"><code>05_enc_stepper</code></a>. The logic
+that decides what a click is lives in its own file, <code>logic.c</code>, apart from the timer and the pins, because the knob was
+the part that was wrong twice.</p> <p>It is a long way from iDrive, but it is the same idea: a knob that counts clicks, and something on the far side that
+trusts the count. Getting the count right was the whole job.</p><!--]--> <div class="tui-divider"></div> <br/><b>Published:</b> 2025-11-20 <br/> <b>Updated  :</b> 2026-10-06 <!--[0--><aside class="post-footer"><ul class="post-footer__categories"><!--[--><li class="no-bullet"><a href="/blog/category/coding/" class="tui-button white-168">coding</a></li><li class="no-bullet"><a href="/blog/category/embedded/" class="tui-button white-168">embedded</a></li><li class="no-bullet"><a href="/blog/category/8051/" class="tui-button white-168">8051</a></li><!--]--></ul></aside><!--]--> <br/> Not a spam bot? Want to leave comments or provide editorial guidance? Please click any of the social
+		links below and make an effort to connect. I promise I read all messages and will respond at my
+		choosing.<!----> <div class="post-pagination"><!--[0--><a href="/blog/2025.11.22" class="tui-button white-168 prev-link">← MCS-51 Real-World Interfacing - Dallas 1 Wire</a><!--]--> <!--[0--><a href="/blog/2025.11.18" class="tui-button white-168 next-link">MCS-51 Real-World Interfacing - Dot-Matrix LCDs →</a><!--]--></div></div></fieldset></article><!--]--><!----></main><!----> <div class="tui-statusbar"><ul><li><a href="/api/rss.xml" data-sveltekit-reload="" target="_blank">RSS</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://x.com/treideme1" data-sveltekit-reload="" target="_blank">𝕏</a></li> <span class="tui-statusbar-divider"></span> <li><a href="http://github.com/treideme" data-sveltekit-reload="" target="_blank">GitHub</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.linkedin.com/in/thomasreidemeister" data-sveltekit-reload="" target="_blank">In</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://www.instagram.com/treideme/" data-sveltekit-reload="" target="_blank">📸</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://dblp.org/pid/93/7009.html" data-sveltekit-reload="" target="_blank">DPLB</a></li> <span class="tui-statusbar-divider"></span> <li><a href="https://patents.google.com/?inventor=Thomas+REIDEMEISTER" data-sveltekit-reload="" target="_blank"> 🔬 </a></li> <span class="tui-statusbar-divider"></span> <li style="float: right;"><a href="/terms">© 2026 Thomas Reidemeister</a></li></ul></div><!----></div><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1n7cx88 = {
+						base: new URL("..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../_app/immutable/entry/start.Bf5ZtK2E.js"),
+						import("../_app/immutable/entry/app.DufG8FK5.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>
