@@ -1,0 +1,1 @@
+import"../chunks/xihTtKlq.js";import{H as e,ft as t,lt as n,pt as r}from"../chunks/D_sZFM3r.js";import{t as i}from"../chunks/CyPVdmMN.js";function a(a,o){r(o,!0);let s=n(()=>o.data.page),c=n(()=>o.data.totalPosts),l=n(()=>o.data.posts);i(a,{get page(){return e(s)},get totalPosts(){return e(c)},get posts(){return e(l)}}),t()}export{a as component};
